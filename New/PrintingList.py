@@ -1,3 +1,4 @@
+# Program to take list items as input from the user and then print it.
 list1=[]
 num=0
 n=int(input("How many numbers you want to enter:-"))
