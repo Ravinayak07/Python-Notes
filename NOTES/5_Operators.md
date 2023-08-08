@@ -79,12 +79,42 @@ x &= 3  =  001 (1 in decimal)
 ```py
 x = 5
 x |= 3
-print(x)
+print(x) # 7
 
 """"
 5 (x)   =  101
 3       =  011
 --------------
-x |= 3  =  110 (7 in decimal)
+x |= 3  =  111 (7 in decimal)
 """"
+```
+
+- Bitwise XOR(^) : 1 if bits are different
+
+```py
+x = 5
+x ^= 3
+print(x) # 6
+```
+
+```py
+"""
+5 (x)   =  101
+3       =  011
+--------------
+x ^= 3  =  110 (6 in decimal)
+"""
+```
+
+> 3 . Comparison Operators:
+
+```
+==, != , > , < , >= , <=
+```
+
+> 4 . Logical Operators:
+
+```
+and(&)
+or()
 ```
