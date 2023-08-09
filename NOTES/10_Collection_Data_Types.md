@@ -351,6 +351,41 @@ while i < length:
   i = i+1
 ```
 
+# Sorting the Lists:
+
+- sort(): built-in fun to sort list in ascending by default:
+
+```py
+#sort alphabetically
+colors = ["red", "blue", "green","yellow","orange"]
+colors.sort()
+print(colors)
+```
+
+```py
+#sort numerically
+thislist = [100, 50, 65, 82, 23]
+
+thislist.sort()
+
+print(thislist)
+```
+
+```py
+#Sort in descending
+colors = ["red", "blue", "green","yellow","orange"]
+colors.sort(reverse=False)
+print(colors)
+```
+
+```py
+thislist = [100, 50, 65, 82, 23]
+thislist.sort(reverse = True)
+print(thislist)
+```
+
+# Copy Lists:
+
 ## List Comprehension:
 
 - Process of reducing the syntax during looping through lists

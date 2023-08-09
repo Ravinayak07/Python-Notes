@@ -116,5 +116,44 @@ x ^= 3  =  110 (6 in decimal)
 
 ```
 and(&)
-or()
+or(|)
+not()
+```
+
+> 5 . Idenitity operators(is, is not):
+
+- used to compare the objects
+- doesnot compare whether they have equal value.
+- it compares whether they are actually the same object i.e having same memory location.
+
+```py
+x = ["red", "blue"]
+y = ["red", "blue"]
+z = x
+
+print(x is z)
+
+# returns True because z is the same object as x
+
+print(x is y)
+
+# returns False because x is not the same object as y, even if they have the same content
+
+print(x == y) # True
+```
+
+```py
+x = ["red", "blue"]
+y = ["red", "blue"]
+z = x
+
+print(x is not z)
+
+# returns False because z is the same object as x
+
+print(x is not y)
+
+# returns True because x is not the same object as y, even if they have the same content
+
+print(x != y) # False
 ```

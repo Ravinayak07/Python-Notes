@@ -164,13 +164,14 @@ print(x, y)
 - can be used by both inside and outside of a function
 
 ```
+#Question
 Create a function named greet that:
 1) Displays: Hello myName
-2) Where myName is a global variable
+2) Where myName should be a global variable
 ```
 
 ```py
-myName = "Ravi"
+myName = "Ravi" #Global Variable
 def greet():
     print("Hello " +myName)
 
@@ -185,7 +186,7 @@ greet()
 
 ```py
 def greet():
-    myName = "Ravi"
+    myName = "Ravi"  #Local Variable
     print("Hello "+myName)
 
 greet()
@@ -193,26 +194,28 @@ greet()
 
 # Both Global and Local variable having same name
 
+- Can both global and local variable have same name> yes
+
 ```py
-x = "awesome"
+myName = "Ravi" #Global
 
-def myfunc():
-  x = "fantastic"
-  print("Python is " + x)
+def greet():
+  myName = "Darshan" #Local
+  print("Hello " + myName)
 
-myfunc()
+greet()
 
-print("Python is " + x)
+print("Hello " + myName)
 ```
 
 ```
-Python is fantastic
-Python is awesome
+Python is Darshan
+Python is Ravi
 ```
 
 ## Problem:
 
-- used to create a global variable inside the fun.
+- I want to create a global variable inside the fun. Is it possible??
 
 ```py
 # Error
