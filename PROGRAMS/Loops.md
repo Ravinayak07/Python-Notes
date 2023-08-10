@@ -152,3 +152,62 @@ for i in range(2,num+1):
         break;
 print("Largest Divisor: ", num//i);
 ```
+
+# Program to check prime number
+
+```py
+num = int(input("Enter a number: "))
+
+count=0
+
+if num == 1:
+    print("Not a prime")
+else:
+    for i in range(1, num+1):
+        if (num % i) == 0:
+            count=count+1
+
+    if count==2:
+        print("Prime")
+    else:
+        print("Not a Prime")
+```
+
+# Program to print all prime Numbers between 1 and 100
+
+```py
+for i in range(2,101):
+    count=0
+    for x in range(1,i+1):
+        if i%x == 0:
+            count=count+1
+    if count==2:
+        print(i)
+```
+
+# Program to check whether a number is perfect Number using function
+
+```
+ A perfect Number is a number which is equal to the sum of its divisors
+ Some perfect numbers are 6, 28, 496, 8128
+
+ Ex: divisrors of 6 = 1,2,3
+     sum = 1+2+3 = 6
+     hence perfect number
+```
+
+```py
+def is_perfect_number(number):
+    divisors_sum = 0
+    for i in range(1, number):
+        if number % i == 0:
+            divisors_sum += i
+    return divisors_sum == number
+
+num = int(input("Enter a number: "))
+
+if is_perfect_number(num):
+    print("Perfect Number")
+else:
+    print("Not a perfect number.")
+```

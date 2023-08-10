@@ -70,3 +70,33 @@ print(isinstance(x, string)) # Error
 x = "Ravi"
 print(isinstance(x, str)) # True
 ```
+
+# Casting:
+
+- Since, Python is an object-orientated language, it uses classes to define data types, including its primitive types.
+- Casting in done using constructor functions:
+
+```
+- int() - constructs an integer number from an integer literal, a float literal or a string literal
+
+- float() - constructs a float number from an integer literal, a float literal or a string literal
+
+str() - constructs a string s
+```
+
+- Ex:
+
+```py
+print(int(1)) # 1
+print(int(2.8)) # 2
+print(int("3")) # 3
+
+print(float(1)) # 1.0
+print(float(2.8)) # 2.8
+print(float("3")) # 3.0
+print(float("4.2")) # 4.2
+
+print(str("s1")) # s1
+print(str(2)) # 2
+print(str(3.0)) # 3.0
+```
