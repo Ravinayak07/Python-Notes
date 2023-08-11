@@ -101,3 +101,49 @@ def check(n, div = None):
 n=int(input("Enter number: "))
 check(n)
 ```
+
+## Program to Find the Sum of Elements in a List using Recursion
+
+```py
+def sum_arr(arr,size):
+   if (size == 0):
+     return 0
+   else:
+     return arr[size-1] + sum_arr(arr,size-1)
+n=int(input("Enter the number of elements for list:"))
+a=[]
+for i in range(0,n):
+    element=int(input("Enter element:"))
+    a.append(element)
+print("The list is:")
+print(a)
+print("Sum of items in list:")
+b=sum_arr(a,n)
+print(b)
+```
+
+```
+4. The list and the size of the list are passed as arguments to a recursive function.
+5. If the size of the function reduces to 0, 0 is returned.
+6. Otherwise the sum of the last element of the list along with the recursive function call (with the size reduced by 1) is returned.
+7. The returned values are stored in a list and the sum of the elements in the list is printed.
+```
+
+## Program to Find the Length of a List using Recursion:
+
+```py
+def length(lst):
+    if not lst:
+        return 0
+    return 1 + length(lst[1::2]) + length(lst[2::2])
+a=[1,2,3]
+print("Length of the string is: ")
+print(a)
+
+```
+
+```
+3. In the function, put the condition that if it is not the original list, return 0.
+4. Otherwise, recursively call the function to find the length of the list.
+5. Print the final result of the string.
+```

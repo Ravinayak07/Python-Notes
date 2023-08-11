@@ -34,3 +34,5 @@ if(k<=0):
 else:
     print("Number isn't prime")
 ```
+
+- len() and sum() function in list
