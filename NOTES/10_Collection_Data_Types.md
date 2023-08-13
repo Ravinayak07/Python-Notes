@@ -572,27 +572,3 @@ for x in cities:
 cities = ["Delhi","Mumbai","Pune"]
 [print(x) for x in cities]
 ```
-
-# Tuples:
-
-- used to store multiple items in a single variable.
-- created using round brackets
-- EX:
-
-```py
-myTuple = ("red", "blue", "green");
-print(myTuple) #('red', 'blue', 'green')
-```
-
-- Tuple items are ordered, unchangeable , can have duplicates
-
-# Dictionary
-
-```py
-thisdict = {
-  "brand": "Ford",
-  "model": "Mustang",
-  "year": 1964
-}
-print(thisdict["brand"])
-```
