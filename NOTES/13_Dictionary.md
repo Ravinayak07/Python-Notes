@@ -314,3 +314,385 @@ if "name" in student:
 ```
 
 ## CHANGHE ITEMS IN DICTIONARY:
+
+```py
+student = {
+    "name": "Ravi",
+    "college": "Silicon",
+    "Graduate": True,
+    "age": 23,
+}
+
+student["age"] = 22
+
+print(student)
+```
+
+> Using update() method:
+
+- updates the dictionary with the items from the given argument.
+- The argument must be a dictionary, or an iterable object with key:value pairs.
+
+```py
+student = {
+    "name": "Ravi",
+    "college": "Silicon",
+    "Graduate": True,
+    "age": 23,
+}
+
+student.update({"age":22})
+
+print(student)
+```
+
+## ADDING ITEMS:
+
+```py
+student = {
+    "name": "Ravi",
+    "college": "Silicon",
+    "Graduate": True,
+    "age": 23,
+}
+
+student["year"] = 2023
+
+print(student)
+```
+
+```
+{'name': 'Ravi', 'college': 'Silicon', 'Graduate': True, 'age': 23, 'year': 2023}
+```
+
+- Using update() method:
+
+```py
+student = {
+    "name": "Ravi",
+    "college": "Silicon",
+    "Graduate": True,
+    "age": 23,
+}
+
+student.update({"year":2023})
+print(student)
+```
+
+```
+{'name': 'Ravi', 'college': 'Silicon', 'Graduate': True, 'age': 23, 'year': 2023}
+```
+
+## Remove items from Dictionary:
+
+> 1 . pop() method:
+
+- removes item with specified key name:
+
+```py
+student = {
+    "name": "Ravi",
+    "college": "Silicon",
+    "Graduate": True,
+    "age": 23,
+}
+
+student.pop("Graduate")
+print(student)
+```
+
+```
+{'name': 'Ravi', 'college': 'Silicon', 'age': 23}
+```
+
+> 2 . popitem() method:
+
+- removes the last inserted item
+
+```py
+student = {
+    "name": "Ravi",
+    "college": "Silicon",
+    "age": 23,
+    "Graduate": True
+}
+
+student.popitem()
+print(student)
+```
+
+```
+{'name': 'Ravi', 'college': 'Silicon', 'age': 23}
+```
+
+> 3 . del keyword:
+
+- removes item with specified key name.
+
+```py
+student = {
+    "name": "Ravi",
+    "college": "Silicon",
+    "age": 23,
+    "Graduate": True
+}
+
+del student["Graduate"]
+print(student)
+```
+
+```
+{'name': 'Ravi', 'college': 'Silicon', 'age': 23}
+```
+
+- del can also delete entire dictionary:
+
+```py
+student = {
+    "name": "Ravi",
+    "college": "Silicon",
+    "age": 23,
+    "Graduate": True
+}
+
+del student
+print(student) # Error
+```
+
+> 4 . clear():
+
+- Empties the dictionary:
+
+```py
+student = {
+    "name": "Ravi",
+    "college": "Silicon",
+    "age": 23,
+    "Graduate": True
+}
+
+student.clear()
+print(student) # {}
+```
+
+## Loop Through Dictionary:
+
+- while looping a dictionary, return values are keys of dictionary.
+
+```py
+student = {
+    "name": "Ravi",
+    "college": "Silicon",
+    "age": 23,
+    "Graduate": True
+}
+
+for x in student:
+    print(x)
+```
+
+```
+name
+college
+age
+Graduate
+```
+
+- keys() method can also be used:
+
+```py
+student = {
+    "name": "Ravi",
+    "college": "Silicon",
+    "age": 23,
+    "Graduate": True
+}
+
+for x in student.keys():
+    print(x)
+```
+
+```
+name
+college
+age
+Graduate
+```
+
+- To return values, need to mention keys:
+
+```py
+student = {
+    "name": "Ravi",
+    "college": "Silicon",
+    "age": 23,
+    "Graduate": True
+}
+
+for x in student:
+    print(student[x])
+```
+
+```
+Ravi
+Silicon
+23
+True
+```
+
+- values() method can be used:
+
+```py
+student = {
+    "name": "Ravi",
+    "college": "Silicon",
+    "age": 23,
+    "Graduate": True
+}
+
+for x in student.values():
+    print(x)
+```
+
+```
+Ravi
+Silicon
+23
+True
+```
+
+- To loop through both keys and values, use items() method:
+
+```py
+student = {
+    "name": "Ravi",
+    "college": "Silicon",
+    "age": 23,
+    "Graduate": True
+}
+
+for x in student.items():
+    print(x)
+```
+
+```
+('name', 'Ravi')
+('college', 'Silicon')
+('age', 23)
+('Graduate', True)
+```
+
+# COPY DICTIONARY:
+
+- cannot copy simply by assigning(dict2 = dict1) because both refer to same memory location
+- Any changes made to dict1 will automatically be made in dict2.
+- Buil-in Methods:
+
+> 1 . copy():
+
+```py
+student = {
+    "name": "Ravi",
+    "college": "Silicon",
+    "age": 23,
+    "Graduate": True
+}
+
+student2 = student.copy()
+print(student2)
+```
+
+> 2 . dict():
+
+```py
+student = {
+    "name": "Ravi",
+    "college": "Silicon",
+    "age": 23,
+    "Graduate": True
+}
+
+student2 = dict(student)
+print(student2)
+```
+
+## NESTED DICTIONARIES:
+
+- Dictionaries containing dictionaries
+
+```py
+myClass = {
+    "student1" : {
+        "name" : "Ravi",
+        "age"  : 23
+    },
+    "student2" : {
+        "name" : "Deepak",
+        "age"  : 22
+    },
+    "student3" : {
+        "name" : "Hamid",
+        "age"  : 21
+    }
+}
+print(myClass)
+```
+
+```
+{'student1': {'name': 'Ravi', 'age': 23}, 'student2': {'name': 'Hamid', 'age': 21}}
+```
+
+- Add three different dictionaries into a new dictionary
+
+```py
+student1 = {
+  "name" : "Ravi",
+  "age"  : 23
+}
+student2 = {
+  "name" : "Deepak",
+  "age"  : 22
+}
+student3 = {
+  "name" : "Hamid",
+  "age"  : 21
+}
+
+myClass = {
+  "student1" : student1,
+  "student2" : student2,
+  "student3" : student3
+}
+
+print(myClass)
+```
+
+```
+{'student1': {'name': 'Ravi', 'age': 23}, 'student2': {'name': 'Deepak', 'age': 22}, 'student3': {'name': 'Hamid', 'age': 21}}
+```
+
+- Access items in Nested Dictionaries
+
+```py
+myClass = {
+    "student1" : {
+        "name" : "Ravi",
+        "age"  : 23
+    },
+    "student2" : {
+        "name" : "Deepak",
+        "age"  : 22
+    },
+    "student3" : {
+        "name" : "Hamid",
+        "age"  : 21
+    }
+}
+
+print(myClass["student3"]["age"]) # 21
+```
+
+# Built-in Dictionary Methods:
+
+- clear(): Removes all the elements from the dictionary
+- copy(): Returns a copy of the dictionary
