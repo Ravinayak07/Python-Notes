@@ -160,8 +160,10 @@ print(x, y)
 
 # Global Variables:
 
-- created outside of a function.
+- created outside of a function (i.e in the main body of python code)
+- belongs to global scope
 - can be used by both inside and outside of a function
+- so global variables can be accessed within any scope i.e both local and global
 
 ```
 #Question
@@ -176,12 +178,14 @@ def greet():
     print("Hello " +myName)
 
 greet()
+print(myName)
 ```
 
 # Local Variable:
 
 - created inside a fun
-- can only be accessible inside the fun, not outside,
+- belongs to local scope of that function.
+- can only be accessible inside the fun, not outside.
 - Ex:
 
 ```py
@@ -192,9 +196,23 @@ def greet():
 greet()
 ```
 
+- Function inside function:
+
+```py
+def greet():
+    myName = "Ravi"
+    def greetWithName():
+      print("Hello "+myName)
+
+    greetWithName()
+
+greet()
+```
+
 # Both Global and Local variable having same name
 
 - Can both global and local variable have same name> yes
+- But Python will treat them as two separate variables
 
 ```py
 myName = "Ravi" #Global
@@ -215,7 +233,7 @@ Python is Ravi
 
 ## Problem:
 
-- I want to create a global variable inside the fun. Is it possible??
+- I want to create a global variable inside the fun (i.e in local scope). Is it possible??
 
 ```py
 # Error
@@ -226,7 +244,7 @@ greet()
 print("Hello "+myName)
 ```
 
-- Here comes the global keyword. It is used to create a global variable inside a function.
+- Here comes the global keyword. It is used to create a global variable in local scope.
 
 ```py
 #Error
