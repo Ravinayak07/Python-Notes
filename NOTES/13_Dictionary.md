@@ -859,6 +859,76 @@ print(myClass["student3"]["age"]) # 21
 - clear(): Removes all the elements from the dictionary
 - copy(): Returns a copy of the dictionary
 
+# SORTING IN DICTIONARY:
+
+> 1 . Sorting by Keys:
+
+- using sorted function
+
+```py
+my_dict = {"apple": 3, "banana": 1, "cherry": 2}
+
+sorted_keys = sorted(my_dict.keys())
+print(sorted_keys) # ['apple', 'banana', 'cherry']
+
+sorted_dict = dict(sorted_keys) # error
+```
+
+```py
+my_dict = {"apple": 3, "banana": 1, "cherry": 2}
+
+sorted_items = sorted(my_dict.items())
+print(sorted_items)  # [('apple', 3), ('banana', 1), ('cherry', 2)]
+
+sorted_dict = dict(sorted_items)
+
+print(sorted_dict)
+
+```
+
+> 2 . sorting by values:
+
+```py
+my_dict = {"apple": 3, "banana": 1, "cherry": 2}
+
+def customSort(items):
+    return items[1]
+
+sorted_items = sorted(my_dict.items(), key=customSort)
+sorted_dict = dict(sorted_items)
+
+print(sorted_dict)
+```
+
+> 3 . Sorting by Values in Descending Order::
+
+```py
+my_dict = {"apple": 3, "banana": 1, "cherry": 2}
+
+def customSort(items):
+    return items[1]
+
+sorted_items = sorted(my_dict.items(), key=customSort, reverse=True)
+sorted_dict = dict(sorted_items)
+
+print(sorted_dict)
+```
+
+> Sorting by multiple criteria:
+
+```py
+my_dict = {"apple": 3, "mango":1, "banana": 1, "cherry": 2,}
+
+def customSort(items):
+    return items[1], items[0]
+
+sorted_items = sorted(my_dict.items(), key=customSort)
+sorted_dict = dict(sorted_items)
+
+print(sorted_dict)
+
+```
+
 # PROGRAMS:
 
 ## Program to create Dictionary from an Object of a class.
