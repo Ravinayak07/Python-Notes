@@ -1,5 +1,0 @@
-mytuple=(1,2,3,4,5,6)
-maximum=max(mytuple)
-minimum=min(mytuple)
-print("Maximun is:",maximum)
-print("Minimum is:",minimum)
