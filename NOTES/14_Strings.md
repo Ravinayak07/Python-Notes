@@ -143,17 +143,66 @@ print(a.lower())  # hello, world!
 
 > strip(): removes whitespace from begining or end
 
-# String formatting:
+```py
+a = " Hello, World! "
+print(a.strip()) #Hello, World!
+```
 
-## format() method:
+> replace() : replaces a string with another string:
+
+```py
+a = "Hello, World!"
+print(a.replace("H", "J")) # Jello, World!
+```
+
+> split(): returns a list where the text between the specified separator becomes the list items:
+
+```py
+a = "Hello, World!"
+b = a.split(",")
+print(b) # returns ['Hello', ' World!']
+```
+
+## String Concatenation:
+
+```py
+a = "Hello"
+b = "World"
+c = a +" " + b
+print(c)  # Hello World
+```
+
+## String formatting:
+
+- we cannot combine strings and numbers using + operator
+
+```py
+age = 36
+txt = "My name is John, I am " + age
+print(txt)  # Error
+```
+
+- But it can be done using format() method
+
+> format() method:
 
 - used to format selected parts of string
+- takes unlimited number of arguments, and are placed into the respective placeholders {}.
 - Ex:
 
 ```py
 age = 23
 msg = "My age is {}"
 print(msg.format(age)) # My age is 23
+```
+
+```py
+quantity = 3
+itemno = 567
+price = 49.95
+myorder = "I want {} pieces of item {} for {} dollars."
+print(myorder.format(quantity, itemno, price))
+
 ```
 
 - Add paramters inside {} to convert values in case of decimals
@@ -229,3 +278,62 @@ print(msg.format(city="Bhubaneswar",state="Odisha"))
 ```
 The Capital of Odisha is Bhubaneswar
 ```
+
+# PROGRAMS:
+
+## Program to Remove Odd Indexed Characters in a string:
+
+```
+Means printing only even indexed characters
+```
+
+```py
+def removeIndex(x):
+    newString = ""
+    for i in range(len(x)):
+        if i % 2 == 0:
+            newString = newString + x[i]
+    return newString
+
+myString = input("Enter string : ")
+print(removeIndex(myString))
+```
+
+## Program to Remove the nth Index Character from a Non-Empty String
+
+```py
+def remove(myString, n):
+      first = myString[:n]
+      last = myString[n+1:]
+      return first + last
+
+myString = input("Enter string : ")
+n=int(input("Enter the index of the character to remove:"))
+print(remove(myString, n))
+```
+
+## Program to Replace Every Blank Space with underScore in a String:
+
+```py
+myString = input("Enter string : ")
+
+myString=myString.replace(' ','_')
+
+print("New string:", myString)
+```
+
+## Program to Replace All Occurrences of a character with $ in a String.
+
+```py
+myString = input("Enter string : ")
+myChar = input("Enter character to replace : ")
+
+myString=myString.replace(myChar.lower(),'$')
+myString=myString.replace(myChar.upper(),'$')
+
+print("New string:", myString)
+```
+
+# methods:
+
+- replace
