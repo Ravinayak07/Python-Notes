@@ -1,3 +1,148 @@
+# PYTHON STRINGS:
+
+```py
+# Both are same:
+print('Ravi')
+print("Ravi")
+
+x = "Ravi"
+print(x)
+```
+
+- Assign multiline strings using triple quotes:
+
+```py
+x = """My name is Ravi,
+I am from bhubaneswar, Odisha
+"""
+print(x)
+```
+
+- Or three single quotes
+
+```py
+x = '''My name is Ravi,
+I am from bhubaneswar, Odisha
+'''
+print(x)
+```
+
+```
+My name is Ravi,
+I am from bhubaneswar, Odisha
+```
+
+## Strings are Arrays of Characters
+
+- python doesnot has character data type
+- A single character is a string of length 1
+
+```py
+x = "Silicon"
+print(x[2]) #l
+```
+
+## Looping a string:
+
+```py
+collegeName = "Silicon"
+
+for x in collegeName:
+    print(x)
+```
+
+```
+S
+i
+l
+i
+c
+o
+n
+```
+
+## String Length:
+
+```py
+collegeName = "Silicon"
+print(len(collegeName)) # 7
+```
+
+## Check String:
+
+```py
+msg = "I am very proficient in Python Programming Language"
+
+print("very" in msg) # True
+# using if
+
+if "very" in msg:
+    print("Present")
+```
+
+## Check if Not:
+
+```py
+msg = "I am very proficient in Python Programming Language"
+
+print("very" not in msg) # False
+# using if
+
+if "very" not in msg:
+    print("Absent")
+else:
+    print("Present")
+```
+
+## String Slicing:
+
+- used to return a range of characters
+- Starting index included
+- Ending index not included
+
+```py
+x = "Silicon institute"
+print(x[2:5])   # lic
+```
+
+```py
+# will start from 0 index or first character
+b = "Hello, World!"
+print(b[:5]) # Hello
+```
+
+```py
+# All the way to the end:
+b = "Hello, World!"
+print(b[2:])  # llo, World!
+```
+
+```py
+# Negative Indexing:
+b = "Hello, World!"
+print(b[-5:-2]) # orl
+```
+
+## Modify Strings:
+
+- python has a set of built-in methods to modify strings:
+
+> upper() : returns string in uppercase
+
+```py
+a = "Hello, World!"
+print(a.upper())  # HELLO, WORLD!
+```
+
+> lower() : returns string in lowercase
+
+```py
+a = "Hello, World!"
+print(a.lower())  # hello, world!
+```
+
+> strip(): removes whitespace from begining or end
+
 # String formatting:
 
 ## format() method:
