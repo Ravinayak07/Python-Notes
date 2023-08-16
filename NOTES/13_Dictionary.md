@@ -1065,3 +1065,41 @@ for i in range(1, num+1):
 
 print(new_dict)
 ```
+
+# Program to Extract Unique values from a dictionary and print in ascending order
+
+```py
+#initializing dictionary
+my_dict  = {'a': [1, 8, 2, 8],
+             'b': [10, 11, 12, 5],
+             'c': [7, 12, 10, 11],
+             'd': [2, 8, 5 ,6]}
+
+print("The original dictionary is : ",my_dict)
+
+unique_values = set()
+for x in my_dict.values():
+    for y in x:
+        unique_values.add(y)
+
+res = list(sorted(unique_values))
+
+# printing result
+print("The unique values list is : " , res)
+
+```
+
+# Program to Append Dictionary Keys and Values ( In order ) in dictionary
+
+```py
+student = {
+    "name": "Ravi",
+    "college": "Silicon",
+    "age":23
+}
+
+a = list(student.keys())
+b = list(student.values())
+a.extend(b)
+print("The ordered keys and values : ", a)
+```
