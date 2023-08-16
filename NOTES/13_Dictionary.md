@@ -13,7 +13,7 @@ student = {
 print(student) # {'name': 'Ravi', 'college': 'Silicon', 'age': 23}
 ```
 
-- values can be accessed using key names:
+- how to access values ? : values can be accessed using key names:
 
 ```py
 student = {
@@ -84,6 +84,41 @@ print(student)
 {'name': 'Ravi', 'college': 'Silicon', 'Graduate': True, 'age': 23, 'year': 2023, 'skills': ['Python', 'React', 'Javascript']}
 ```
 
+> Dictionary Keys can also of any data types:
+
+- Dictionary Keys can also of any immutable data types like intergers, floats, strings, tuples, strings,etc
+
+```py
+mixed_dict = { 1: "one",
+               2 : "two",
+               "three" : 3,
+               ("apple","orange") : "fruits",
+               True : "yes",
+               3.14 : "pi",
+             }
+print(mixed_dict)
+```
+
+- Alhough set is unchangeable, still it can't be used as keys. This is because in set, we can add/remove items
+
+```py
+setDict = {
+    {1,2} : "One Two",
+    {3,4} : "Three Four"
+    }
+print(setDict)  # Error
+```
+
+- But frozenset(immutable version of set) can be used
+
+```py
+setDict = {
+    frozenset({1,2}) : "One Two",
+    frozenset({3,4}) : "Three Four"
+    }
+print(setDict)
+```
+
 > type():
 
 - Dictionaries are objects with data type 'dict'
@@ -106,6 +141,36 @@ print(type(student)) #<class 'dict'>
 ```py
 student = dict(name="ravi", age=23, college="Silicon")
 print(student) # {'name': 'ravi', 'age': 23, 'college': 'Silicon'}
+```
+
+- for mixed dictionary
+
+```py
+mixed_dict = dict({
+    1: "one",
+    2: "two",
+    "three": 3,
+    ("apple", "orange"): "fruits",
+    True: "yes",
+    3.14: "pi"
+})
+
+print(type(mixed_dict))
+```
+
+- without using {}. I provided a list of tuples, where each tuple represents a key-value pair for the dictionary
+
+```py
+mixed_dict = dict(
+    [(1, "one"),
+     (2, "two"),
+     ("three", 3),
+     (("apple", "orange"), "fruits"),
+     (False, "yes"),
+     (3.14, "pi")]
+)
+
+print(mixed_dict)
 ```
 
 ## ACCESS ITEMS:
@@ -299,6 +364,39 @@ student["year"] = 2023
 print(x)
 ```
 
+> Access using indexes
+
+- Since dictionary is ordered. Can we access it using indexex??? Lets try
+
+```py
+student = {
+    "name": "Ravi",
+    "college": "Silicon",
+    "Graduate": True,
+    "age": 23,
+}
+print(student[0]) # Error
+```
+
+- This is because dictionaries are unindexed unlike lists and tuples
+- We can't directly access dictionary elements usng integer indices.
+- For that, first convert the dictionary keys into a list and the use list index to access the respective keys.
+
+```py
+student = {
+    "name": "Ravi",
+    "college": "Silicon",
+    "Graduate": True,
+    "age": 23,
+    "year":2023,
+    "skills": ["Python","React","Javascript"]
+}
+
+key_list = list(student.keys())
+print(key_list[5])
+print(student[key_list[5]])
+```
+
 # CHECK IF KEY EXISTS:
 
 ```py
@@ -311,6 +409,21 @@ student = {
 
 if "name" in student:
     print("YES")          # YES
+```
+
+- using loop
+
+```py
+student = {
+    "name": "Ravi",
+    "college": "Silicon",
+    "Graduate": True,
+    "age": 23,
+}
+
+for i in student:
+    if student[i] == "Silicon":
+        print("present")
 ```
 
 ## CHANGHE ITEMS IN DICTIONARY:
@@ -334,6 +447,7 @@ print(student)
 - The argument must be a dictionary, or an iterable object with key:value pairs.
 
 ```py
+# using another dictionary as argument
 student = {
     "name": "Ravi",
     "college": "Silicon",
@@ -344,6 +458,39 @@ student = {
 student.update({"age":22})
 
 print(student)
+```
+
+```py
+# using any iterable object as argument
+student = {
+    "name": "Ravi",
+    "college": "Silicon",
+    "Graduate": True,
+    "age": 23,
+}
+
+student.update([("age",22),("year",2023)])
+
+print(student)
+```
+
+- changing items using indexes:
+
+```py
+student = {
+    "name": "Ravi",
+    "college": "Silicon",
+    "Graduate": True,
+    "age": 23,
+    "year":2023,
+    "skills": ["Python","React","Javascript"]
+}
+
+key_list = list(student.keys())
+print(key_list[5])
+print(student[key_list[5]])
+student[key_list[5]] = "CPP"
+print(student[key_list[5]])
 ```
 
 ## ADDING ITEMS:
@@ -586,6 +733,19 @@ for x in student.items():
 
 - cannot copy simply by assigning(dict2 = dict1) because both refer to same memory location
 - Any changes made to dict1 will automatically be made in dict2.
+
+```py
+student = {
+    "name": "Ravi",
+    "college": "Silicon",
+    "age": 23,
+}
+print(student)
+student2 = student
+student2["year"] = 2023
+print(student)
+```
+
 - Buil-in Methods:
 
 > 1 . copy():
@@ -595,11 +755,11 @@ student = {
     "name": "Ravi",
     "college": "Silicon",
     "age": 23,
-    "Graduate": True
 }
-
+print(student)
 student2 = student.copy()
-print(student2)
+student2["year"] = 2023
+print(student)
 ```
 
 > 2 . dict():
@@ -612,8 +772,10 @@ student = {
     "Graduate": True
 }
 
+print(student)
 student2 = dict(student)
-print(student2)
+student2["year"] = 2023
+print(student)
 ```
 
 ## NESTED DICTIONARIES:
@@ -696,3 +858,140 @@ print(myClass["student3"]["age"]) # 21
 
 - clear(): Removes all the elements from the dictionary
 - copy(): Returns a copy of the dictionary
+
+# PROGRAMS:
+
+## Program to create Dictionary from an Object of a class.
+
+```py
+class A(object):
+     def __init__(self):
+         self.A=1
+         self.B=2
+obj=A()
+print(obj.__dict__)
+```
+
+```
+Program Explanation
+1. A class named A is declared.
+2. The keys are initialized with their values in the __init__ method of the class.
+3. The dictionary is formed using the object of the class and by using the __dict__ method.
+4. The dictionary formed from the object of the class is printed.
+```
+
+## Program to check whether a Key Exists in a Dictionary or Not.
+
+```py
+student = {
+    "name": "Ravi",
+    "college": "Silicon",
+    "age": 23,
+    "Graduate": True
+}
+
+key = input("Enter key to check: ")
+if key in student.keys():
+    print("Present")
+else:
+    print("Not present")
+```
+
+## Program to add a key value pair to a dictionary and print new Dictionary. Take key and value as user input
+
+```py
+
+key=input("Enter the key :")
+value=int(input("Enter the value :"))
+x ={}
+x.update({key:value})
+print("New dictionary is:")
+print(d)
+```
+
+## Program to find sum of all values in a dictionary. Take userinput for key and values
+
+```py
+new_dict={}
+
+num_pairs = int(input("Enter the number of key-value pairs: "))
+
+for i in range(num_pairs):
+    key = input("Enter key "+str(i+1)+" : ")
+    value = int(input("Enter value of key "+str(i+1)+" : "))
+    new_dict[key]=value
+
+print(new_dict)
+print(sum(new_dict.values()))
+```
+
+## Program to multiply all items values in a dictionary:
+
+```py
+new_dict={}
+
+num_pairs = int(input("Enter the number of key-value pairs: "))
+
+for i in range(num_pairs):
+    key = input("Enter key "+str(i+1)+" : ")
+    value = int(input("Enter value of key "+str(i+1)+" : "))
+    new_dict[key]=value
+
+print(new_dict)
+prod=1
+for i in new_dict:
+    prod = prod*new_dict[i]
+
+print(prod)
+```
+
+- using math.prod
+
+```py
+import math
+new_dict={}
+
+num_pairs = int(input("Enter the number of key-value pairs: "))
+
+for i in range(num_pairs):
+    key = input("Enter key "+str(i+1)+" : ")
+    value = int(input("Enter value of key "+str(i+1)+" : "))
+    new_dict[key]=value
+
+print(new_dict)
+print(math.prod(new_dict.values()))
+```
+
+## Program to concatenate two different dictionaries:
+
+```py
+student1 = {
+    "name": "Ravi",
+    "college": "Silicon",
+}
+student2 = {
+    "age": 23,
+    "Graduate": True
+}
+student1.update(student2)
+print("Concatenated dictionary is:")
+print(student1)
+```
+
+## Program to generate a dictionary that contains numbers (between 1 and n) in the form (x,x\*x)
+
+```
+if num = 5
+
+output: {1: 1, 2: 4, 3: 9, 4: 16, 5: 25}
+```
+
+```py
+num = int(input("Enter a number:"))
+new_dict={}
+for i in range(1, num+1):
+    new_dict[i] = i*i
+
+
+print(new_dict)
+```
