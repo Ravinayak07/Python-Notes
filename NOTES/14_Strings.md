@@ -505,6 +505,30 @@ myString=myString.replace(myChar.upper(),'$')
 print("New string:", myString)
 ```
 
+# Python program to print even length words in a string:
+
+```
+Input: s = "i am laxmi"
+Output: am
+```
+
+```py
+# Python code
+# To print even length words in string
+
+#input string
+n="This is a python language"
+#splitting the words in a given string
+s=n.split(" ")
+for i in s:
+#checking the length of words
+if len(i)%2==0:
+	print(i)
+
+# this code is contributed by gangarajula laxmi
+
+```
+
 # Program tro reverse a string:
 
 ```py
@@ -570,6 +594,48 @@ for i in myStr:
 print("Lowercase Characters: ",low)
 print("Uppercase Characters: ",up)
 print("Spaces: ",space)
+```
+
+# Check Palindrome:
+
+```py
+myStr = input("Enter String: ")
+if(myStr==myStr[::-1]):
+      print("The string is a palindrome")
+else:
+      print("The string isn't a palindrome")
+```
+
+# program to find the number of occurances of a word without using count() function.
+
+```py
+myStr=input("Enter string:")
+word=input("Enter word:")
+list=[]
+count=0
+list=myStr.split(" ")
+for i in list:
+      if(word==i):
+            count=count+1
+print(count)
+```
+
+# Program to check whether a string is symmetrical
+
+```py
+myStr = input("Enter the string: ")
+half = int(len(string) / 2)
+
+
+first_str = string[:half]
+second_str = string[half:]
+
+
+# symmetric
+if first_str == second_str:
+	print(string, 'string is symmetrical')
+else:
+	print(string, 'string is not symmetrical')
 ```
 
 # methods:
