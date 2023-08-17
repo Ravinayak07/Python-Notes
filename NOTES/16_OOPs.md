@@ -1,3 +1,20 @@
+# What is OOPs?
+
+- In order to understand what is Object oriented Programming. We need to understand what are objects first
+
+# What are objects?
+
+- In order to understand objects..first we need to leran primitive data types first.
+
+# What are primitive data types?
+
+- Variables that store single and simple values
+- Stores single piece of data of some kind
+- Ex: Byte, Int, Float, Boolean, Double, Char.
+- These data types were usefull till one extent.
+- But when programs became large and complex, these data types were not that usefull.
+- We needed variables to store simmillar types of data together.
+
 # Introduction:
 
 - Python is an object-oriented Language
