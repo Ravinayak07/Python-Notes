@@ -147,3 +147,36 @@ print(a)
 4. Otherwise, recursively call the function to find the length of the list.
 5. Print the final result of the string.
 ```
+
+## Program to reverse a string using Recusrion:
+
+```py
+def reverse(string):
+    if len(string) == 0:
+        return string
+    else:
+        return reverse(string[1:]) + string[0]
+a = str(input("Enter the string to be reversed: "))
+print(reverse(a))
+```
+
+```
+3. In the function, the base condition is that if the length of the string is equal to 0, the string is returned.
+4. If not equal to 0, the reverse function is recursively called to slice the part of the string except the first character and concatenate the first character to the end of the sliced string.
+```
+
+## Program to Determine How Many Times a Given Letter Occurs in a String Recursively
+
+```py
+def check(string,ch):
+      if not string:
+        return 0
+      elif string[0]==ch:
+            return 1+check(string[1:],ch)
+      else:
+            return check(string[1:],ch)
+string=raw_input("Enter string:")
+ch=raw_input("Enter character to check:")
+print("Count is:")
+print(check(string,ch))
+```

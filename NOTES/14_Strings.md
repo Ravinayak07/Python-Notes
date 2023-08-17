@@ -40,6 +40,14 @@ I am from bhubaneswar, Odisha
 ```py
 x = "Silicon"
 print(x[2]) #l
+print(x[-1]) #l
+```
+
+## String Length:
+
+```py
+collegeName = "Silicon"
+print(len(collegeName)) # 7
 ```
 
 ## Looping a string:
@@ -61,11 +69,11 @@ o
 n
 ```
 
-## String Length:
-
 ```py
 collegeName = "Silicon"
-print(len(collegeName)) # 7
+
+for i in range(len(collegeName)):
+    print(collegeName[i])
 ```
 
 ## Check String:
@@ -103,64 +111,134 @@ else:
 ```py
 x = "Silicon institute"
 print(x[2:5])   # lic
+print(x[0:0])   # No ouput
+print(x[0:1])   # S
 ```
 
 ```py
 # will start from 0 index or first character
-b = "Hello, World!"
-print(b[:5]) # Hello
+x = "Silicon institute"
+print(x[:7])
+print(x[:0])   # Empty String
+print(x[:1])
+```
+
+```
+Silicon
+
+S
+```
+
+```py
+x = "Silicon institute"
+print(x[:7])
+print(x[:0], end="")
+print(x[:1])
+```
+
+```
+Silicon
+S
 ```
 
 ```py
 # All the way to the end:
-b = "Hello, World!"
-print(b[2:])  # llo, World!
+x = "Silicon institute"
+print(x[0:]) # Silicon institute
+print(x[-1:]) # e
+
 ```
+
+- Negative Indexing
 
 ```py
 # Negative Indexing:
-b = "Hello, World!"
-print(b[-5:-2]) # orl
+x = "Silicon"
+print(x[-7:-3]) # Sili
+print(x[-1:-5]) # Empty
+print(x[-1:-5:-1]) # noci
+print(x[-1:-8:-2]) # nclS
+print(x[1:8:2]) # iio
 ```
 
 ## Modify Strings:
 
 - python has a set of built-in methods to modify strings:
 
-> upper() : returns string in uppercase
+> upper() : returns a new string in uppercase
 
 ```py
-a = "Hello, World!"
-print(a.upper())  # HELLO, WORLD!
+x = "Silicon"
+res = x.upper()
+print(type(res))
+print(res)
+print(x.upper())
+print(x)
+
+"""
+<class 'str'>
+SILICON
+SILICON
+Silicon
+"""
 ```
 
-> lower() : returns string in lowercase
+> lower() : returns a new string in lowercase
 
 ```py
-a = "Hello, World!"
-print(a.lower())  # hello, world!
+x = "Silicon"
+print(x.lower())  # silicon
+
 ```
 
-> strip(): removes whitespace from begining or end
+> strip(): returns a new string after removing whitespace from begining or end
 
 ```py
-a = " Hello, World! "
-print(a.strip()) #Hello, World!
+x = "  Silicon  "
+res = x.strip()
+print(res)
+print(type(res))
+print(x.strip())
+print(len(res))
+print(len(x))
+```
+
+```
+Silicon
+<class 'str'>
+Silicon
+7
+11
 ```
 
 > replace() : replaces a string with another string:
 
 ```py
-a = "Hello, World!"
-print(a.replace("H", "J")) # Jello, World!
+x = "Silicon"
+res = x.replace("i","e")
+print(res)
+print(x)
+```
+
+```
+Selecon
+Silicon
 ```
 
 > split(): returns a list where the text between the specified separator becomes the list items:
 
 ```py
-a = "Hello, World!"
-b = a.split(",")
-print(b) # returns ['Hello', ' World!']
+x = "Silicon, Institute"
+res = x.split(",")
+print(res)
+
+y = "Silicon @ Institute"
+res2 = y.split("@")
+print(res2)
+
+z = "Silicon, Institute"
+res3 = z.split(":")
+print(res3)
 ```
 
 ## String Concatenation:
@@ -194,15 +272,6 @@ print(txt)  # Error
 age = 23
 msg = "My age is {}"
 print(msg.format(age)) # My age is 23
-```
-
-```py
-quantity = 3
-itemno = 567
-price = 49.95
-myorder = "I want {} pieces of item {} for {} dollars."
-print(myorder.format(quantity, itemno, price))
-
 ```
 
 - Add paramters inside {} to convert values in case of decimals
@@ -279,7 +348,109 @@ print(msg.format(city="Bhubaneswar",state="Odisha"))
 The Capital of Odisha is Bhubaneswar
 ```
 
+# String Methods:
+
+- All string methods return new values. They do not change the original string.
+
+> 1 . capitalize():
+
+- Converts the first character to upper case
+
+```py
+txt = "hello, and welcome to my world."
+
+x = txt.capitalize()
+
+print (x)
+
+```
+
+> 2 . casefold(): Converts string into lower case
+
+```py
+txt = "Hello, And Welcome To My World!"
+
+x = txt.casefold()
+
+print(x)
+
+```
+
+> 3 . center() Returns a centered string
+
+- center align the string, using a specified character (space is default) as the fill character.
+
+```py
+# Print the word "banana", taking up the space of 20 characters, with "banana" in the middle:
+txt = "banana"
+
+x = txt.center(20)
+
+print(x)
+```
+
+```py
+txt = "banana"
+
+x = txt.center(20, "O")
+
+print(x)
+```
+
+> 4 . count() : Returns the number of times a specified value occurs in a string
+
+```py
+txt = "I love apples, apple are my favorite fruit"
+
+x = txt.count("apple")
+
+print(x)
+```
+
+```py
+txt = "I love apples, apple are my favorite fruit"
+
+x = txt.count("apple", 10, 24)
+
+print(x)
+
+```
+
 # PROGRAMS:
+
+## Program to Calculate the Length of a String Without using Library Functions:
+
+```py
+myStr = input("Enter a string: ")
+count=0
+for i in myStr:
+      count=count+1
+print(count)
+```
+
+## Program to calculate the number of vowels in a string:
+
+```py
+myStr = input("Enter String: ")
+count=0
+vowels = "aeiou"
+for i in myStr:
+    if i.lower() in vowels:
+        count=count+1
+
+print(count)
+```
+
+## Program to calculate number of digits in a string:
+
+```py
+myStr = input("Enter String: ")
+count=0
+for i in myStr:
+    if i.isdigit():
+        count=count+1
+print(count)
+```
 
 ## Program to Remove Odd Indexed Characters in a string:
 
@@ -334,6 +505,75 @@ myString=myString.replace(myChar.upper(),'$')
 print("New string:", myString)
 ```
 
+# Program tro reverse a string:
+
+```py
+# Using Slicing
+
+myStr = input("Enter a string: ")
+print("Reverse of the string is: ")
+print(myStr[::-1])
+```
+
+```py
+# Using loop
+def reverseString(myStr):
+    newStr = ""
+    for i in myStr:
+        newStr = i + newStr
+    return newStr
+
+myStr = input("Enter a string: ")
+print(reverseString(myStr))
+```
+
+## Program to Count the Number of Words and Characters in a String:
+
+```py
+myStr = input("Enter a string: ")
+count = 0
+word = 0
+flag = False  # Set flag to False initially
+
+for i in myStr:
+    count = count + 1
+    if i == ' ':
+        if not flag:  # Check if previous character was not a space
+            word = word + 1
+            flag = True
+    else:
+        flag = False
+
+# Check if the last character was not a space
+if myStr[-1] != ' ':
+    word = word + 1
+
+print("Characters:", count)
+print("Words:", word)
+```
+
+## Program to Count Number of Lowercase Characters , uppercase characters and spaces in a String:
+
+```py
+myStr = input("Enter String: ")
+low=0
+up=0
+space=0
+for i in myStr:
+    if i.islower():
+        low=low+1
+    elif i.isupper():
+        up = up+1
+    elif i==" ":
+        space=space+1
+
+print("Lowercase Characters: ",low)
+print("Uppercase Characters: ",up)
+print("Spaces: ",space)
+```
+
 # methods:
 
 - replace
+- islower()
+- isupper()
