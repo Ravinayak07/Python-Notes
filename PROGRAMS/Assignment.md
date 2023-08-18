@@ -7,8 +7,12 @@ Examples:
 Input: k = 2, n = 3
 Output: 9, 3rd multiple of 2 in Fibonacci Series is 34 that appears at position 9.
 
-Input: k = 4, n = 5
+Input: k = 5, n = 5
 Output: 30, 5th multiple of 5 in Fibonacci Series is 832040 which appears at position 30.
+```
+
+```
+For example, if you have k = 2 and n = 3, you need to find the third number in the Fibonacci series that is a multiple of 2. In this case, the Fibonacci series starts with 0, 1, 1, 2, 3, 5, 8, 13, 21, 34, and so on. The third multiple of 2 in this series is 34, and it appears at the 9th position
 ```
 
 ## 2. Sort the values of first list using second list in Python
@@ -28,6 +32,20 @@ Output : [‘g’, ‘k’, ‘r’, ‘e’, ‘e’, ‘g’, ‘s’, ‘f’
 
 ```
 
+```py
+list1 = ["a", "b", "c", "d", "e", "f", "g", "h", "i"]
+list2 = [0, 1, 1, 0, 1, 2, 2, 0, 1]
+
+unique = list(set(list2))
+unique.sort()
+new = []
+for i in unique:
+    for j in range(0, len(list2)):
+        if(list2[j] == i):
+            new.append(list1[j])
+print(new)
+```
+
 ## 3. Maximum and Minimum K elements in Tuple
 
 ```
@@ -36,6 +54,24 @@ Output : (3, 1, 9, 18)
 
 Input : test_tup = (3, 7, 1), k=1
 Output : (1, 7)
+```
+
+```py
+myTuple = (3, 7, 1, 18, 9)
+
+
+print(myTuple)
+
+
+K = int(input("Enter the k: "))
+
+myList = list(myTuple)
+myList = sorted(myList)
+new = tuple(myList[:K] + myList[-K:])
+
+print(str(new))
+
+
 ```
 
 ## 4. program to find N largest elements from a list:
@@ -52,6 +88,19 @@ Input : [81, 52, 45, 10, 3, 2, 96]
 Output : [81, 96, 52]
 ```
 
+```py
+myList=[]
+num = int(input("Enter no. of items: "))
+for i in range(num):
+    item = int(input("Enter ELement: "))
+    myList.append(item)
+
+N = int(input("Value of N: "))
+myList.sort()
+print(myList[-N:])
+
+```
+
 ## 5. Remove multiple elements from a list in Python
 
 ```
@@ -65,6 +114,24 @@ Output: Remove = [1:5], New_list = [11, 50]
 ```
 
 ## 6. Program to Count Number of Lowercase Characters , uppercase characters and spaces in a String:
+
+```py
+myStr = input("Enter String: ")
+low=0
+up=0
+space=0
+for i in myStr:
+    if i.islower():
+        low=low+1
+    elif i.isupper():
+        up = up+1
+    elif i==" ":
+        space=space+1
+
+print("Lowercase Characters: ",low)
+print("Uppercase Characters: ",up)
+print("Spaces: ",space)
+```
 
 ## 7. Program to find Permutation of a given string using inbuilt function
 
