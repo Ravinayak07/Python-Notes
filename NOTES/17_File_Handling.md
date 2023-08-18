@@ -202,6 +202,15 @@ print(f.read())
 All content deleted
 ```
 
+> writelines:
+
+```py
+f = open("Ravi.txt", "w")
+L = ["This is Delhi \n", "This is Paris \n", "This is London \n"]
+f.writelines(L)
+f.close()
+```
+
 ## 5. Closing File:
 
 - Always close file in the end
@@ -271,6 +280,25 @@ os.rmdir("folderName")
 ```
 
 - Only Empty Folders can be removed.
+
+## 9. with Statement:
+
+- Another way of dealing with filr handling:
+  > without with statement:
+
+```py
+f = open('file_path', 'w')
+f.write('hello world !')
+file.close()
+```
+
+> Using with statement:
+
+```py
+# using with statement
+with open('file_path', 'w') as f:
+    f.write('hello world !')
+```
 
 # QUESTIONS:
 
@@ -347,6 +375,184 @@ with open("Ravi.txt", "w") as f:
 
 - rstrip(): strips each line of a file off spaces from the right-hand side.
 - lstrip(): strips each line of a file off spaces from the left-hand side.
+
+# PROGRAMS:
+
+## Program to Copy One File to Another File:
+
+```py
+"""
+f = open("Ravi.txt")
+print(f.read())
+"""
+
+with open("Ravi.txt") as f:
+    with open("Copy.txt", "w") as f1:
+        for line in f:
+            f1.write(line)
+
+f = open("copy.txt")
+print(f.read())
+```
+
+## Program to Count the Number of Lines in Text File
+
+```py
+fname = input("Enter file name: ")
+num_lines = 0
+with open(fname, 'r') as f:
+    for line in f:
+        num_lines += 1
+print("Number of lines:")
+print(num_lines)
+```
+
+## Program to Count the Number of Blank Spaces in a Text File
+
+```py
+fname = input("Enter file name: ")
+count = 0
+
+with open(fname, 'r') as f:
+    print(f.read())
+    for line in f:
+        words = line.split()
+        count=count+len(words)-1
+print("Occurrences of blank spaces:", count)
+```
+
+## Program to Count the Occurrences of a Word in a Text File:
+
+```py
+fname = input("Enter file name: ")
+word=input("Enter word :")
+count = 0
+
+with open(fname, 'r') as f:
+    for line in f:
+        words = line.split()
+        for i in words:
+            if(i==word):
+                count=count+1
+print("Occurrences of the {} in {} file is:  {}".format(word,fname,count))
+```
+
+## Program to Count total Number of Words in a Text File:
+
+```py
+fname = input("Enter file name: ")
+
+num_words = 0
+
+with open(fname, 'r') as f:
+    for line in f:
+        words = line.split()
+        num_words += len(words)
+print("Number of words:")
+print(num_words)
+```
+
+## Program to Capitalize First Letter of Each Word in a File:
+
+- For this title() function will be used: returns a string where the first character in every word is upper case
+
+```py
+msg = "we are learning python"
+
+x = msg.title()
+
+print(x) # We Are Learning Python
+
+```
+
+```py
+fname = input("Enter file name: ")
+
+with open(fname, 'r') as f:
+    lines = f.readlines()
+
+print(lines)
+
+newLines = []
+for line in lines:
+    newLines.append(line.title())
+
+with open(fname, 'w') as f:
+    f.writelines(newLines)
+
+f = open(fname, 'r')
+print(f.read())
+```
+
+## Program to Counts the Number of Times a Letter Appears in the Text File:
+
+```py
+fname = input("Enter file name: ")
+letter = input("Enter file name: ")
+count=0
+with open(fname, 'r') as f:
+    lines = f.readlines()
+
+for line in lines:
+    for i in line.lower():
+        if i==letter:
+            count+=1
+print(count)
+```
+
+## Program to Extract and print all unique Numbers from Text File:
+
+```py
+fname = input("Enter file name: ")
+unique = set()
+with open(fname, 'r') as f:
+    lines = f.readlines()
+
+for line in lines:
+    for i in line:
+        if i.isdigit():
+            unique.add(i)
+
+sortedList = sorted(unique)
+for i in sortedList:
+    print(i," ",end="")
+```
+
+## Program to Append the Content of One File to the End of Another File:
+
+```py
+fname1 = input("Enter file to be read from: ")
+fname2 = input("Enter file to be appended to: ")
+
+f = open(fname1, "r")
+text1 = f.read()
+f.close()
+
+f2 = open(fname2, "a")
+f2.write(text1)
+f2.close()
+```
+
+## Program to Read a String from the User and Append it into a File:
+
+```py
+fname = input("Enter file name: ")
+
+myStr=input("Enter string to append: ");
+
+f=open(fname,"a")
+
+f.write("\n")
+f.write(myStr)
+f.close()
+
+print("Contents of appended file:")
+
+f=open(fname,'r')
+print(f.read())
+f.close()
+
+```
 
 # Implementing all the functions in File Handling
 
