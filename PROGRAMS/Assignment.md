@@ -7,12 +7,38 @@ Examples:
 Input: k = 2, n = 3
 Output: 9, 3rd multiple of 2 in Fibonacci Series is 34 that appears at position 9.
 
-Input: k = 5, n = 5
+Input: k = 4, n = 5
 Output: 30, 5th multiple of 5 in Fibonacci Series is 832040 which appears at position 30.
 ```
 
 ```
 For example, if you have k = 2 and n = 3, you need to find the third number in the Fibonacci series that is a multiple of 2. In this case, the Fibonacci series starts with 0, 1, 1, 2, 3, 5, 8, 13, 21, 34, and so on. The third multiple of 2 in this series is 34, and it appears at the 9th position
+```
+
+```py
+n = 3
+k = 2
+
+a = 0
+b = 1
+position = 1
+count = 0
+
+while True:
+    c = a + b
+    a = b
+    b = c
+
+    if c % k == 0:
+        count += 1
+        if count == n:
+            break
+
+    position += 1
+
+print(position+1)
+
+
 ```
 
 ## 2. Sort the values of first list using second list in Python
@@ -145,6 +171,20 @@ Output : ABC
          BCA
          CAB
          CBA
+```
+
+```py
+myStr= 'ABC'
+permutations = [[]]
+for a in myStr:
+    new = []
+    for x in permutations:
+        for i in range(len(x) + 1):
+            new.append(x[:i] + [a] + x[i:])
+            permutations = new
+
+for x in permutations:
+    print(''.join(x))
 ```
 
 ## 8. Program to Count the Number of matching characters in a pair of string
