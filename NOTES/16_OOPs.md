@@ -1,38 +1,37 @@
 # Introduction:
 
 - Object Oriented Programming is a way of programming that uses classes and objects
-- It aims to implement real-world entities like inheritance, polymorphisms, encapsulation, etc. in the programming.
+- It helps to implement real-world entities like inheritance, polymorphisms, encapsulation, etc. in the programming.
 - The main concept of OOPs is to bind the data and the functions that work on that together as a single unit so that no other part of the code can access this data
 
 ## OOPs Concepts in Python
 
 - Class
 - Objects
+- Inheritance
 - Polymorphism
 - Encapsulation
-- Inheritance
 - Data Abstraction
 
 # Class:
 
-- Class is a collection of object
-- A class contains user-defined the blueprints or the prototype from which the objects are being created.
-- It is a logical entity that contains some attributes and methods.
+- Class is a collection of objects
+- It is a logical entity that contains some attributes(properties) and methods(functions).
+- A class contains user-defined blueprints or the prototype from which the objects are being created.
 - Classes helps in bundling data and functionality together.
 - Creating a new class creates a new type of object, allowing new instances of that type to be made. Each class instance can have attributes attached to it for maintaining its state. Class instances can also have methods (defined by their class) for modifying their state.
-- The class creates a user-defined data structure, which holds its own data members and member functions, which can be accessed and used by creating an instance of that class.
-- A class is like a blueprint for an object.
+- A class acts as a user-defined data structure that encapsulates both data members (attributes) and member functions (methods). By creating an instance of a class, you can access and utilize these data members and member functions.
 
 > Need for creating classes:
 
-- lets say you want to track the number of students in a college that have different name and age.
+- Lets say you want to track the number of students in a college who have different name and age.
 - For that you can create a list where first element will be students name and second will be his/her age.
 - Like this there are 100 students and they also have some other properties like section,etc.
 - Now how to track them???
 - This way lacks organization
 - Here is the need of classes
 
-> class:
+> creating class:
 
 - created by keyword class.
 - Attributes are the variables that belong to a class.
@@ -48,6 +47,11 @@ class ClassName:
    # Statement-N
 ```
 
+```py
+class Student:
+    gender = "Male"
+```
+
 - creating an Empty Class:
 
 ```py
@@ -55,24 +59,12 @@ class Student:
     pass
 ```
 
-```py
-class Student:
-    gender = "Male"
-```
-
-- Syntax: Object Definition
-
-```
-obj = ClassName()
-print(obj.atrr)
-```
-
 # Objects:
 
-- An Object is an instance of a Class
+- An Object is an instance of a Class.
 - A class is like a blueprint while an instance is a copy of the class with actual values
 - It’s not an idea anymore, it’s an actual student, like a student of section A who’s seven years old. You can have many students to create many different instances, but without the class as a guide, you would be lost, not knowing what information is required
-- The object is an entity that has a state and behavior associated with it.
+- The object is an entity that has a state(variables) and behavior(member function) associated with it.
 - It may be any real-world object like a mouse, keyboard, chair, table, pen, etc.
 - Integers, strings, floating-point numbers, even arrays, and dictionaries, are all objects.
 - More specifically, any single integer or any single string is an object.
@@ -95,17 +87,22 @@ The identity can be considered as the name of the student.
 
 State or Attributes can be considered as the section, age, or height of the student.
 
-The behavior can be considered as to whether the dog is studying or playing
+The behavior can be considered as to whether the studying is studying or playing
 
 ````
+- Syntax: Object Definition
 
+```py
+obj = ClassName()
+print(obj.atrr)
+```
 - create an object of class student
 
 ```py
 obj = Student()
 ````
 
-> Declaring Claas Objects (Also called instantiating a class):
+> Declaring Class Objects (Also called instantiating a class):
 
 - When an object of a class is created, the class is said to be instantiated. All the instances share the attributes and the behavior of the class. But the values of those attributes, i.e. the state are unique for each object. A single class may have any number of instances
   <img src="./obj2.png"/>
@@ -117,41 +114,41 @@ obj = Student()
 # Python3 program to
 # demonstrate instantiating
 # a class
-class Dog:
+class Student:
 
     # A simple class
     # attribute
-    attr1 = "mammal"
-    attr2 = "dog"
+    attr1 = "male"
+    attr2 = "student"
 
     # A sample method
     def fun(self):
-        print("I'm a", self.attr1)
+        print("I'm", self.attr1)
         print("I'm a", self.attr2)
 
 
 # Driver code
 # Object instantiation
-Rodger = Dog()
+Ravi = Student()
 
 # Accessing class attributes
 # and method through objects
-print(Rodger.attr1)
-Rodger.fun()
+print(Ravi.attr1)
+Ravi.fun()
 ```
 
 ```
 mammal
-I'm a mammal
-I'm a dog
+I'm male
+I'm a student
 ```
 
-- In the above example, an object is created which is basically a dog named Rodger. This class only has two class attributes that tell us that Rodger is a dog and a mammal.
-- In this example, we are creating a Dog class and we have created two class variables attr1 and attr2. We have created a method named fun() which returns the string “I’m a, {attr1}” and I’m a, {attr2}. We have created an object of the Dog class and we are printing at the attr1 of the object. Finally, we are calling the fun()
+- In the above example, an object is created which is basically a student named Ravi. This class only has two class attributes that tell us that Ravi is a studnet and male.
+- In this example, we are creating a Student class and we have created two class variables attr1 and attr2. We have created a method named fun() which returns the string “I’m a, {attr1}” and I’m a, {attr2}. We have created an object of the Student class and we are printing at the attr1 of the object. Finally, we are calling the fun()
 
 # The Python Self:
 
-- Self represents the instance of the class.
+- Self represents the instance of the class.( Imagine the class as a recipe, and an instance as a dish made using that recipe.)
 - By using the “self” we can access the attributes and methods of the class in Python.
 - It binds the attributes with the given arguments.
 - The reason you need to use self. is because Python does not use the @ syntax to refer to instance attributes. Python decided to do methods in a way that makes the instance to which the method belongs be passed automatically, but not received automatically: the first parameter of methods is the instance the method is called on.
@@ -1194,6 +1191,7 @@ AttributeError: type object 'D' has no attribute 'd'
 # Python Polymorphism:
 
 - Polymorphism simply means having many forms. For example, we need to determine if the given species of birds fly or not, using polymorphism we can do this using a single function.
+- In programming, polymorphism means the same function name (but different signatures) being used for different types. The key difference is the data types and number of arguments used in function.
 - This code demonstrates the concept of inheritance and method overriding in Python classes. It shows how subclasses can override methods defined in their parent class to provide specific behavior while still inheriting other methods from the parent class.
 
 ```py
@@ -1239,6 +1237,219 @@ There are many types of birds.
 Ostriches cannot fly.
 ```
 
+> Example of inbuilt polymorphic functions::
+
+```py
+# Python program to demonstrate in-built poly-
+# morphic functions
+
+# len() being used for a string
+print(len("geeks"))
+
+# len() being used for a list
+print(len([10, 20, 30]))
+```
+
+```
+5
+3
+```
+
+> Examples of user-defined polymorphic functions: :
+
+```py
+# A simple Python function to demonstrate
+# Polymorphism
+
+def add(x, y, z = 0):
+    return x + y+z
+
+# Driver code
+print(add(2, 3))
+print(add(2, 3, 4))
+```
+
+```
+5
+9
+```
+
+## Polymorphism with class methods:
+
+- The below code shows how Python can use two different class types, in the same way. We create a for loop that iterates through a tuple of objects. Then call the methods without being concerned about which class type each object is. We assume that these methods actually exist in each class.
+
+```py
+class India():
+    def capital(self):
+        print("New Delhi is the capital of India.")
+
+    def language(self):
+        print("Hindi is the most widely spoken language of India.")
+
+    def type(self):
+        print("India is a developing country.")
+
+class USA():
+    def capital(self):
+        print("Washington, D.C. is the capital of USA.")
+
+    def language(self):
+        print("English is the primary language of USA.")
+
+    def type(self):
+        print("USA is a developed country.")
+
+obj_ind = India()
+obj_usa = USA()
+for country in (obj_ind, obj_usa):
+    country.capital()
+    country.language()
+    country.type()
+```
+
+```
+New Delhi is the capital of India.
+Hindi is the most widely spoken language of India.
+India is a developing country.
+Washington, D.C. is the capital of USA.
+English is the primary language of USA.
+USA is a developed country.
+```
+
+## Polymorphism with Inheritance (Method OPverriding):
+
+- In Python, Polymorphism lets us define methods in the child class that have the same name as the methods in the parent class. In inheritance, the child class inherits the methods from the parent class. However, it is possible to modify a method in a child class that it has inherited from the parent class. This is particularly useful in cases where the method inherited from the parent class doesn’t quite fit the child class. In such cases, we re-implement the method in the child class. This process of re-implementing a method in the child class is known as Method Overriding.
+
+```py
+class Bird:
+  def intro(self):
+    print("There are many types of birds.")
+
+  def flight(self):
+    print("Most of the birds can fly but some cannot.")
+
+class sparrow(Bird):
+  def flight(self):
+    print("Sparrows can fly.")
+
+class ostrich(Bird):
+  def flight(self):
+    print("Ostriches cannot fly.")
+
+obj_bird = Bird()
+obj_spr = sparrow()
+obj_ost = ostrich()
+
+obj_bird.intro()
+obj_bird.flight()
+
+obj_spr.intro()
+obj_spr.flight()
+
+obj_ost.intro()
+obj_ost.flight()
+```
+
+```
+There are many types of birds.
+Most of the birds can fly but some cannot.
+There are many types of birds.
+Sparrows can fly.
+There are many types of birds.
+Ostriches cannot fly.
+```
+
+> Polymorphism with a Function and objects: :
+
+- It is also possible to create a function that can take any object, allowing for polymorphism. In this example, let’s create a function called “func()” which will take an object which we will name “obj”. Though we are using the name ‘obj’, any instantiated object will be able to be called into this function. Next, let’s give the function something to do that uses the ‘obj’ object we passed to it. In this case, let’s call the three methods, viz., capital(), language() and type(), each of which is defined in the two classes ‘India’ and ‘USA’. Next, let’s create instantiations of both the ‘India’ and ‘USA’ classes if we don’t have them already. With those, we can call their action using the same func() function:
+
+```py
+def func(obj):
+    obj.capital()
+    obj.language()
+    obj.type()
+
+obj_ind = India()
+obj_usa = USA()
+
+func(obj_ind)
+func(obj_usa)
+```
+
+> Code: Implementing Polymorphism with a Function :
+
+```py
+class India():
+    def capital(self):
+        print("New Delhi is the capital of India.")
+
+    def language(self):
+        print("Hindi is the most widely spoken language of India.")
+
+    def type(self):
+        print("India is a developing country.")
+
+class USA():
+    def capital(self):
+        print("Washington, D.C. is the capital of USA.")
+
+    def language(self):
+        print("English is the primary language of USA.")
+
+    def type(self):
+        print("USA is a developed country.")
+
+def func(obj):
+    obj.capital()
+    obj.language()
+    obj.type()
+
+obj_ind = India()
+obj_usa = USA()
+
+func(obj_ind)
+func(obj_usa)
+```
+
+```
+New Delhi is the capital of India.
+Hindi is the most widely spoken language of India.
+India is a developing country.
+Washington, D.C. is the capital of USA.
+English is the primary language of USA.
+USA is a developed country.
+```
+
+## Simple example of polymorphism:
+
+> polymorphism in Python using inheritance and method overriding:
+
+```py
+class Animal:
+    def speak(self):
+        raise NotImplementedError("Subclass must implement this method")
+
+class Dog(Animal):
+    def speak(self):
+        return "Woof!"
+
+class Cat(Animal):
+    def speak(self):
+        return "Meow!"
+
+# Create a list of Animal objects
+animals = [Dog(), Cat()]
+
+# Call the speak method on each object
+for animal in animals:
+    print(animal.speak())
+```
+
+```
+Woof!
+Meow!
+```
+
 ## Python Encapsulation:
 
 - It describes the idea of wrapping data and the methods that work on data within one unit.
@@ -1247,6 +1458,9 @@ Ostriches cannot fly.
 
 - A class is an example of encapsulation as it encapsulates all the data that is member functions, variables, etc.
   <img src="./encapsulation.png"/>
+- The goal of information hiding is to ensure that an object’s state is always valid by controlling access to attributes that are hidden from the outside world.
+
+- Consider a real-life example of encapsulation, in a company, there are different sections like the accounts section, finance section, sales section etc. The finance section handles all the financial transactions and keeps records of all the data related to finance. Similarly, the sales section handles all the sales-related activities and keeps records of all the sales. Now there may arise a situation when due to some reason an official from the finance section needs all the data about sales in a particular month. In this case, he is not allowed to directly access the data of the sales section. He will first have to contact some other officer in the sales section and then request him to give the particular data. This is what encapsulation is. Here the data of the sales section and the employees that can manipulate them are wrapped under a single name “sales section”. Using encapsulation also hides the data. In this example, the data of the sections like sales, finance, or accounts are hidden from any other section
 - In the above example, we have created the c variable as the private attribute. We cannot even access this attribute directly and can’t even change its value.
 
 ```py
@@ -1288,10 +1502,249 @@ print(obj1.a)
 GeeksforGeeks
 ```
 
+> Protected members
+
+- Protected members (in C++ and JAVA) are those members of the class that cannot be accessed outside the class but can be accessed from within the class and its subclasses. To accomplish this in Python, just follow the convention by prefixing the name of the member by a single underscore “\_”.
+- Although the protected variable can be accessed out of the class as well as in the derived class (modified too in derived class), it is customary(convention not a rule) to not access the protected out the class body.
+- Note: The **init** method is a constructor and runs as soon as an object of a class is instantiated.
+
+```py
+# Python program to
+# demonstrate protected members
+
+# Creating a base class
+class Base:
+    def __init__(self):
+
+        # Protected member
+        self._a = 2
+
+# Creating a derived class
+class Derived(Base):
+    def __init__(self):
+
+        # Calling constructor of
+        # Base class
+        Base.__init__(self)
+        print("Calling protected member of base class: ",
+              self._a)
+
+        # Modify the protected variable:
+        self._a = 3
+        print("Calling modified protected member outside class: ",
+              self._a)
+
+
+obj1 = Derived()
+
+obj2 = Base()
+
+# Calling protected member
+# Can be accessed but should not be done due to convention
+print("Accessing protected member of obj1: ", obj1._a)
+
+# Accessing the protected variable outside
+print("Accessing protected member of obj2: ", obj2._a)
+```
+
+```
+Calling protected member of base class:  2
+Calling modified protected member outside class:  3
+Accessing protected member of obj1:  3
+Accessing protected member of obj2:  2
+```
+
+> Private members:
+
+- Private members are similar to protected members, the difference is that the class members declared private should neither be accessed outside the class nor by any base class. In Python, there is no existence of Private instance variables that cannot be accessed except inside a class.
+- However, to define a private member prefix the member name with double underscore “\_\_”.
+- Note: Python’s private and protected members can be accessed outside the class through python name mangling.
+
+```py
+# Python program to
+# demonstrate private members
+
+# Creating a Base class
+
+
+class Base:
+    def __init__(self):
+        self.a = "GeeksforGeeks"
+        self.__c = "GeeksforGeeks"
+
+# Creating a derived class
+class Derived(Base):
+    def __init__(self):
+
+        # Calling constructor of
+        # Base class
+        Base.__init__(self)
+        print("Calling private member of base class: ")
+        print(self.__c)
+
+
+# Driver code
+obj1 = Base()
+print(obj1.a)
+
+# Uncommenting print(obj1.c) will
+# raise an AttributeError
+
+# Uncommenting obj2 = Derived() will
+# also raise an AttributeError as
+# private member of base class
+# is called inside derived class
+```
+
+```
+GeeksforGeeks
+```
+
+```
+Traceback (most recent call last):
+  File "/home/f4905b43bfcf29567e360c709d3c52bd.py", line 25, in <module>
+    print(obj1.c)
+AttributeError: 'Base' object has no attribute 'c'
+
+Traceback (most recent call last):
+  File "/home/4d97a4efe3ea68e55f48f1e7c7ed39cf.py", line 27, in <module>
+    obj2 = Derived()
+  File "/home/4d97a4efe3ea68e55f48f1e7c7ed39cf.py", line 20, in __init__
+    print(self.__c)
+AttributeError: 'Derived' object has no attribute '_Derived__c'
+```
+
 ## DATA ABSTRACTION:
 
 - It hides unnecessary code details from the user. Also, when we do not want to give out sensitive parts of our code implementation and this is where data abstraction came.
 - Data Abstraction in Python can be achieved by creating abstract classes
+
+## Data Hiding and Object Printing:
+
+> Data hiding:
+
+- In Python, we use double underscore (Or \_\_) before the attributes name and those attributes will not be directly visible outside.
+
+```py
+class MyClass:
+
+    # Hidden member of MyClass
+    __hiddenVariable = 0
+
+    # A member method that changes
+    # __hiddenVariable
+    def add(self, increment):
+        self.__hiddenVariable += increment
+        print (self.__hiddenVariable)
+
+# Driver code
+myObject = MyClass()
+myObject.add(2)
+myObject.add(5)
+
+# This line causes error
+print (myObject.__hiddenVariable)
+```
+
+```
+2
+7
+Traceback (most recent call last):
+  File "filename.py", line 13, in
+    print (myObject.__hiddenVariable)
+AttributeError: MyClass instance has
+no attribute '__hiddenVariable'
+```
+
+- In the above program, we tried to access a hidden variable outside the class using an object and it threw an exception.
+- We can access the value of a hidden attribute by a tricky syntax:
+
+```py
+# A Python program to demonstrate that hidden
+# members can be accessed outside a class
+class MyClass:
+
+    # Hidden member of MyClass
+    __hiddenVariable = 10
+
+# Driver code
+myObject = MyClass()
+print(myObject._MyClass__hiddenVariable)
+```
+
+```
+10
+```
+
+- Private methods are accessible outside their class, just not easily accessible. Nothing in Python is truly private; internally, the names of private methods and attributes are mangled and unmangled on the fly to make them seem inaccessible by their given names
+
+> Printing Objects:
+
+- Printing objects give us information about objects we are working with. In C++, we can do this by adding a friend ostream& operator << (ostream&, const Foobar&) method for the class. In Java, we use toString() method.
+  In python, this can be achieved by using **repr** or **str** methods.
+
+```py
+class Test:
+    def __init__(self, a, b):
+        self.a = a
+        self.b = b
+
+    def __repr__(self):
+        return "Test a:%s b:%s" % (self.a, self.b)
+
+    def __str__(self):
+        return "From str method of Test: a is %s," \
+              "b is %s" % (self.a, self.b)
+
+# Driver Code
+t = Test(1234, 5678)
+print(t) # This calls __str__()
+print([t]) # This calls __repr__()
+```
+
+```
+From str method of Test: a is 1234,b is 5678
+[Test a:1234 b:5678]
+```
+
+> Important Points about Printing:
+
+- If no **str** method is defined, print t (or print str(t)) uses **repr**.
+
+```py
+class Test:
+    def __init__(self, a, b):
+        self.a = a
+        self.b = b
+
+    def __repr__(self):
+        return "Test a:%s b:%s" % (self.a, self.b)
+
+# Driver Code
+t = Test(1234, 5678)
+print(t)
+```
+
+```
+Test a:1234 b:5678
+```
+
+> If no **repr** method is defined then the default is used:
+
+```py
+class Test:
+    def __init__(self, a, b):
+        self.a = a
+        self.b = b
+
+# Driver Code
+t = Test(1234, 5678)
+print(t)
+```
+
+```
+<__main__.Test instance at 0x7fa079da6710>
+```
 
 # What is OOPs?
 
@@ -1464,4 +1917,744 @@ del obj1 # deletes the whole object
 ```py
 class Student:
     pass
+```
+
+## FREECODECAMP (STRORE MANAGEMENT SYSTEM)
+
+- Tracking items that we have in our store using variables
+
+```py
+item1 = "Phone"
+item1_price = 100
+item1_quantity = 5
+item1_price_total = item1_price * item1_quantity
+
+# these variables are instances of different classes
+print(type(item1))
+print(type(item1_price))
+print(type(item1_quantity))
+print(type(item1_price_total))
+```
+
+```
+<class 'str'>
+<class 'int'>
+<class 'int'>
+<class 'int'>
+```
+
+- So in python, each data type is an object that has been instantiated earlier by some class
+- In the above example, variable item1 has been instantitaed from a string type of class. Similarly other three variables are instantiated from a int type of class.
+- Now it could have been nicer if we could create a data type of our own. It will allow us to write a code that we can reuse in the future easily if needed.
+- Now each instance have attributes to describe information related about it.
+- Instantiate some objects of a class is same as creating some objects of a class
+
+> Creating class and objects
+
+```py
+class Item:
+    pass
+
+item = Item()
+
+"""
+same as
+myStr = str(4)
+"""
+```
+
+> now creating attributes:
+
+- using dot sign
+- Each of the 4 variables are assigned to one instance of the class
+
+```py
+class Item:
+    pass
+
+item1 = Item()
+item1.name = "Phone"
+item1.price = 100
+item1.quantity = 5
+
+print(type(item1))
+print(type(item1.name))
+print(type(item1.price))
+print(type(item1.quantity))
+```
+
+```
+<class '__main__.Item'>
+<class 'str'>
+<class 'int'>
+<class 'int'>
+```
+
+> creating methods inside instances
+
+- methods are functions created inside classes
+- self is the paramter that python wants us to recieve intentionally
+- This is because python passes the object itself as the first argument when you call the methods
+- Thats why we are not allowed to create methods that doesnot receive paramters
+
+```py
+class Item:
+    def calculate_total_price():
+        pass
+
+item1 = Item()
+item1.name = "Phone"
+item1.price = 100
+item1.quantity = 5
+
+item1.calculate_total_price()
+```
+
+```
+TypeError: Item.calculate_total_price() takes 0 positional arguments but 1 was given
+```
+
+- This shows that python tries to pass one argument and you are not receiving it using any paramter.
+- Thats why you always have to receive one parameter while creating methods.
+- Since it always receive this parameter, we call it self
+
+```py
+class Item:
+    def calculate_total_price(self):
+        pass
+
+item1 = Item()
+item1.name = "Phone"
+item1.price = 100
+item1.quantity = 5
+
+item1.calculate_total_price()
+```
+
+```
+No Error
+```
+
+- Now pass more parameter to calculate the price
+
+```py
+class Item:
+    def calculate_total_price(self, x, y):
+        return x*y
+
+item1 = Item()
+item1.name = "Phone"
+item1.price = 100
+item1.quantity = 5
+
+print(item1.calculate_total_price(item1.price, item1.quantity)) # 500
+
+# item1 passed as self
+# item1.price passed as x
+# item1.quantity passesd as y
+```
+
+- Multiple instances:
+
+```py
+class Item:
+    def calculate_total_price(self, x, y):
+        return x*y
+
+item1 = Item()
+item1.name = "Phone"
+item1.price = 100
+item1.quantity = 5
+
+print(item1.calculate_total_price(item1.price, item1.quantity)) # 500
+
+class Item:
+    def calculate_total_price(self, x, y):
+        return x*y
+
+item2 = Item()
+item2.name = "Phone"
+item2.price = 1000
+item2.quantity = 3
+
+print(item2.calculate_total_price(item2.price, item2.quantity)) # 3000
+```
+
+> problem1:
+
+- for each item of an instance , we need to hard code in the attribute name. Like:
+
+```py
+item1 = Item()
+item1.name = "Phone"
+item1.price = 100
+item1.quantity = 5
+```
+
+- Here comes a special method named init method which is also called as constructor:
+- Now when you create an instance of a class, python automatically executes this method and performs all the actions inside this method.
+- for example:
+
+```py
+class Item:
+    def __init__(self):
+        print("init Method Executed")
+
+item1 = Item()
+```
+
+```
+init Method Executed
+```
+
+- This will get execute every time an object(or instance) is created.
+
+```py
+class Item:
+    def __init__(self):
+        print("init Method Executed")
+
+item1 = Item()
+item2 = Item()
+```
+
+- Now how to avoid hard coding the attributes:
+- Since we got to know that every time an instance is created, the init method gets executed.
+- We can use this to receive certain parameters , along with self(since it is mandatory)
+- For example: lets pass the name attribute
+
+```py
+class Item:
+    def __init__(self, name):
+        print(f"An Instance Created: {name}")
+
+item1 = Item("Phone")
+item1.name = "Phone"
+
+item2 = Item("Laptop")
+item2.name = "Laptop"
+```
+
+```
+An Instance Created: Phone
+An Instance Created: Laptop
+```
+
+- now we can dynamically assign the atrributes inside the init method.
+
+```py
+class Item:
+    def __init__(self, name):
+        self.name = name
+        print(f"An Instance Created: {name}")
+
+item1 = Item("Phone")
+item2 = Item("Laptop")
+
+print(item1.name)
+print(item2.name)
+```
+
+```
+An Instance Created: Phone
+An Instance Created: Laptop
+Phone
+Laptop
+```
+
+- Similarily doing the same for all atributes:
+
+```py
+class Item:
+    def __init__(self,name,price,quantity):
+        self.name = name
+        self.price = price
+        self.quantity = quantity
+
+    def calculate_total_price(self, x, y):
+        return x*y
+
+item1 = Item("Phone",1000,5)
+item2 = Item("Realme",1000,3)
+
+print(item1.name)
+print(item2.name)
+print(item1.price)
+print(item2.price)
+print(item1.quantity)
+print(item2.quantity)
+```
+
+```
+Phone
+Realme
+1000
+1000
+5
+3
+```
+
+- Default parameters:
+
+```py
+class Item:
+    def __init__(self,name,price,quantity=0):
+        self.name = name
+        self.price = price
+        self.quantity = quantity
+
+    def calculate_total_price(self, x, y):
+        return x*y
+
+item1 = Item("Phone",1000)
+item2 = Item("Realme",1000)
+
+print(item1.name)
+print(item2.name)
+print(item1.price)
+print(item2.price)
+print(item1.quantity)
+print(item2.quantity)
+```
+
+```
+Phone
+Realme
+1000
+1000
+0
+0
+```
+
+- You can add some attributes specially for some instances
+- Like: check whether a laptop has numpad or not:
+
+```py
+class Item:
+    def __init__(self,name,price,quantity=0):
+        self.name = name
+        self.price = price
+        self.quantity = quantity
+
+    def calculate_total_price(self, x, y):
+        return x*y
+
+item1 = Item("Phone",1000)
+item2 = Item("Realme",1000)
+
+item2.has_numpad = False
+```
+
+- We aldo don't need to pass x,y. We can use self since we are passing the object iteslf as self parameter:
+
+```py
+class Item:
+    def __init__(self,name,price,quantity=0):
+        self.name = name
+        self.price = price
+        self.quantity = quantity
+
+    def calculate_total_price(self):
+        return self.price*self.quantity
+
+item1 = Item("Phone",1000, 2)
+item2 = Item("Realme",1000, 3)
+
+print(item1.calculate_total_price()) #2000
+print(item2.calculate_total_price()) #3000
+```
+
+- See what happens if i pass the price values as string types:
+
+```py
+class Item:
+    def __init__(self,name,price,quantity=0):
+        self.name = name
+        self.price = price
+        self.quantity = quantity
+
+    def calculate_total_price(self):
+        return self.price*self.quantity
+
+item1 = Item("Phone","1000", 2)
+item2 = Item("Realme","1000", 3)
+
+print(item1.calculate_total_price())
+print(item2.calculate_total_price())
+```
+
+```
+10001000
+100010001000
+```
+
+- Thus, We need to validate the data types of the values that we are passing in.
+- There different ways to do this:
+- First one is mentioning the type of data that is receiving:
+
+```py
+class Item:
+    def __init__(self,name: str,price: float,quantity=0):
+        self.name = name
+        self.price = price
+        self.quantity = quantity
+
+    def calculate_total_price(self):
+        return self.price*self.quantity
+
+item1 = Item("Phone",1000, 2)
+
+# with float mentioned, we can pass int alos
+# since default value of quantity is 0, no need to mention
+# integer
+```
+
+- Adding more validation:
+- Suppose letssay we don't want to receive a negative number for price and quantity.
+- This cannot acheived by typing.
+- For that we will use assert statements
+- Its is a statement to check what is happening to your expectations.
+
+```py
+class Item:
+    def __init__(self,name: str,price: float,quantity=0):
+
+        # Run validations to received arguments:
+        assert price >= 0
+        assert quantity >= 0
+
+        # Assign to self object
+        self.name = name
+        self.price = price
+        self.quantity = quantity
+
+    def calculate_total_price(self):
+        return self.price*self.quantity
+
+item1 = Item("Phone",1000, 2)
+print(item1.calculate_total_price()) # 2000
+```
+
+- now if we pass negative numbers, it will show errors:
+
+```py
+class Item:
+    def __init__(self,name: str,price: float,quantity=0):
+
+        # Run validations to received arguments:
+        assert price >= 0
+        assert quantity >= 0
+
+        # Assign to self object
+        self.name = name
+        self.price = price
+        self.quantity = quantity
+
+    def calculate_total_price(self):
+        return self.price*self.quantity
+
+item1 = Item("Phone",1000, -2)
+print(item1.calculate_total_price())
+```
+
+```
+AssertionError
+```
+
+- With assert statements we can add our own exception messages:
+
+```py
+class Item:
+    def __init__(self,name: str,price: float,quantity=0):
+
+        # Run validations to received arguments:
+        assert price >= 0, f"Price {price} is not greater than zero !"
+        assert quantity >= 0, f"Quantity {quantity} is not greater than zero !"
+
+        # Assign to self object
+        self.name = name
+        self.price = price
+        self.quantity = quantity
+
+    def calculate_total_price(self):
+        return self.price*self.quantity
+
+item1 = Item("Phone",1000, -2)
+print(item1.calculate_total_price())
+```
+
+```
+AssertionError: Quantity -2 is not greater than zero !
+```
+
+- Till now what we learnt are instance attributes.
+- Now consider a situation that you want to make use of an attribute that is global(i.e used across all instances)
+- Those attributes are called class attributes
+- Class attribute is an attribute that is going to be belong to the class itself. But you can also access this attribute from the instance level as well
+- Ex: creating a class attribute:
+
+```py
+class Item:
+    pay_rate = 0.8 # The pay rate after 20% discount
+    def __init__(self,name: str,price: float,quantity=0):
+
+        # Run validations to received arguments:
+        assert price >= 0, f"Price {price} is not greater than zero !"
+        assert quantity >= 0, f"Quantity {quantity} is not greater than zero !"
+
+        # Assign to self object
+        self.name = name
+        self.price = price
+        self.quantity = quantity
+
+    def calculate_total_price(self):
+        return self.price*self.quantity
+
+item1 = Item("Phone",1000, 2)
+
+# Accessing class atrribute from class level:
+print(Item.pay_rate) # 0.8
+
+# Accessing class attributes from instance level:
+print(item1.pay_rate) # 0.8
+print(item2.pay_rate) # 0.8
+```
+
+- This might be little confusing:
+
+```
+print(item1.pay_rate) # 0.8
+print(item2.pay_rate) # 0.8
+```
+
+- these two statements will first check for the attribute in the instance level(i.e inside the init method)
+- If it doesnot find there, then it will check in class level
+- Now there is a built-in magic attribute(**dict**) with which we can see all the attributes that are belonging to that specific object
+
+```py
+class Item:
+    pay_rate = 0.8 # The pay rate after 20% discount
+    def __init__(self,name: str,price: float,quantity=0):
+
+        # Run validations to received arguments:
+        assert price >= 0, f"Price {price} is not greater than zero !"
+        assert quantity >= 0, f"Quantity {quantity} is not greater than zero !"
+
+        # Assign to self object
+        self.name = name
+        self.price = price
+        self.quantity = quantity
+
+    def calculate_total_price(self):
+        return self.price*self.quantity
+
+item1 = Item("Phone",1000, 2)
+print(Item.pay_rate) # Print all the attributes of class level
+print(item1.pay_rate) # Print all the attributes of instance level
+```
+
+```
+{'__module__': '__main__', 'pay_rate': 0.8, '__init__': <function Item.__init__ at 0x7f0ca69a6c00>, 'calculate_total_price': <function Item.calculate_total_price at 0x7f0ca69a6ca0>, '__dict__': <attribute '__dict__' of 'Item' objects>, '__weakref__': <attribute '__weakref__' of 'Item' objects>, '__doc__': None}
+{'name': 'Phone', 'price': 1000, 'quantity': 2}
+>
+```
+
+- It returns all the attributes in a dictionary form. That why it is named so.
+
+- Adding discount function:
+
+```py
+class Item:
+    pay_rate = 0.8 # The pay rate after 20% discount
+    def __init__(self,name: str,price: float,quantity=0):
+
+        # Run validations to received arguments:
+        assert price >= 0, f"Price {price} is not greater than zero !"
+        assert quantity >= 0, f"Quantity {quantity} is not greater than zero !"
+
+        # Assign to self object
+        self.name = name
+        self.price = price
+        self.quantity = quantity
+
+    def calculate_total_price(self):
+        return self.price*self.quantity
+
+    def apply_discount(self):
+        self.price = self.price * Item.pay_rate
+
+item1 = Item("Phone",100, 2)
+item1.apply_discount()
+print(item1.price) #80.0
+```
+
+- Now lets say you want to give a different discount of 30% for laptop only. If we change the pay_rate at class level from 0.8 to 0.7 , it will affect all
+- So the solution is:
+
+```py
+class Item:
+    pay_rate = 0.8 # The pay rate after 20% discount
+    def __init__(self,name: str,price: float,quantity=0):
+
+        # Run validations to received arguments:
+        assert price >= 0, f"Price {price} is not greater than zero !"
+        assert quantity >= 0, f"Quantity {quantity} is not greater than zero !"
+
+        # Assign to self object
+        self.name = name
+        self.price = price
+        self.quantity = quantity
+
+    def calculate_total_price(self):
+        return self.price*self.quantity
+
+    def apply_discount(self):
+        self.price = self.price * Item.pay_rate
+
+item1 = Item("Phone",100, 2)
+item1.apply_discount()
+print(item1.price) #80.0
+
+item2 = Item("Laptop",1000,3)
+item2.pay_rate = 0.7
+item2.apply_discount()
+print(item2.price) # 700.0
+
+```
+
+- So here for second item, since we are mentioning pay_rate at instance level, it should take that value and will not check at class level.
+- But it still printing 20% discount. This is because inside discount function, we have mentioned Item.pay_rate
+- Need to mention self.pay_rate
+- Now since self is mentioned, for both the items, it will first check the value of pay_rate at instance level.
+  For item1 at instance level, it will not find the value, so it will pull it from class level
+
+- Now consider you have a large shop having more items. Currently in the class, we don't have any resource where we can access all items that we have in our shop.
+- currently there is not an approach thet will give us a list with five different elements where each element will represent an instance of a class.
+- So for this, we could create a class attribute that could name all:
+
+```py
+class Item:
+    pay_rate = 0.8 # The pay rate after 20% discount
+    all = []
+    def __init__(self,name: str,price: float,quantity=0):
+
+        # Run validations to received arguments:
+        assert price >= 0, f"Price {price} is not greater than zero !"
+        assert quantity >= 0, f"Quantity {quantity} is not greater than zero !"
+
+        # Assign to self object
+        self.name = name
+        self.price = price
+        self.quantity = quantity
+
+        # Append every time an instance is created
+        # uaing class object first
+        Item.all.append(self)
+        # self is the instance that is everytime created
+
+    def calculate_total_price(self):
+        return self.price*self.quantity
+
+    def apply_discount(self):
+        self.price = self.price * Item.pay_rate
+
+item1 = Item("Phone",100, 2)
+item2 = Item("Laptop",1000,3)
+item3 = Item("Earbuds",500,1)
+
+print(Item.all) # will print list of 3 instances
+```
+
+```
+[<__main__.Item object at 0x7f0189582c50>, <__main__.Item object at 0x7f0189582c90>, <__main__.Item object at 0x7f0189582cd0>]
+```
+
+- The output is not too user friendly
+- It would be nicer if we could change the way the object is being represented in this list here
+- This can be acheived by a magic method called --repr--:
+- It stands for representing your objects. There is also another method like this(**str**)
+
+```py
+class Item:
+    pay_rate = 0.8 # The pay rate after 20% discount
+    all = []
+    def __init__(self,name: str,price: float,quantity=0):
+
+        # Run validations to received arguments:
+        assert price >= 0, f"Price {price} is not greater than zero !"
+        assert quantity >= 0, f"Quantity {quantity} is not greater than zero !"
+
+        # Assign to self object
+        self.name = name
+        self.price = price
+        self.quantity = quantity
+
+        # Append every time an instance is created
+        # uaing class object first
+        Item.all.append(self)
+        # self is the instance that is everytime created
+
+    def calculate_total_price(self):
+        return self.price*self.quantity
+
+    def __repr__(self):
+        return f"Item('{self.name}','{self.price}','{self.quantity}')"
+
+    def apply_discount(self):
+        self.price = self.price * Item.pay_rate
+
+item1 = Item("Phone",100, 2)
+item2 = Item("Laptop",1000,3)
+item3 = Item("Earbuds",500,1)
+
+print(Item.all) # will print list of 3 instances
+```
+
+```
+[Item('Phone','100','2'), Item('Laptop','1000','3'), Item('Earbuds','500','1')]
+```
+
+- Lets say we want to print all names of the instances:
+- We can do it using a for loop
+
+```py
+class Item:
+    pay_rate = 0.8 # The pay rate after 20% discount
+    all = []
+    def __init__(self,name: str,price: float,quantity=0):
+
+        # Run validations to received arguments:
+        assert price >= 0, f"Price {price} is not greater than zero !"
+        assert quantity >= 0, f"Quantity {quantity} is not greater than zero !"
+
+        # Assign to self object
+        self.name = name
+        self.price = price
+        self.quantity = quantity
+
+        # Append every time an instance is created
+        # uaing class object first
+        Item.all.append(self)
+        # self is the instance that is everytime created
+
+    def calculate_total_price(self):
+        return self.price*self.quantity
+
+    def apply_discount(self):
+        self.price = self.price * Item.pay_rate
+
+item1 = Item("Phone",100, 2)
+item2 = Item("Laptop",1000,3)
+item3 = Item("Earbuds",500,1)
+
+print(Item.all) # will print list of 3 instances
+
+for instance in Item.all:
+    print(instance.name)
+```
+
+```
+Phone
+Laptop
+Earbuds
 ```
