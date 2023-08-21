@@ -8,7 +8,7 @@ Input: k = 2, n = 3
 Output: 9, 3rd multiple of 2 in Fibonacci Series is 34 that appears at position 9.
 
 Input: k = 4, n = 5
-Output: 30, 5th multiple of 5 in Fibonacci Series is 832040 which appears at position 30.
+Output: 30, 5th multiple of 4 in Fibonacci Series is 832040 which appears at position 30.
 ```
 
 ```
@@ -203,4 +203,22 @@ Input : str1 = 'aabcddekll12@'
         str2 = 'bb22ll@55k'
 Output : 5
 (i.e. matching characters :- b, 1, 2, @, k)
+```
+
+```py
+# intersection: returns a set that contains the similarity between two or more sets.
+
+def myfun(str1,str2):
+    x = (set(str1)).intersection(set(str2))
+    return len(x)
+
+
+myStr1="VISHAV"
+myStr2="VANSHIKA"
+
+
+res=myfun(myStr1.lower(),myStr2.lower())
+
+print(res)
+
 ```
