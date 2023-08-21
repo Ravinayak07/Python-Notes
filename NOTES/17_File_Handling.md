@@ -758,3 +758,78 @@ This is some additional text.
 
 File new_example.txt deleted successfully.
 ```
+
+# More Modes:
+
+- "a+": To write and read data. It will override existing data.
+- Ex:
+
+```py
+file = open("Ravi.txt", "a")
+file.write("ravi")
+print(file.read()) # Error beacuse mode is "a"
+```
+
+- mention "a+":
+
+```py
+file = open("Ravi.txt", "a+")
+file.write("ravi")
+print(file.read())  # It will not print anything
+```
+
+- mention seek(0):
+
+```py
+file = open("Ravi.txt", "a+")
+file.write("ravi")
+file.seek(0)
+print(file.read())
+```
+
+- "r+" : To read and write data into the file. partial overriden
+
+```py
+file = open("Ravi.txt", "r+")
+print(file.read())
+print("After Writing: ")
+file.write("\n My name is Ravi")
+print(file.read())
+```
+
+- No output because cursor is at the end of the file
+
+```py
+file = open("Ravi.txt", "r+")
+print(file.read())
+print("After Writing: ")
+file.write("\n My name is Ravi")
+file.seek(0)
+print(file.read())
+```
+
+- It will override the content:
+
+```py
+file = open("Ravi.txt", "r+")
+file.write("My name is Ravi")
+file.seek(0)
+print(file.read())
+```
+
+- now what happens:
+
+```py
+file = open("Ravi.txt", "r+")
+file.write("My name is Ravi")
+print(file.read())
+```
+
+- "w+"": To write and read data. It will override existing data.
+
+```py
+file = open("Ravi.txt", "w+")
+file.write("My name is Ravi Shankar Nayak")
+file.seek(0)
+print(file.read())
+```
