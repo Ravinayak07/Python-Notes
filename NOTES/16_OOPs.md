@@ -1,41 +1,42 @@
 # Introduction:
 
-- Object Oriented Programming is a way of programming that uses classes and objects
-- It helps to implement real-world entities like inheritance, polymorphisms, encapsulation, etc. in the programming.
-- The main concept of OOPs is to bind the data and the functions that work on that together as a single unit so that no other part of the code can access this data
+- Object Oriented Programming is a way of programming that uses classes and objects.
+- The object is related to real-word entities such as book, house, pencil, etc
+- The oops concept focuses on writing the reusable code. It is a widespread technique to solve the problem by creating objects.
 
 ## OOPs Concepts in Python
 
 - Class
 - Objects
+- Methods
 - Inheritance
 - Polymorphism
 - Encapsulation
 - Data Abstraction
 
-# Class:
+# Need for creating classes:
 
-- Class is a collection of objects
-- It is a logical entity that contains some attributes(properties) and methods(functions).
-- A class contains user-defined blueprints or the prototype from which the objects are being created.
-- Classes helps in bundling data and functionality together.
-- Creating a new class creates a new type of object, allowing new instances of that type to be made. Each class instance can have attributes attached to it for maintaining its state. Class instances can also have methods (defined by their class) for modifying their state.
-- A class acts as a user-defined data structure that encapsulates both data members (attributes) and member functions (methods). By creating an instance of a class, you can access and utilize these data members and member functions.
+- Lets say you want to track the number of students in a college who have different name and gender
+- For that you can create a list where first element will be students name and second will be his/her section.
 
-> Need for creating classes:
+```py
+student1 = [name, gender]
+```
 
-- Lets say you want to track the number of students in a college who have different name and age.
-- For that you can create a list where first element will be students name and second will be his/her age.
-- Like this there are 100 students and they also have some other properties like section,etc.
+- Like this there are 1000 students and they also have some other properties like section,stream,etc.
+
+```py
+students = [(name,gender, stream,...), (name,gender, stream,...), (name,gender, stream,...)........]
+          #  student1                      student2                      student3 ...............student 10000
+```
+
 - Now how to track them???
 - This way lacks organization
 - Here is the need of classes
 
-> creating class:
+# Creating class and its object:
 
-- created by keyword class.
-- Attributes are the variables that belong to a class.
-- Attributes are always public and can be accessed using the dot (.) operator. Eg.: Myclass.Myattribute
+- created by keyword class followed by class name
 - Class definition Syntax:
 
 ```py
@@ -47,16 +48,89 @@ class ClassName:
    # Statement-N
 ```
 
+- Example:
+
 ```py
 class Student:
+    name = "Ravi"
     gender = "Male"
+
 ```
+
+- Attributes are the variables that belong to a class.
+- Attributes are always public and can be accessed using the dot (.) operator. Eg.: Myclass.Myattribute
+
+```py
+class Student:
+    name = "Ravi"
+    gender = "Male"
+
+print(Student.name)  # Ravi
+print(Student.gender) # Male
+```
+
+> Creating Objects:
+
+- Objects are created using class constructor
+- Syntax: Object Definition
+
+```py
+obj = ClassName()
+print(obj.atrr)
+```
+
+- create an object of class student
+
+```py
+class Student:
+    name = "Ravi"
+    gender = "Male"
+
+obj1 = Student()
+print(obj1.name)  # Ravi
+print(obj1.gender) # Male
+```
+
+# Now Lets see the Definition of classes :
+
+- Class is a collection of objects.
+- A class contains user-defined blueprints or the prototype from which the objects are being created.
+- It is a logical entity that contains some specific attributes(properties) and methods(functions).
+- Classes helps in bundling data and functionality together.
+- A class acts as a user-defined data structure that encapsulates both data members (attributes) and member functions (methods). By creating an instance of a class, you can access and utilize these data members and member functions.
+- a class is a user-defined data type that contains both the data itself and the methods that may be used to manipulate it. In a sense, classes serve as a template to create objects. They provide the characteristics and operations that the objects will employ.
+- Suppose a class is a prototype of a building. A building contains all the details about the floor, rooms, doors, windows, etc. we can make as many buildings as we want, based on these details. Hence, the building can be seen as a class, and we can create as many objects of this class.
+- change this replacing with receipie and dish
+- Creating a new class creates a new type of object, allowing new instances of that type to be made. Each class instance can have attributes attached to it for maintaining its state. Class instances can also have methods (defined by their class) for modifying their state.
 
 - creating an Empty Class:
 
 ```py
 class Student:
     pass
+```
+
+- In Python, classes can indeed have documentation strings, also known as docstrings.
+- A docstring is a string literal that is the first statement in a class, function, module, or method definition. It's used to provide documentation and information about the purpose, usage, and behavior of the class or function.
+- The docstring for a class can be accessed using the **doc** attribute of the class object i.e which can be accessed by using class-name.**doc**
+
+```py
+class MyClass:
+    """
+    This is a docstring for the MyClass class.
+    It provides information about the class.
+    """
+
+    def __init__(self, value):
+        self.value = value
+
+    def get_value(self):
+        """This method returns the value stored in the object."""
+        return self.value
+
+# Accessing the class docstring
+print(MyClass.__doc__)
+
 ```
 
 # Objects:
@@ -66,65 +140,40 @@ class Student:
 - It’s not an idea anymore, it’s an actual student, like a student of section A who’s seven years old. You can have many students to create many different instances, but without the class as a guide, you would be lost, not knowing what information is required
 - The object is an entity that has a state(variables) and behavior(member function) associated with it.
 - It may be any real-world object like a mouse, keyboard, chair, table, pen, etc.
+- Everything in Python is an object, and almost everything has attributes and methods.
 - Integers, strings, floating-point numbers, even arrays, and dictionaries, are all objects.
 - More specifically, any single integer or any single string is an object.
 - The number 12 is an object, the string “Hello, world” is an object, a list is an object that can hold other objects, and so on.
-- An object consists of:
 
-```
-State: It is represented by the attributes of an object. It also reflects the properties of an object
+- So An object consists of:
+- 1. State: Represented by the attributes of an object. It also reflects the properties of an object
+- 2. Behavior: Represented by the methods of an object. It also reflects the response of an object to other objects.
+- 3. Identity: It gives a unique name to an object and enables one object to interact with other objects.
+- To understand the state, behavior, and identity let us take the example of the class Student (explained above).
+- 1. The identity can be considered as the name of the student.
+- 2. State or Attributes can be considered as the section, age, or height of the student.
+- 3. The behavior can be considered as to whether the studying is studying or playing
 
-Behavior: It is represented by the methods of an object. It also reflects the response of an object to other objects.
+- <img src="./obj1.png" style="width: 500px;"/>
 
-Identity: It gives a unique name to an object and enables one object to interact with other objects.
-```
-
-<img src="./obj1.png"/>
-```
-To understand the state, behavior, and identity let us take the example of the class Student (explained above).
-
-The identity can be considered as the name of the student.
-
-State or Attributes can be considered as the section, age, or height of the student.
-
-The behavior can be considered as to whether the studying is studying or playing
-
-````
-- Syntax: Object Definition
-
-```py
-obj = ClassName()
-print(obj.atrr)
-```
-- create an object of class student
-
-```py
-obj = Student()
-````
-
-> Declaring Class Objects (Also called instantiating a class):
+## Declaring Class Objects (Also called instantiating a class):
 
 - When an object of a class is created, the class is said to be instantiated. All the instances share the attributes and the behavior of the class. But the values of those attributes, i.e. the state are unique for each object. A single class may have any number of instances
-  <img src="./obj2.png"/>
+- <img src="./obj2.png" style="width: 500px;" />
 
-- Example of Python Class and object
 - Creating an object in Python involves instantiating a class to create a new instance of that class. This process is also referred to as object instantiation.
 
 ```py
-# Python3 program to
-# demonstrate instantiating
-# a class
 class Student:
 
-    # A simple class
-    # attribute
-    attr1 = "male"
-    attr2 = "student"
+    # class Attributes
+    name = "Ravi"
+    gender = "Male"
 
     # A sample method
     def fun(self):
-        print("I'm", self.attr1)
-        print("I'm a", self.attr2)
+        print("My name is ", self.name)
+        print("My gender is ", self.gender)
 
 
 # Driver code
@@ -133,76 +182,98 @@ Ravi = Student()
 
 # Accessing class attributes
 # and method through objects
-print(Ravi.attr1)
+print(Ravi.name)
 Ravi.fun()
 ```
 
 ```
-mammal
-I'm male
-I'm a student
+Ravi
+My name is Ravi
+My Gender is Male
 ```
 
 - In the above example, an object is created which is basically a student named Ravi. This class only has two class attributes that tell us that Ravi is a studnet and male.
-- In this example, we are creating a Student class and we have created two class variables attr1 and attr2. We have created a method named fun() which returns the string “I’m a, {attr1}” and I’m a, {attr2}. We have created an object of the Student class and we are printing at the attr1 of the object. Finally, we are calling the fun()
+- In this example, we are creating a Student class and we have created two class variables name and gender. We have created a method named fun() which returns the string.
+- When we define a class, it needs to create an object to allocate the memory:
+
+```py
+class car:
+    def __init__(self,modelname, year):
+        self.modelname = modelname
+        self.year = year
+    def display(self):
+        print(self.modelname,self.year)
+
+c1 = car("Toyota", 2016)
+c1.display()
+```
+
+- In the above example, we have created the class named car, and it has two attributes modelname and year. We have created a c1 object to access the class attribute. The c1 object will allocate memory for these values
+
+# Method:
+
+- The method is a function that is associated with an object. In Python, a method is not unique to class instances. Any object type can have methods.
 
 # The Python Self:
 
 - Self represents the instance of the class.( Imagine the class as a recipe, and an instance as a dish made using that recipe.)
 - By using the “self” we can access the attributes and methods of the class in Python.
 - It binds the attributes with the given arguments.
-- The reason you need to use self. is because Python does not use the @ syntax to refer to instance attributes. Python decided to do methods in a way that makes the instance to which the method belongs be passed automatically, but not received automatically: the first parameter of methods is the instance the method is called on.
-- Class methods must have an extra first parameter in the method definition. We do not give a value for this parameter when we call the method, Python provides it
-- If we have a method that takes no arguments, then we still have to have one argument.
+
+- In Python, the self parameter is used within instance methods to refer to the instance itself. This parameter is not received automatically; rather, it's passed explicitly when you call an instance method.
+- Thats why When we define an instance method in a class, we need to include self as the first parameter. This parameter represents the instance on which the method is being called. It gives us access to the instance's attributes and methods, allowing you to manipulate and interact with the instance's data.
+- If we have a method that takes no arguments, then we still have to have one parameter as self.
 - This is similar to this pointer in C++ and this reference in Java.
 
-```
-When we call a method of this object as myobject.method(arg1, arg2), this is automatically converted by Python into MyClass.method(myobject, arg1, arg2) – this is all the special self is about.
-```
-
 ```py
-class GFG:
-    def __init__(self, name, company):
-        self.name = name
-        self.company = company
+class Student:
 
-    def show(self):
-        print("Hello my name is " + self.name+" and I" +
-              " work in "+self.company+".")
+    # class Attributes
+    name = "Ravi"
+    gender = "Male"
+
+    # A sample method
+    def fun(self):
+        print("My name is ", self.name)
+        print("My gender is ", self.gender)
 
 
-obj = GFG("John", "GeeksForGeeks")
-obj.show()
-```
+# Driver code
+# Object instantiation
+Ravi = Student()
 
-```
-Hello my name is John and I work in GeeksForGeeks.
+# Accessing class attributes
+# and method through objects
+print(Ravi.name)
+Ravi.fun()
 ```
 
 - The Self Parameter does not call it to be Self, You can use any other name instead of it. Here we change the self to the word someone and the output will be the same.
 
 ```py
-class GFG:
-    def __init__(somename, name, company):
-        somename.name = name
-        somename.company = company
+class Student:
 
-    def show(somename):
-        print("Hello my name is " + somename.name +
-              " and I work in "+somename.company+".")
+    # class Attributes
+    name = "Ravi"
+    gender = "Male"
+
+    # A sample method
+    def fun(self):
+        print("My name is ", self.name)
+        print("My gender is ", self.gender)
 
 
-obj = GFG("John", "GeeksForGeeks")
-obj.show()
+# Driver code
+# Object instantiation
+Ravi = Student()
+
+# Accessing class attributes
+# and method through objects
+print(Ravi.name)
+Ravi.fun()
 ```
 
-```
-Hello my name is John and I work in GeeksForGeeks.
-```
-
-- In this example, we are creating a GFG class and we have created the name, and company instance variables in the constructor. We have created a method named say_hi() which returns the string “Hello my name is ” + {name} +” and I work in “+{company}+”.”.We have created a person class object and we passing the name John and Company GeeksForGeeks to the instance variable. Finally, we are calling the show() of the class.
-
-## What is the use of self in Python?
+> What is the use of self in Python?
 
 - When working with classes in Python, the term “self” refers to the instance of the class that is currently being used
 - It is customary to use “self” as the first parameter in instance methods of a class.
@@ -225,37 +296,12 @@ obj1.print_value()
 17
 ```
 
-## Python Class self Constructor
-
-- When working with classes, it’s important to understand that in Python, a class constructor is a special method named **init** that gets called when you create an instance (object) of a class.
-- This method is used to initialize the attributes of the object
-- Keep in mind that the self parameter in the constructor refers to the instance being created and allows you to access and set its attributes.
-- By following these guidelines, you can create powerful and efficient classes in Python.
-
-```py
-class Subject:
-
-    def __init__(self, attr1, attr2):
-        self.attr1 = attr1
-        self.attr2 = attr2
-
-
-obj = Subject('Maths', 'Science')
-print(obj.attr1)
-print(obj.attr2)
-```
-
-```
-Maths
-Science
-```
-
 # Is self in Python a Keyword?
 
 - No, ‘ self ‘ is not a keyword in Python. Self is just a parameter name used in instance methods to refer to the instance itself.
 - In a more clear way you can say that SELF has the following Characteristic-
 
-> Self: Pointer to Current Object
+> 1 . Self: Pointer to Current Object
 
 - The self is always pointing to the Current Object. When you create an instance of a class, you’re essentially creating an object with its own set of attributes and methods.
 
@@ -273,7 +319,7 @@ Address of self =  140273244381008
 Address of class object =  140273244381008
 ```
 
-> Example: Creating Class with Attributes and Methods:
+> 2 . Example: Creating Class with Attributes and Methods:
 
 - This code defines a Python class car representing cars with attributes ‘model’ and ‘color’. The **init** constructor initializes these attributes for each instance. The show method displays model and color, while direct attribute access and method calls demonstrate instance-specific data retrieval.
 
@@ -309,7 +355,7 @@ Model for audi is  audi a4
 Colour for ferrari is  green
 ```
 
-> Self in Constructors and Methods:
+> 3 . Self in Constructors and Methods:
 
 - Self is the first argument to be passed in Constructor and Instance Method.Self must be provided as a First parameter to the Instance method and constructor. If you don’t provide it, it will cause an error.
 
@@ -346,9 +392,35 @@ object = this_is_class()
 we have used another parameter name in place of self
 ```
 
+## Python Class self Constructor
+
+- When working with classes, it’s important to understand that in Python, a class constructor is a special method named **init** that gets called when you create an instance (object) of a class.
+- This method is used to initialize the attributes of the object
+- Keep in mind that the self parameter in the constructor refers to the instance being created and allows you to access and set its attributes.
+- By following these guidelines, you can create powerful and efficient classes in Python.
+
+```py
+class Student:
+
+    def __init__(self, name, stream):
+        self.name = name
+        self.stream = stream
+
+
+Ravi = Student('Ravi', 'CSE')
+print(Ravi.name)
+print(Ravi.CSE)
+```
+
+```
+Ravi
+CSE
+```
+
 # The Python init Method :
 
 - The **init** method is similar to constructors in C++ and Java.
+- In order to make an instance of a class in Python, a specific function called **init** is called. Although it is used to set the object's attributes, it is often referred to as a constructor.
 
 ## The Default **init** Constructor in C++ and Java:
 
@@ -580,6 +652,41 @@ My name is Sinu
 
 ## Class and Instance Variables
 
+- All instances of a class exchange class variables. They function independently of any class methods and may be accessed through the use of the class name. Here's an illustration:
+
+```py
+class Person:
+    count = 0   # This is a class variable
+
+    def __init__(self, name, age):
+        self.name = name    # This is an instance variable
+        self.age = age
+        Person.count += 1   # Accessing the class variable using the name of the class
+person1 = Person("Ayan", 25)
+person2 = Person("Bobby", 30)
+print(Person.count) # 2
+```
+
+- Whereas, instance variables are specific to each instance of a class. They are specified using the self-argument in the **init** method. Here's an illustration:
+
+```py
+class Person:
+    def __init__(self, name, age):
+        self.name = name    # This is an instance variable
+        self.age = age
+person1 = Person("Ayan", 25)
+person2 = Person("Bobby", 30)
+print(person1.name)
+print(person2.age)
+```
+
+```
+Ayan
+30
+```
+
+- Class variables are created separately from any class methods and are shared by all class copies. Every instance of a class has its own instance variables, which are specified in the **init** method utilising the self-argument.
+
 - Instance variables are for data, unique to each instance and class variables are for attributes and methods shared by all instances of the class. Instance variables are variables whose value is assigned inside a constructor or method with self whereas class variables are variables whose value is assigned in the class.
 
 - Defining instance variables using a constructor:
@@ -682,28 +789,302 @@ brown
 
 - In this example, We have defined a class named Dog and we have created a class variable animal. We have created an instance variable breed in the constructor. The class Dog consists of two methods setColor and getColor, they are used for creating and initializing an instance variable and retrieving the value of the instance variable. We have made an object of the Dog class and we have set the instance variable value to brown and we are printing the value in the terminal.
 
-# PYTHON INHERITANCE:
+## ---------------------------------------------------------------------------------------------------------------
+
+# INHERITANCE:
 
 - Inheritance is the capability of one class to derive or inherit the properties from another class.
+- It specifies that the child object acquires all the properties and behaviors of the parent object.
+- By using inheritance, we can create a class which uses all the properties and behavior of another class.
 - The class that derives properties is called the derived class or child class
-- The class from which the properties are being derived is called the base class or parent class
+- The class from which the properties are being derived is called the base class or parent class.
+- It is a mechanism that allows you to create a hierarchy of classes that share a set of properties and methods by deriving a class from another class.
+- Inheritance allows you to inherit the properties of a class, i.e., base class to another, i.e., derived class
 - The benefits of inheritance are:
-- It represents real-world relationships well.
-- It provides the reusability of a code. We don’t have to write the same code again and again. Also, it allows us to add more features to a class without modifying it.
-- It is transitive in nature, which means that if class B inherits from another class A, then all the subclasses of B would automatically inherit from class A.
+- 1. It represents real-world relationships well.
+- 2. It provides the reusability of a code. We don’t have to write the same code again and again. Also, it allows us to add more features to a class without modifying it.
+- 3. It is transitive in nature, which means that if class B inherits from another class A, then all the subclasses of B would automatically inherit from class A.
+- 4. Inheritance offers a simple, understandable model structure.
 
-## Types of Inheritance:
+> Syntax:
 
-- Single Inheritance: Single-level inheritance enables a derived class to inherit characteristics from a single-parent class.
-- Multilevel Inheritance: Multi-level inheritance enables a derived class to inherit properties from an immediate parent class which in turn inherits properties from his parent class.
-- Hierarchical Inheritance: Hierarchical-level inheritance enables more than one derived class to inherit properties from a parent class.
-- Multiple Inheritance: Multiple-level inheritance enables one derived class to inherit properties from more than one base class.
+```
+Class BaseClass:
+    {Body}
+Class DerivedClass(BaseClass):
+    {Body}
+```
+
+- Example:
+
+> 1 . First Create a Parent or Base Class:
+
+- A parent class is a class whose properties are inherited by the child class.
+- Let’s create a parent class called Person which has a Display method to display the person’s information.
+
+```py
+# A Python program to demonstrate inheritance
+class Person(object):
+
+  # Constructor
+  def __init__(self, name, id):
+    self.name = name
+    self.id = id
+
+  # To check if this person is an employee
+  def Display(self):
+    print(self.name, self.id)
+
+
+# Driver code
+emp = Person("Rahul", 102) # An Object of Person
+emp.Display()
+```
+
+```
+Rahul 102
+```
+
+> 2 . Now create a child or derived Class:
+
+- A child class is a class that drives the properties from its parent class.
+- Here Employee is another class that is going to inherit the properties of the Person class(base class).
+
+```py
+class Employee(Person):
+
+  def Print(self):
+    print("Employee class called")
+
+Emp_details = Employee("Ravi", 11908621)
+
+# calling parent class function
+Emp_details.Display()
+
+# Calling child class function
+Emp_details.Print()
+```
+
+> 3 . Inheriting properties of parent class in child class:
+
+- In this example, ‘Person’ is the parent class, and ‘Employee’ is its child class.
+
+```py
+# Base or Super class. Note object in bracket.
+# (Generally, object is made ancestor of all classes)
+# In Python 3.x "class Person" is
+# equivalent to "class Person(object)"
+
+
+class Person(object):
+
+    # Constructor
+    def __init__(self, name):
+        self.name = name
+
+    # To get name
+    def getName(self):
+        return self.name
+
+    # To check if this person is an employee
+    def isEmployee(self):
+        return False
+
+
+# Inherited or Subclass (Note Person in bracket)
+class Employee(Person):
+
+    # Here we return true
+    def isEmployee(self):
+        return True
+
+
+# Driver code
+emp = Person("Ravi")  # An Object of Person
+print(emp.getName(), emp.isEmployee())
+
+emp = Employee("Rahuk")  # An Object of Employee
+print(emp.getName(), emp.isEmployee())
+```
+
+```
+Ravi False
+Rahul True
+```
+
+> 4 . Subclassing (Calling constructor of parent class)
+
+- A child class needs to identify which class is its parent class. This can be done by mentioning the parent class name in the definition of the child class.
+- Example: class subclass_name (superclass_name)
+- In this example, ‘obj’ is the instance created for the class Employee. It invokes the **init**() of the referred class.
+- You can see ‘object’ written in the declaration of the class Person. In Python, every class inherits from a built-in basic class called ‘object’. The constructor i.e. the ‘**init**’ function of a class is invoked when we create an object variable or an instance of the class.
+- The variables defined within **init**() are called instance variables or objects. Hence, ‘name’ and ‘idnumber’ are the objects of the class Person. Similarly, ‘salary’ and ‘post’ are the objects of the class Employee. Since the class Employee inherits from class Person, ‘name’ and ‘idnumber’ are also the objects of class Employee.
+
+```py
+# Python code to demonstrate how parent constructors
+# are called.
+
+# parent class
+class Person(object):
+
+    # __init__ is known as the constructor
+    def __init__(self, name, idnumber):
+        self.name = name
+        self.idnumber = idnumber
+
+    def display(self):
+        print(self.name)
+        print(self.idnumber)
+
+# child class
+class Employee(Person):
+    def __init__(self, name, idnumber, salary, post):
+        self.salary = salary
+        self.post = post
+
+        # invoking the __init__ of the parent class
+        Person.__init__(self, name, idnumber)
+
+# creation of an object variable or an instance
+obj = Employee('Rahul', 886012, 200000, "Intern")
+
+# calling a function of the class Person using its instance
+obj.display()
+```
+
+```
+Rahul
+886012
+```
+
+> 5. Demonstrate error if we forget to invoke **init**() of the parent
+
+- If you forget to invoke the **init**() of the parent class then its instance variables would not be available to the child class.
+- The following code produces an error for the same reason.
+
+```py
+class A:
+    def __init__(self, n='Rahul'):
+        self.name = n
+
+class B(A):
+    def __init__(self, roll):
+        self.roll = roll
+
+obj = B(23)
+print(obj.name)
+```
+
+```
+Traceback (most recent call last):
+  File "/home/de4570cca20263ac2c4149f435dba22c.py", line 12, in
+    print (object.name)
+AttributeError: 'B' object has no attribute 'name'
+```
+
+- The error you're encountering occurs because the class B does not have an attribute named name.
+- While class A defines an **init** method that initializes the name attribute, class B overrides the **init** method without calling the parent class's **init** method.
+- As a result, the name attribute is not being initialized in class B.
+- To fix this issue, you should call the parent class's **init** method from within the B class's **init** method using the super() function
+
+```py
+class A:
+    def __init__(self, n='Rahul'):
+        self.name = n
+
+class B(A):
+    def __init__(self, roll, n='Rahul'):
+        super().__init__(n)  # Call parent class's __init__ method
+        self.roll = roll
+
+obj = B(23)
+print(obj.name)
+
+```
+
+- In this corrected code, when you create an instance of class B, the **init** method of class B calls the **init** method of class A using super().**init**(n), which initializes the name attribute. This way, you won't encounter the "AttributeError" when trying to access obj.name
+
+> 6 . Now what is The super() Function:
+
+- The super() function is a built-in function that returns the objects that represent the parent class.
+- It allows to access the parent class’s methods and attributes in the child class.
+- Example: super() function with simple Python inheritance:
+- In below example, we created the object ‘obj’ of the child class. When we called the constructor of the child class ‘Student’, it initialized the data members to the values passed during the object creation. Then using the super() function, we invoked the constructor of the parent class.
+
+```py
+# parent class
+class Person():
+  def __init__(self, name, age):
+    self.name = name
+    self.age = age
+
+  def display(self):
+    print(self.name, self.age)
+
+# child class
+class Student(Person):
+  def __init__(self, name, age):
+    self.sName = name
+    self.sAge = age
+    # inheriting the properties of parent class
+    super().__init__("Rahul", age)
+
+  def displayInfo(self):
+    print(self.sName, self.sAge)
+
+obj = Student("Mayank", 23)
+obj.display()
+obj.displayInfo()
+```
+
+```
+Rahul 23
+Mayank 23
+```
+
+> 7 . Adding Properties:
+
+- One of the features that inheritance provides is inheriting the properties of the parent class as well as adding new properties of our own to the child class. Let us see this with an example:
+
+```py
+# parent class
+class Person():
+  def __init__(self, name, age):
+    self.name = name
+    self.age = age
+
+  def display(self):
+    print(self.name, self.age)
+
+# child class
+class Student(Person):
+  def __init__(self, name, age, dob):
+    self.sName = name
+    self.sAge = age
+    self.dob = dob
+    # inheriting the properties of parent class
+    super().__init__("Rahul", age)
+
+  def displayInfo(self):
+    print(self.sName, self.sAge, self.dob)
+
+obj = Student("Mayank", 23, "16-03-2000")
+obj.display()
+obj.displayInfo()
+```
+
+- Here we can see that we added a new property to the child class, i.e., date of birth (dob)
+
+```
+Rahul 23
+Mayank 23 16-03-2000
+```
 
 ## Example:
 
 - we have created two classes i.e. Person (parent class) and Employee (Child Class).
 - The Employee class inherits from the Person class
-- We can use the methods of the person class through the employee class as seen in the display function in the above code
+- We can use the methods of the person class through the employee class as seen in the display function in the below code
 - A child class can also modify the behavior of the parent class as seen through the details() method.
 
 ```py
@@ -742,7 +1123,7 @@ class Employee(Person):
 
 
 # creation of an object variable or an instance
-a = Employee('Rahul', 886012, 200000, "Intern")
+a = Employee('Ravi', 886012, 200000, "Intern")
 
 # calling a function of the class Person using
 # its instance
@@ -752,344 +1133,24 @@ a.details()
 ```
 
 ```
-Rahul
+Ravi
 886012
-My name is Rahul
+My name is Ravi
 IdNumber: 886012
 Post: Interns
 ```
 
-# Inheritance in Python:
+## Types of Inheritance:
 
-- One of the core concepts in object-oriented programming (OOP) languages is inheritance. It is a mechanism that allows you to create a hierarchy of classes that share a set of properties and methods by deriving a class from another class. Inheritance is the capability of one class to derive or inherit the properties from another class.
+- There are 5 different types of inheritance in Python.
 
-## Benefits of inheritance are:
+> 1 . Single Inheritance:
 
-- Inheritance allows you to inherit the properties of a class, i.e., base class to another, i.e., derived class. The benefits of Inheritance in Python are as follows:
+- When a child class inherits from only one parent class
 
-```
-It represents real-world relationships well.
+> 2 . Multilevel Inheritance:
 
-It provides the reusability of a code. We don’t have to write the same code again and again. Also, it allows us to add more features to a class without modifying it.
-
-It is transitive in nature, which means that if class B inherits from another class A, then all the subclasses of B would automatically inherit from class A.
-
-Inheritance offers a simple, understandable model structure.
-
-Less development and maintenance expenses result from an inheritance.
-```
-
-> Python Inheritance Syntax:
-
-- The syntax of simple inheritance in Python is as follows:
-
-```
-Class BaseClass:
-    {Body}
-Class DerivedClass(BaseClass):
-    {Body}
-```
-
-- Creating a Parent Class:
-
-```
-A parent class is a class whose properties are inherited by the child class. Let’s create a parent class called Person which has a Display method to display the person’s information.
-```
-
-```py
-# A Python program to demonstrate inheritance
-class Person(object):
-
-  # Constructor
-  def __init__(self, name, id):
-    self.name = name
-    self.id = id
-
-  # To check if this person is an employee
-  def Display(self):
-    print(self.name, self.id)
-
-
-# Driver code
-emp = Person("Satyam", 102) # An Object of Person
-emp.Display()
-```
-
-```
-Satyam 102
-```
-
-- Creating a Child Class:
-
-```
-A child class is a class that drives the properties from its parent class. Here Emp is another class that is going to inherit the properties of the Person class(base class).
-```
-
-```py
-class Emp(Person):
-
-  def Print(self):
-    print("Emp class called")
-
-Emp_details = Emp("Mayank", 103)
-
-# calling parent class function
-Emp_details.Display()
-
-# Calling child class function
-Emp_details.Print()
-```
-
-- Example of Inheritance in Python :
-
-```
-Let us see an example of simple Python inheritance in which a child class is inheriting the properties of its parent class. In this example, ‘Person’ is the parent class, and ‘Employee’ is its child class.
-```
-
-```py
-# A Python program to demonstrate inheritance
-
-# Base or Super class. Note object in bracket.
-# (Generally, object is made ancestor of all classes)
-# In Python 3.x "class Person" is
-# equivalent to "class Person(object)"
-
-
-class Person(object):
-
-    # Constructor
-    def __init__(self, name):
-        self.name = name
-
-    # To get name
-    def getName(self):
-        return self.name
-
-    # To check if this person is an employee
-    def isEmployee(self):
-        return False
-
-
-# Inherited or Subclass (Note Person in bracket)
-class Employee(Person):
-
-    # Here we return true
-    def isEmployee(self):
-        return True
-
-
-# Driver code
-emp = Person("Geek1")  # An Object of Person
-print(emp.getName(), emp.isEmployee())
-
-emp = Employee("Geek2")  # An Object of Employee
-print(emp.getName(), emp.isEmployee())
-```
-
-```
-Geek1 False
-Geek2 True
-```
-
-> What is an object class in Python?:
-
-- Like the Java Object class, in Python (from version 3. x), the object is the root of all classes.
-
-```
-In Python 3.x, “class Test(object)” and “class Test” are same.
-In Python 2. x, “class Test(object)” creates a class with the object as a parent (called a new-style class), and “class Test” creates an old-style class (without an objecting parent).
-```
-
-> Subclassing (Calling constructor of parent class)
-
-- A child class needs to identify which class is its parent class. This can be done by mentioning the parent class name in the definition of the child class.
-- Example: class subclass_name (superclass_name)
-- In this example, ‘a’ is the instance created for the class Person. It invokes the **init**() of the referred class. You can see ‘object’ written in the declaration of the class Person. In Python, every class inherits from a built-in basic class called ‘object’. The constructor i.e. the ‘**init**’ function of a class is invoked when we create an object variable or an instance of the class.
-- The variables defined within **init**() are called instance variables or objects. Hence, ‘name’ and ‘idnumber’ are the objects of the class Person. Similarly, ‘salary’ and ‘post’ are the objects of the class Employee. Since the class Employee inherits from class Person, ‘name’ and ‘idnumber’ are also the objects of class Employee.
-
-```py
-# Python code to demonstrate how parent constructors
-# are called.
-
-# parent class
-class Person(object):
-
-    # __init__ is known as the constructor
-    def __init__(self, name, idnumber):
-        self.name = name
-        self.idnumber = idnumber
-
-    def display(self):
-        print(self.name)
-        print(self.idnumber)
-
-# child class
-class Employee(Person):
-    def __init__(self, name, idnumber, salary, post):
-        self.salary = salary
-        self.post = post
-
-        # invoking the __init__ of the parent class
-        Person.__init__(self, name, idnumber)
-
-# creation of an object variable or an instance
-a = Employee('Rahul', 886012, 200000, "Intern")
-
-# calling a function of the class Person using its instance
-a.display()
-```
-
-```
-Rahul
-886012
-```
-
-> Python program to demonstrate error if we forget to invoke **init**() of the parent
-
-- If you forget to invoke the **init**() of the parent class then its instance variables would not be available to the child class. The following code produces an error for the same reason.
-
-```py
-class A:
-    def __init__(self, n='Rahul'):
-        self.name = n
-
-class B(A):
-    def __init__(self, roll):
-        self.roll = roll
-
-object = B(23)
-print(object.name)
-```
-
-```
-Traceback (most recent call last):
-  File "/home/de4570cca20263ac2c4149f435dba22c.py", line 12, in
-    print (object.name)
-AttributeError: 'B' object has no attribute 'name'
-```
-
-> The super() Function:
-
-- The super() function is a built-in function that returns the objects that represent the parent class. It allows to access the parent class’s methods and attributes in the child class.
-- Example: super() function with simple Python inheritance:
-- In this example, we created the object ‘obj’ of the child class. When we called the constructor of the child class ‘Student’, it initialized the data members to the values passed during the object creation. Then using the super() function, we invoked the constructor of the parent class.
-
-```py
-# parent class
-class Person():
-  def __init__(self, name, age):
-    self.name = name
-    self.age = age
-
-  def display(self):
-    print(self.name, self.age)
-
-# child class
-class Student(Person):
-  def __init__(self, name, age):
-    self.sName = name
-    self.sAge = age
-    # inheriting the properties of parent class
-    super().__init__("Rahul", age)
-
-  def displayInfo(self):
-    print(self.sName, self.sAge)
-
-obj = Student("Mayank", 23)
-obj.display()
-obj.displayInfo()
-```
-
-```
-Rahul 23
-Mayank 23
-```
-
-> Adding Properties:
-
-- One of the features that inheritance provides is inheriting the properties of the parent class as well as adding new properties of our own to the child class. Let us see this with an example:
-
-```py
-# parent class
-class Person():
-  def __init__(self, name, age):
-    self.name = name
-    self.age = age
-
-  def display(self):
-    print(self.name, self.age)
-
-# child class
-class Student(Person):
-  def __init__(self, name, age, dob):
-    self.sName = name
-    self.sAge = age
-    self.dob = dob
-    # inheriting the properties of parent class
-    super().__init__("Rahul", age)
-
-  def displayInfo(self):
-    print(self.sName, self.sAge, self.dob)
-
-obj = Student("Mayank", 23, "16-03-2000")
-obj.display()
-obj.displayInfo()
-```
-
-- Here we can see that we added a new property to the child class, i.e., date of birth (dob)
-
-```
-Rahul 23
-Mayank 23 16-03-2000
-```
-
-## Different types of Python Inheritance:
-
-- There are 5 different types of inheritance in Python. They are as follows:
-- Single inheritance: When a child class inherits from only one parent class, it is called single inheritance. We saw an example above
-- Multiple inheritances: When a child class inherits from multiple parent classes, it is called multiple inheritances.
-- Unlike Java, python shows multiple inheritances.:
-
-```py
-# Python example to show the working of multiple
-# inheritance
-
-class Base1(object):
-    def __init__(self):
-        self.str1 = "Geek1"
-        print("Base1")
-
-
-class Base2(object):
-    def __init__(self):
-        self.str2 = "Geek2"
-        print("Base2")
-
-
-class Derived(Base1, Base2):
-    def __init__(self):
-
-        # Calling constructors of Base1
-        # and Base2 classes
-        Base1.__init__(self)
-        Base2.__init__(self)
-        print("Derived")
-
-    def printStrs(self):
-        print(self.str1, self.str2)
-
-
-ob = Derived()
-ob.printStrs()
-```
-
-```
-Base1
-Base2
-Derived
-Geek1 Geek2
-```
-
+- Multi-level inheritance enables a derived class to inherit properties from an immediate parent class which in turn inherits properties from his parent class.
 - Multilevel inheritance: When we have a child and grandchild relationship. This means that a child class will inherit from its parent class, which in turn is inheriting from its parent class.
 
 ```py
@@ -1147,17 +1208,67 @@ print(g.getName(), g.getAge(), g.getAddress())
 Geek1 23 Noida
 ```
 
-- Hierarchical inheritance More than one derived class can be created from a single base.
-- Hybrid inheritance: This form combines more than one form of inheritance. Basically, it is a blend of more than one type of inheritance
+> 3 . Hierarchical Inheritance:
 
-> Private members of the parent class :
+- Hierarchical-level inheritance enables more than one derived class to inherit properties from a parent class.
+- More than one derived class can be created from a single base.
+
+> 4 . Multiple Inheritance:
+
+- When a child class inherits from multiple parent classes.
+- Unlike Java, python shows multiple inheritances.:
+
+```py
+# Python example to show the working of multiple
+# inheritance
+
+class Base1(object):
+    def __init__(self):
+        self.str1 = "Geek1"
+        print("Base1")
+
+
+class Base2(object):
+    def __init__(self):
+        self.str2 = "Geek2"
+        print("Base2")
+
+
+class Derived(Base1, Base2):
+    def __init__(self):
+
+        # Calling constructors of Base1
+        # and Base2 classes
+        Base1.__init__(self)
+        Base2.__init__(self)
+        print("Derived")
+
+    def printStrs(self):
+        print(self.str1, self.str2)
+
+
+ob = Derived()
+ob.printStrs()
+```
+
+```
+Base1
+Base2
+Derived
+Geek1 Geek2
+```
+
+> 5 . Hybrid inheritance:
+
+- This form combines more than one form of inheritance. Basically, it is a blend of more than one type of inheritance
+
+## Private members of the parent class :
 
 - We don’t always want the instance variables of the parent class to be inherited by the child class i.e. we can make some of the instance variables of the parent class private, which won’t be available to the child class.
 - In Python inheritance, we can make an instance variable private by adding double underscores before its name. For example:
 
 ```py
-# Python program to demonstrate private members
-# of the parent class
+# Python program to demonstrate private members of the parent class
 
 class C(object):
     def __init__(self):
@@ -1188,15 +1299,17 @@ print(object1.__d)
 AttributeError: type object 'D' has no attribute 'd'
 ```
 
-# Python Polymorphism:
+# POLYMORPHISIM:
 
-- Polymorphism simply means having many forms. For example, we need to determine if the given species of birds fly or not, using polymorphism we can do this using a single function.
+- Polymorphism contains two words "poly" and "morphs". Poly means many, and morph means shape.
+- Polymorphism simply means having many forms.
+- By polymorphism, we understand that one task can be performed in different ways.
+- For example - lets say there is a class Vehicle, and all vehicles run. But they run differently. Here, the "run" behavior is polymorphic in a sense and depends on the vehicle. So, the abstract "vehicle" concept does not actually "run", but specific vehicles (like cars and bikes) have a concrete implementation of the action "speak".
 - In programming, polymorphism means the same function name (but different signatures) being used for different types. The key difference is the data types and number of arguments used in function.
 - This code demonstrates the concept of inheritance and method overriding in Python classes. It shows how subclasses can override methods defined in their parent class to provide specific behavior while still inheriting other methods from the parent class.
 
 ```py
 class Bird:
-
 	def intro(self):
 		print("There are many types of birds.")
 
@@ -1618,6 +1731,8 @@ AttributeError: 'Derived' object has no attribute '_Derived__c'
 
 - It hides unnecessary code details from the user. Also, when we do not want to give out sensitive parts of our code implementation and this is where data abstraction came.
 - Data Abstraction in Python can be achieved by creating abstract classes
+- Data abstraction and encapsulation both are often used as synonyms. Both are nearly synonyms because data abstraction is achieved through encapsulation.
+- Abstraction is used to hide internal details and show only functionalities. Abstracting something means to give names to things so that the name captures the core of what a function or a whole program does.
 
 ## Data Hiding and Object Printing:
 
@@ -2657,4 +2772,87 @@ for instance in Item.all:
 Phone
 Laptop
 Earbuds
+```
+
+# Notes:
+
+- OOPs helps to implement real-world entities like inheritance, polymorphisms, encapsulation, etc. in the programming.
+- How these are real world entities. We will explain it later.
+- The main concept of OOPs is to bind the data and the functions that work on that together as a single unit so that no other part of the code can access this data
+-
+
+```
+When we call a method of this object as myobject.method(arg1, arg2), this is automatically converted by Python into MyClass.method(myobject, arg1, arg2) – this is all the special self is about.
+```
+
+```py
+class GFG:
+    def __init__(self, name, company):
+        self.name = name
+        self.company = company
+
+    def show(self):
+        print("Hello my name is " + self.name+" and I" +
+              " work in "+self.company+".")
+
+
+obj = GFG("John", "GeeksForGeeks")
+obj.show()
+```
+
+```
+Hello my name is John and I work in GeeksForGeeks.
+```
+
+```py
+class GFG:
+    def __init__(somename, name, company):
+        somename.name = name
+        somename.company = company
+
+    def show(somename):
+        print("Hello my name is " + somename.name +
+              " and I work in "+somename.company+".")
+
+
+obj = GFG("John", "GeeksForGeeks")
+obj.show()
+```
+
+```
+Hello my name is John and I work in GeeksForGeeks.
+```
+
+- In this example, we are creating a GFG class and we have created the name, and company instance variables in the constructor. We have created a method named say_hi() which returns the string “Hello my name is ” + {name} +” and I work in “+{company}+”.”.We have created a person class object and we passing the name John and Company GeeksForGeeks to the instance variable. Finally, we are calling the show() of the class.
+
+# Differenc between Object-oriented and Procedural Programming:
+
+```
+- Object-oriented programming is the problem-solving approach and used where computation is done by using objects.
+
+- Procedural programming uses a list of instructions to do computation step by step
+```
+
+```
+Object-oriented programming makes the development and maintenance easier.
+
+In procedural programming, It is not easy to maintain the codes when the project becomes lengthy.
+```
+
+```
+Object-oriented programming simulates the real world entity. So real-world problems can be easily solved through oops.
+
+procedural programming doesn't simulate the real world. It works on step by step instructions divided into small parts called functions.
+```
+
+```
+Object-oriented programming provides data hiding. So it is more secure than procedural languages. You cannot access private data from anywhere.
+
+Procedural language doesn't provide any proper way for data binding, so it is less secure.
+```
+
+```
+Example of object-oriented programming languages is C++, Java, .Net, Python, C#, etc.
+
+Example of procedural languages are: C, Fortran, Pascal, VB etc.
 ```
