@@ -204,11 +204,24 @@ All content deleted
 
 > writelines:
 
+- method expects a list of strings to overide the existing data.
+
 ```py
 f = open("Ravi.txt", "w")
 L = ["This is Delhi \n", "This is Paris \n", "This is London \n"]
 f.writelines(L)
 f.close()
+```
+
+```py
+mylist = ["My name is Ravi \n","I live in Bhubaneswar \n", "My age is 23\n"]
+
+file = open("Ravi.txt", "w")
+file.writelines(mylist)
+file.close()
+
+file = open("Ravi.txt","r")
+print(file.read())
 ```
 
 ## 5. Closing File:
@@ -266,6 +279,7 @@ import os
 
 if os.path.exists("Ravi.txt"):
     os.remove("Ravi.txt")
+    print("file deleted")
 else:
     print("File doesnot exists")
 ```
@@ -280,11 +294,41 @@ os.rmdir("folderName")
 ```
 
 - Only Empty Folders can be removed.
+- To avoid getting error, check whether folder exists before deleting it.
+
+```py
+import os
+if os.path.exists("demo"):
+    os.rmdir("demo")
+    print("folder deleted")
+else:
+    print("File doesnot Exists")
+
+```
+
+## Creating Folder:
+
+- os.mkdir() creates folder
+
+```py
+import os
+os.mkdir("demo")
+```
+
+```py
+import os
+if not os.path.exists("demo"):
+    os.mkdir("demo")
+    print("folder created")
+else:
+    print("Folder Already Exists")
+```
 
 ## 9. with Statement:
 
 - Another way of dealing with filr handling:
-  > without with statement:
+
+> without with statement:
 
 ```py
 f = open('file_path', 'w')
@@ -299,6 +343,8 @@ file.close()
 with open('file_path', 'w') as f:
     f.write('hello world !')
 ```
+
+- Automatically closes the file
 
 # QUESTIONS:
 
@@ -378,6 +424,34 @@ with open("Ravi.txt", "w") as f:
 
 # PROGRAMS:
 
+## Progrm to read entire file:
+
+```py
+"""
+# first Method
+file = open("Ravi.txt","r")
+print(file.read())
+print(" ----------------")
+"""
+# Second Method
+file = open("Ravi.txt","r")
+lines = file.readlines()
+print(lines)
+
+for line in lines:
+    print(line)
+```
+
+# Program to read file line by line:
+
+```py
+file = open("Ravi.txt", "r")
+
+for i in file:
+    print(i)
+
+```
+
 ## Program to Copy One File to Another File:
 
 ```py
@@ -395,6 +469,19 @@ f = open("copy.txt")
 print(f.read())
 ```
 
+```py
+file = open("Ravi.txt","r")
+file2 = open("copy.txt","w")
+lines = file.readlines()
+
+for line in lines:
+    print(line)
+    file2.write(line)
+
+file3 = open("copy.txt")
+print(file3.read())
+```
+
 ## Program to Count the Number of Lines in Text File
 
 ```py
@@ -403,8 +490,7 @@ num_lines = 0
 with open(fname, 'r') as f:
     for line in f:
         num_lines += 1
-print("Number of lines:")
-print(num_lines)
+print("Number of lines:",num_lines)
 ```
 
 ## Program to Count the Number of Blank Spaces in a Text File
@@ -419,6 +505,21 @@ with open(fname, 'r') as f:
         words = line.split()
         count=count+len(words)-1
 print("Occurrences of blank spaces:", count)
+```
+
+```py
+filename = input("Enter file name: ")
+count=0
+space=0
+with open(filename, "r") as file:
+    for line in file:
+        words = line.split()
+        print(words)
+        count = count+len(words)-1
+        print(count)
+    space = space+count
+
+print(space)
 ```
 
 ## Program to Count the Occurrences of a Word in a Text File:
@@ -454,7 +555,7 @@ print(num_words)
 
 ## Program to Capitalize First Letter of Each Word in a File:
 
-- For this title() function will be used: returns a string where the first character in every word is upper case
+- For this title() function will be used: returns a string where the first character in every word is upper case and rest are lowercase
 
 ```py
 msg = "we are learning python"
@@ -517,6 +618,36 @@ sortedList = sorted(unique)
 for i in sortedList:
     print(i," ",end="")
 ```
+
+## -----------------------------------------------------------------------------------------------------------
+
+## Program to print each word of a file one by one:
+
+```py
+
+with open('Ravi.txt','r') as file:
+    for line in file:
+        for word in line.split():
+            print(word)
+
+
+```
+
+## program to read character by character from a file:
+
+```py
+file = open('Ravi.txt', 'r')
+
+while True:
+    char = file.read(1)
+    if not char:
+        break
+    print(char)
+
+file.close()
+```
+
+# Program to Get number of characters, words, spaces and lines in a file
 
 ## Program to Append the Content of One File to the End of Another File:
 
