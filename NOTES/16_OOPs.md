@@ -495,7 +495,7 @@ print(person)  # Output: Person: Alice, Age: 30
 
 ## Creating a Class:
 
-```
+```py
 Define a class named Employee with attributes name, company and id. Initialize these attributes using the __init__ method. Create an object of the class and print the student's details.
 ```
 
@@ -514,8 +514,8 @@ print("Company:", emp.company)
 
 ## Methods and Attributes:
 
-```
-Create a class Car with attributes make and model. Include a method called display_info that prints the car's make and model. Create two car objects and call the method on each of them.
+```py
+Create a class Car with attributes make and model. Include a method called display_info that prints the car's make and model. Create two car  and call the method on each of them.
 ```
 
 ```py
@@ -550,7 +550,7 @@ print("The number of students:",Student.count)
 
 ## Instance Variables:
 
-```
+```py
 Define a class Rectangle with attributes width and height. Implement a method called calculate_area that calculates and returns the area of the rectangle. Create an object, set its dimensions, and print the calculated area.
 ```
 
