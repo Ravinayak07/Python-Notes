@@ -495,7 +495,7 @@ print(person)  # Output: Person: Alice, Age: 30
 
 ## Creating a Class:
 
-Define a class named Employee with attributes name, company and id. Initialize these attributes using the __init__ method. Create an object of the class and print the student's details.
+- Define a class named Employee with attributes name, company and id. Initialize these attributes using the __init__ method. Create an object of the class and print the student's details.
 
 ```py
 class Employee:
@@ -512,9 +512,8 @@ print("Company:", emp.company)
 
 ## Methods and Attributes:
 
-```py
-Create a class Car with attributes make and model. Include a method called display_info that prints the car's make and model. Create two car  and call the method on each of them.
-```
+- Create a class Car with attributes make and model. Include a method called display_info that prints the car's make and model. Create two car  and call the method on each of them.
+
 
 ```py
 class Car:
@@ -548,9 +547,7 @@ print("The number of students:",Student.count)
 
 ## Instance Variables:
 
-```py
-Define a class Rectangle with attributes width and height. Implement a method called calculate_area that calculates and returns the area of the rectangle. Create an object, set its dimensions, and print the calculated area.
-```
+- Define a class Rectangle with attributes width and height. Implement a method called calculate_area that calculates and returns the area of the rectangle. Create an object, set its dimensions, and print the calculated area.
 
 ```py
 class rectangle():
@@ -587,9 +584,7 @@ print("Perimeter of circle:",round(obj.perimeter(),2))
 
 ##
 
-```
-Create a class BankAccount with attributes account_number and balance. Include methods for depositing and withdrawing money, updating the balance accordingly. Create an object, perform some transactions, and print the final balance.
-```
+- Create a class BankAccount with attributes account_number and balance. Include methods for depositing and withdrawing money, updating the balance accordingly. Create an object, perform some transactions, and print the final balance.
 
 ```py
 class BankAccount:
@@ -616,9 +611,7 @@ print("Final Balance:", account.balance)
 
 ## Basic Calculator:
 
-```
-Define a class Calculator with methods for addition, subtraction, multiplication, and division. Use the __init__ method to initialize a starting value. Create an object and perform basic arithmetic operations.
-```
+- Define a class Calculator with methods for addition, subtraction, multiplication, and division. Use the __init__ method to initialize a starting value. Create an object and perform basic arithmetic operations.
 
 ```py
 class Calculator:
