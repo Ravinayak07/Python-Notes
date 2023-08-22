@@ -495,9 +495,7 @@ print(person)  # Output: Person: Alice, Age: 30
 
 ## Creating a Class:
 
-```py
 Define a class named Employee with attributes name, company and id. Initialize these attributes using the __init__ method. Create an object of the class and print the student's details.
-```
 
 ```py
 class Employee:
