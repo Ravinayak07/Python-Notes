@@ -1,64 +1,58 @@
-## ---------------------------------------------------------------------------------------------------------------
-
-> **init** with inheritance
-
-- Inheritance is the capability of one class to derive or inherit the properties from some other class. Let’s consider the below example to see how **init** works in inheritance. :
+# Two ways of declaring classes:
 
 ```py
-# Python program to
-# demonstrate init with
-# inheritance
-
-class A(object):
-    def __init__(self, something):
-        print("A init called")
-        self.something = something
-
-
-class B(A):
-    def __init__(self, something):
-        # Calling init of parent class
-        A.__init__(self, something)
-        print("B init called")
-        self.something = something
-
-
-obj = B("Something")
+#  new and modern way, most preferred and widely used
+# recommend for python 3
+class Car:
+    pass
 ```
-
-```
-A init called
-B init called
-```
-
-- So, the parent class constructor is called first. But in Python, it is not compulsory that the parent class constructor will always be called first. The order in which the **init** method is called for a parent or a child class can be modified. This can simply be done by calling the parent class constructor after the body of the child class constructor.
 
 ```py
-# Python program to
-# demonstrate init with
-# inheritance
-
-class A(object):
-    def __init__(self, something):
-        print("A init called")
-        self.something = something
-
-
-class B(A):
-    def __init__(self, something):
-        print("B init called")
-        self.something = something
-        # Calling init of parent class
-        A.__init__(self, something)
-
-
-obj = B("Something")
+# Also correct but old way
+# used in python 2
+class Car():
+    pass
 ```
 
+# OUTPUT:
+
+```py
+# Accessing class attribute using classname
+class Car():
+
+    name = "Mercedes"    # class attribute
+    def drive(self):
+        print("I am driving " + Car.name)
+
+obj = Car()
+obj.drive() # I am driving Mercedes
 ```
-B init called
-A init called
+
+```py
+# using the self parameter to access the class attribute through the instance.
+class Car():
+
+    name = "Mercedes"    # class attribute
+    def drive(self):
+        print("I am driving " + self.name)
+
+obj = Car()
+obj.drive() # I am driving Mercedes
+
+obj2 = Car()
+obj2.name = "BMW"
+obj2.drive() # I am driving BMW
 ```
+
+- The self parameter in a method refers to the instance of the class that the method is being called on. When you create an instance of a class, like obj = Car(), that instance is passed as the self parameter to any method you call on that instance.
+
+- In your example, the name variable is defined as a class attribute outside of the drive method, using the Car class itself as its scope. This means that name is shared among all instances of the class, and it can be accessed using either the class name or an instance.
+
+- When the drive method is called on the obj instance, the self parameter in the method receives the instance itself (obj in this case). So, when you use self.name inside the drive method, it refers to the class attribute name of the instance.
+
+- If you were to modify the name attribute for a specific instance, it would not affect the name attribute for other instances or the default name attribute of the class.
+
+- self.name refers to the name attribute of the instance car, which is inherited from the class attribute name. This way, you're using the instance's attribute through the self parameter to access the class attribute, achieving the same result as the original code but with a more object-oriented approach.
 
 # INHERITANCE:
 
@@ -68,12 +62,10 @@ A init called
 - The class that derives properties is called the derived class or child class
 - The class from which the properties are being derived is called the base class or parent class.
 - It is a mechanism that allows you to create a hierarchy of classes that share a set of properties and methods by deriving a class from another class.
-- Inheritance allows you to inherit the properties of a class, i.e., base class to another, i.e., derived class
 - The benefits of inheritance are:
-- 1. It represents real-world relationships well.
+- 1. It represents real-world relationships well.E.g ??
 - 2. It provides the reusability of a code. We don’t have to write the same code again and again. Also, it allows us to add more features to a class without modifying it.
 - 3. It is transitive in nature, which means that if class B inherits from another class A, then all the subclasses of B would automatically inherit from class A.
-- 4. Inheritance offers a simple, understandable model structure.
 
 > Syntax:
 
@@ -86,32 +78,41 @@ Class DerivedClass(BaseClass):
 
 - Example:
 
+```py
+class Vehicle:
+    name = "Mercedes"
+
+class Car(Vehicle):
+    def drive(self):
+        return "I am driving "+Vehicle.name
+
+car = Car()
+
+print(car.drive())
+```
+
 > 1 . First Create a Parent or Base Class:
 
 - A parent class is a class whose properties are inherited by the child class.
 - Let’s create a parent class called Person which has a Display method to display the person’s information.
 
 ```py
-# A Python program to demonstrate inheritance
 class Person(object):
 
-  # Constructor
-  def __init__(self, name, id):
-    self.name = name
-    self.id = id
+    def __init__(self, name):
+        self.name = name
 
-  # To check if this person is an employee
-  def Display(self):
-    print(self.name, self.id)
+    def display(self):
+        print(self.name)
 
+# An Object of Parent class (Person)
 
-# Driver code
-emp = Person("Rahul", 102) # An Object of Person
-emp.Display()
+obj1 = Person("Ravi")
+obj1.display()     # Ravi
 ```
 
 ```
-Rahul 102
+Ravi
 ```
 
 > 2 . Now create a child or derived Class:
@@ -122,16 +123,17 @@ Rahul 102
 ```py
 class Employee(Person):
 
-  def Print(self):
-    print("Employee class called")
+    # Here we return true
+    def isEmployee(self):
+        return True
 
-Emp_details = Employee("Ravi", 11908621)
-
-# calling parent class function
-Emp_details.Display()
+emp = Employee("Rahul")  # An Object of Employee
 
 # Calling child class function
-Emp_details.Print()
+print(emp.isEmployee()) # True
+
+# calling parent class function
+emp.display() # Rahul
 ```
 
 > 3 . Inheriting properties of parent class in child class:
@@ -139,46 +141,41 @@ Emp_details.Print()
 - In this example, ‘Person’ is the parent class, and ‘Employee’ is its child class.
 
 ```py
-# Base or Super class. Note object in bracket.
-# (Generally, object is made ancestor of all classes)
-# In Python 3.x "class Person" is
-# equivalent to "class Person(object)"
-
-
 class Person(object):
 
-    # Constructor
     def __init__(self, name):
         self.name = name
 
     # To get name
-    def getName(self):
-        return self.name
+    def display(self):
+        print(self.name)
 
-    # To check if this person is an employee
-    def isEmployee(self):
-        return False
+# An Object of Parent class (Person)
 
+obj1 = Person("Ravi")
+obj1.display()     # Ravi
 
-# Inherited or Subclass (Note Person in bracket)
+# Inherited or Child class
 class Employee(Person):
 
     # Here we return true
     def isEmployee(self):
         return True
 
+emp = Employee("Rahul")  # An Object of Employee
 
-# Driver code
-emp = Person("Ravi")  # An Object of Person
-print(emp.getName(), emp.isEmployee())
+# Calling child class function
+print(emp.isEmployee()) # True
 
-emp = Employee("Rahuk")  # An Object of Employee
-print(emp.getName(), emp.isEmployee())
+# calling parent class function
+emp.display() # Rahul
+
 ```
 
 ```
-Ravi False
-Rahul True
+Ravi
+True
+Rahul
 ```
 
 > 4 . Subclassing (Calling constructor of parent class)
@@ -568,6 +565,67 @@ print(object1.__d)
 AttributeError: type object 'D' has no attribute 'd'
 ```
 
+## **init** with inheritance
+
+- Let’s consider the below example to see how **init** works in inheritance. :
+
+```py
+# Python program to
+# demonstrate init with
+# inheritance
+
+class A(object):
+    def __init__(self, something):
+        print("A init called", something)
+        self.something = something
+
+
+class B(A):
+    def __init__(self, something):
+
+        # Calling init of parent class
+        A.__init__(self, something)
+        print("B init called". something)
+        self.something = something
+
+
+obj = B("Ravi")
+```
+
+```
+A init called
+B init called
+```
+
+- So, the parent class constructor is called first. But in Python, it is not compulsory that the parent class constructor will always be called first. The order in which the **init** method is called for a parent or a child class can be modified. This can simply be done by calling the parent class constructor after the body of the child class constructor.
+
+```py
+# Python program to
+# demonstrate init with
+# inheritance
+
+class A(object):
+    def __init__(self, something):
+        print("A init called")
+        self.something = something
+
+
+class B(A):
+    def __init__(self, something):
+        print("B init called")
+        self.something = something
+        # Calling init of parent class
+        A.__init__(self, something)
+
+
+obj = B("Something")
+```
+
+```
+B init called
+A init called
+```
+
 # POLYMORPHISIM:
 
 - Polymorphism contains two words "poly" and "morphs". Poly means many, and morph means shape.
@@ -575,187 +633,125 @@ AttributeError: type object 'D' has no attribute 'd'
 - By polymorphism, we understand that one task can be performed in different ways.
 - For example - lets say there is a class Vehicle, and all vehicles run. But they run differently. Here, the "run" behavior is polymorphic in a sense and depends on the vehicle. So, the abstract "vehicle" concept does not actually "run", but specific vehicles (like cars and bikes) have a concrete implementation of the action "speak".
 - In programming, polymorphism means the same function name (but different signatures) being used for different types. The key difference is the data types and number of arguments used in function.
-- This code demonstrates the concept of inheritance and method overriding in Python classes. It shows how subclasses can override methods defined in their parent class to provide specific behavior while still inheriting other methods from the parent class.
+- It refers to the use of a single type entity (method, operator or object) to represent different types in different scenarios.
+
+> Example 1: Polymorphism in addition operator(t does not have a single usage.)
 
 ```py
-class Bird:
-	def intro(self):
-		print("There are many types of birds.")
+# For integer data types, + operator is used to perform arithmetic addition operation.
+num1 = 1
+num2 = 2
+print(num1+num2)
 
-	def flight(self):
-		print("Most of the birds can fly but some cannot.")
-
-class sparrow(Bird):
-
-	def flight(self):
-		print("Sparrows can fly.")
-
-class ostrich(Bird):
-
-	def flight(self):
-		print("Ostriches cannot fly.")
-
-obj_bird = Bird()
-obj_spr = sparrow()
-obj_ost = ostrich()
-
-obj_bird.intro()
-obj_bird.flight()
-
-obj_spr.intro()
-obj_spr.flight()
-
-obj_ost.intro()
-obj_ost.flight()
-
+#  for string data types, + operator is used to perform concatenation.
+str1 = "Python"
+str2 = "Programming"
+print(str1+" "+str2)
 ```
 
-```
-There are many types of birds.
-Most of the birds can fly but some cannot.
-There are many types of birds.
-Sparrows can fly.
-There are many types of birds.
-Ostriches cannot fly.
-```
+- Here, we can see that a single operator + has been used to carry out different operations for distinct data types. This is one of the most simple occurrences of polymorphism in Python.
 
-> Example of inbuilt polymorphic functions::
+> Example 2: in-built polymorphic functions:
+
+- len() function can run with many data types in Python
 
 ```py
-# Python program to demonstrate in-built poly-
-# morphic functions
+# len() function is used for a string
+print (len("Javatpoint"))
 
-# len() being used for a string
-print(len("geeks"))
-
-# len() being used for a list
-print(len([10, 20, 30]))
+# len() function is used for a list
+print (len([110, 210, 130, 321]))
 ```
 
 ```
-5
-3
+10
+4
 ```
 
-> Examples of user-defined polymorphic functions: :
+> Examples 3: user-defined polymorphic functions::
 
 ```py
-# A simple Python function to demonstrate
-# Polymorphism
+def add(p, q, r = 0):
+    return p + q + r
 
-def add(x, y, z = 0):
-    return x + y+z
-
-# Driver code
-print(add(2, 3))
-print(add(2, 3, 4))
+print (add(6, 23))
+print (add(22, 31, 544))
 ```
 
-```
-5
-9
-```
+## Polymorphism with Class Methods:
 
-## Polymorphism with class methods:
-
-- The below code shows how Python can use two different class types, in the same way. We create a for loop that iterates through a tuple of objects. Then call the methods without being concerned about which class type each object is. We assume that these methods actually exist in each class.
+- We can use the concept of polymorphism while creating class methods as Python allows different classes to have methods with the same name.
+- Polymorphism allows objects of different classes to be treated as objects of a common superclass
 
 ```py
-class India():
-    def capital(self):
-        print("New Delhi is the capital of India.")
+class Student1():
+    def display(self):
+        print("Name : Ravi")
 
-    def language(self):
-        print("Hindi is the most widely spoken language of India.")
+class Student2():
+    def display(self):
+        print("Name : Darshan")
 
-    def type(self):
-        print("India is a developing country.")
-
-class USA():
-    def capital(self):
-        print("Washington, D.C. is the capital of USA.")
-
-    def language(self):
-        print("English is the primary language of USA.")
-
-    def type(self):
-        print("USA is a developed country.")
-
-obj_ind = India()
-obj_usa = USA()
-for country in (obj_ind, obj_usa):
-    country.capital()
-    country.language()
-    country.type()
+obj1 = Student1()
+obj2 = Student2()
+for obj in (obj1, obj2):
+    obj.display()
 ```
 
-```
-New Delhi is the capital of India.
-Hindi is the most widely spoken language of India.
-India is a developing country.
-Washington, D.C. is the capital of USA.
-English is the primary language of USA.
-USA is a developed country.
-```
+- However, notice that we have not created a common superclass or linked the classes together in any way. Even then, we can pack these two different objects into a tuple and iterate through it using a common animal variable. It is possible due to polymorphism.
+- This ability to treat different classes with a common interface (in this case, the display() method) is an example of polymorphism
 
-## Polymorphism with Inheritance (Method OPverriding):
+## Polymorphism with Inheritance (Method Overriding):
 
-- In Python, Polymorphism lets us define methods in the child class that have the same name as the methods in the parent class. In inheritance, the child class inherits the methods from the parent class. However, it is possible to modify a method in a child class that it has inherited from the parent class. This is particularly useful in cases where the method inherited from the parent class doesn’t quite fit the child class. In such cases, we re-implement the method in the child class. This process of re-implementing a method in the child class is known as Method Overriding.
+- In Python, Polymorphism lets us define methods in the child class that have the same name as the methods in the parent class. In inheritance, the child class inherits the methods from the parent class(i.e the methods of the parent class are passed to the child class). However, it is possible to modify a method in a child class which it has inherited from the parent class. This is particularly useful in cases where the method inherited from the parent class doesn’t quite fit the child class. In such cases, we re-implement the method in the child class. This process of re-implementing a method in the child class is known as Method Overriding.
 
 ```py
-class Bird:
-  def intro(self):
-    print("There are many types of birds.")
+class Vehicle:
+    def drive(self):
+        print("Vehicle is moving")
 
-  def flight(self):
-    print("Most of the birds can fly but some cannot.")
+class Car(Vehicle):
+    def drive(self):
+        print("Car is driving")
 
-class sparrow(Bird):
-  def flight(self):
-    print("Sparrows can fly.")
+class Bike(Vehicle):
+    def drive(self):
+        print("Bike is riding")
 
-class ostrich(Bird):
-  def flight(self):
-    print("Ostriches cannot fly.")
+# Create instances of the child classes
+car = Car()
+bike = Bike()
 
-obj_bird = Bird()
-obj_spr = sparrow()
-obj_ost = ostrich()
-
-obj_bird.intro()
-obj_bird.flight()
-
-obj_spr.intro()
-obj_spr.flight()
-
-obj_ost.intro()
-obj_ost.flight()
+# Call the overridden methods
+car.drive()  # Output: "Car is driving"
+bike.drive()  # Output: "Bike is riding"
 ```
 
-```
-There are many types of birds.
-Most of the birds can fly but some cannot.
-There are many types of birds.
-Sparrows can fly.
-There are many types of birds.
-Ostriches cannot fly.
-```
+- In the above example: We have a Parent class Vehicle with a method drive().
+- We have two child classes, Car and Bike, both inheriting from the parent class, Vehicle.
+- Each child class overrides the drive() method to provide a specific message for the type of vehicle.
+- When we create instances of the child classes and call the drive() method, the overridden methods in the child classes are used to indicate how each type of vehicle moves.
+- This demonstrates method overriding by allowing the child classes to provide their own implementation of the drive() method based on their specific characteristics.
 
-> Polymorphism with a Function and objects: :
+## Polymorphism with a Function and objects: :
 
-- It is also possible to create a function that can take any object, allowing for polymorphism. In this example, let’s create a function called “func()” which will take an object which we will name “obj”. Though we are using the name ‘obj’, any instantiated object will be able to be called into this function. Next, let’s give the function something to do that uses the ‘obj’ object we passed to it. In this case, let’s call the three methods, viz., capital(), language() and type(), each of which is defined in the two classes ‘India’ and ‘USA’. Next, let’s create instantiations of both the ‘India’ and ‘USA’ classes if we don’t have them already. With those, we can call their action using the same func() function:
+- It is also possible to create a function that can take any object. This allows for polymorphism.
+- In this example, let’s create a function called “func()” which will take an object which we will name “obj”.
+- Next, let’s give the function something to do with the ‘obj’ object that we passed to it.
+- In this case, let’s call the two methods, capital(), language(), each of which is defined in the two classes ‘India’ and ‘USA’.
+- Next, let’s create instantiations of both the ‘India’ and ‘USA’ classes if we don’t have them already.
+- With those, we can call their actions using the same func() function:
 
 ```py
 def func(obj):
     obj.capital()
     obj.language()
-    obj.type()
 
-obj_ind = India()
-obj_usa = USA()
+objIndia = India()
+objUsa = USA()
 
-func(obj_ind)
-func(obj_usa)
+func(objIndia)
+func(objUsa)
 ```
 
 > Code: Implementing Polymorphism with a Function :
@@ -763,369 +759,139 @@ func(obj_usa)
 ```py
 class India():
     def capital(self):
-        print("New Delhi is the capital of India.")
+        print("Capital of India: New Delhi")
 
     def language(self):
-        print("Hindi is the most widely spoken language of India.")
-
-    def type(self):
-        print("India is a developing country.")
+        print("Lang of India: Hindi")
 
 class USA():
     def capital(self):
-        print("Washington, D.C. is the capital of USA.")
+        print("Capital of USA: Washington DC")
 
     def language(self):
-        print("English is the primary language of USA.")
+        print("Lang of USA: Engliah")
 
-    def type(self):
-        print("USA is a developed country.")
 
 def func(obj):
     obj.capital()
     obj.language()
-    obj.type()
 
-obj_ind = India()
-obj_usa = USA()
+objIndia = India()
+objUsa = USA()
 
-func(obj_ind)
-func(obj_usa)
+func(objIndia)
+func(objUsa)
 ```
 
-```
-New Delhi is the capital of India.
-Hindi is the most widely spoken language of India.
-India is a developing country.
-Washington, D.C. is the capital of USA.
-English is the primary language of USA.
-USA is a developed country.
-```
+## Programs on Polymorphisim:
 
-## Simple example of polymorphism:
-
-> polymorphism in Python using inheritance and method overriding:
+- Create a Parent class Animal with a method make_sound(). Create child classes Dog and Cat that override the make_sound() method to print different sounds. Demonstrate polymorphism by creating instances of both child classes and calling their make_sound() methods
 
 ```py
 class Animal:
-    def speak(self):
-        raise NotImplementedError("Subclass must implement this method")
+    def make_sound(self):
+        pass
 
 class Dog(Animal):
-    def speak(self):
-        return "Woof!"
+    def make_sound(self):
+        print("Bark!")
 
-class Cat(Animal):
-    def speak(self):
-        return "Meow!"
+class Tiger(Animal):
+    def make_sound(self):
+        print("Roar!")
 
-# Create a list of Animal objects
-animals = [Dog(), Cat()]
+dog = Dog()
+tiger = Tiger()
 
-# Call the speak method on each object
-for animal in animals:
-    print(animal.speak())
-```
+dog.make_sound()  # Output: Bark
+tiger.make_sound()  # Output: Roar
 
 ```
-Woof!
-Meow!
-```
 
-## Python Encapsulation:
-
-- It describes the idea of wrapping data and the methods that work on data within one unit.
-- This puts restrictions on accessing variables and methods directly and can prevent the accidental modification of data.
-- To prevent accidental change, an object’s variable can only be changed by an object’s method. Those types of variables are known as private variables.
-
-- A class is an example of encapsulation as it encapsulates all the data that is member functions, variables, etc.
-  <img src="./encapsulation.png"/>
-- The goal of information hiding is to ensure that an object’s state is always valid by controlling access to attributes that are hidden from the outside world.
-
-- Consider a real-life example of encapsulation, in a company, there are different sections like the accounts section, finance section, sales section etc. The finance section handles all the financial transactions and keeps records of all the data related to finance. Similarly, the sales section handles all the sales-related activities and keeps records of all the sales. Now there may arise a situation when due to some reason an official from the finance section needs all the data about sales in a particular month. In this case, he is not allowed to directly access the data of the sales section. He will first have to contact some other officer in the sales section and then request him to give the particular data. This is what encapsulation is. Here the data of the sales section and the employees that can manipulate them are wrapped under a single name “sales section”. Using encapsulation also hides the data. In this example, the data of the sections like sales, finance, or accounts are hidden from any other section
-- In the above example, we have created the c variable as the private attribute. We cannot even access this attribute directly and can’t even change its value.
+- Design a payment system using polymorphism. Create a base class Payment with a method process_payment(). Implement subclasses CreditCardPayment and PayPalPayment with their own implementations of process_payment(). Demonstrate polymorphism by processing payments using different payment methods.
 
 ```py
-# Python program to
-# demonstrate private members
+class Payment:
+    def process_payment(self, amount):
+        pass
 
-# Creating a Base class
-class Base:
-	def __init__(self):
-		self.a = "GeeksforGeeks"
-		self.__c = "GeeksforGeeks"
+class CreditCardPayment(Payment):
+    def process_payment(self, amount):
+        print(f"Processed credit card payment of ${amount}")
 
-# Creating a derived class
-class Derived(Base):
-	def __init__(self):
+class PayPalPayment(Payment):
+    def process_payment(self, amount):
+        print(f"Processed PayPal payment of ${amount}")
 
-		# Calling constructor of
-		# Base class
-		Base.__init__(self)
-		print("Calling private member of base class: ")
-		print(self.__c)
+credit_card = CreditCardPayment()
+paypal = PayPalPayment()
 
-
-# Driver code
-obj1 = Base()
-print(obj1.a)
-
-# Uncommenting print(obj1.c) will
-# raise an AttributeError
-
-# Uncommenting obj2 = Derived() will
-# also raise an AtrributeError as
-# private member of base class
-# is called inside derived class
+credit_card.process_payment(100)  # Output: Processed credit card payment of $100
+paypal.process_payment(50)        # Output: Processed PayPal payment of $50
 
 ```
 
-```
-GeeksforGeeks
-```
-
-> Protected members
-
-- Protected members (in C++ and JAVA) are those members of the class that cannot be accessed outside the class but can be accessed from within the class and its subclasses. To accomplish this in Python, just follow the convention by prefixing the name of the member by a single underscore “\_”.
-- Although the protected variable can be accessed out of the class as well as in the derived class (modified too in derived class), it is customary(convention not a rule) to not access the protected out the class body.
-- Note: The **init** method is a constructor and runs as soon as an object of a class is instantiated.
+- Develop a vehicle rental system using polymorphism. Create a base class Vehicle with methods like get_rental_price() and display_info(). Implement subclasses Car and Bike with their own implementations of these methods. Demonstrate polymorphism by calculating rental prices and displaying information for both vehicle types.
 
 ```py
-# Python program to
-# demonstrate protected members
+class Vehicle:
+    def __init__(self, make, model):
+        self.make = make
+        self.model = model
 
-# Creating a base class
-class Base:
-    def __init__(self):
+    def get_rental_price(self):
+        pass
 
-        # Protected member
-        self._a = 2
+    def display_info(self):
+        print(f"{self.make} {self.model}")
 
-# Creating a derived class
-class Derived(Base):
-    def __init__(self):
+class Car(Vehicle):
+    def get_rental_price(self):
+        return 50  # Sample rental price calculation
 
-        # Calling constructor of
-        # Base class
-        Base.__init__(self)
-        print("Calling protected member of base class: ",
-              self._a)
+class Bike(Vehicle):
+    def get_rental_price(self):
+        return 20  # Sample rental price calculation
 
-        # Modify the protected variable:
-        self._a = 3
-        print("Calling modified protected member outside class: ",
-              self._a)
+car = Car("Toyota", "Camry")
+bike = Bike("Honda", "CBR")
 
-
-obj1 = Derived()
-
-obj2 = Base()
-
-# Calling protected member
-# Can be accessed but should not be done due to convention
-print("Accessing protected member of obj1: ", obj1._a)
-
-# Accessing the protected variable outside
-print("Accessing protected member of obj2: ", obj2._a)
-```
+car.display_info()       # Output: Toyota Camry
+print(car.get_rental_price())  # Output: 50
+bike.display_info()      # Output: Honda CBR
+print(bike.get_rental_price()) # Output: 20
 
 ```
-Calling protected member of base class:  2
-Calling modified protected member outside class:  3
-Accessing protected member of obj1:  3
-Accessing protected member of obj2:  2
-```
 
-> Private members:
-
-- Private members are similar to protected members, the difference is that the class members declared private should neither be accessed outside the class nor by any base class. In Python, there is no existence of Private instance variables that cannot be accessed except inside a class.
-- However, to define a private member prefix the member name with double underscore “\_\_”.
-- Note: Python’s private and protected members can be accessed outside the class through python name mangling.
+- Create a Parent class Shape with an abstract method calculate_area(). Implement child classes Rectangle and Circle that calculate and return their respective areas. Show polymorphism by calling the calculate_area() method on instances of both child classes.
 
 ```py
-# Python program to
-# demonstrate private members
+from abc import ABC, abstractmethod
 
-# Creating a Base class
+class Shape(ABC):
+    @abstractmethod
+    def calculate_area(self):
+        pass
 
+class Rectangle(Shape):
+    def __init__(self, width, height):
+        self.width = width
+        self.height = height
 
-class Base:
-    def __init__(self):
-        self.a = "GeeksforGeeks"
-        self.__c = "GeeksforGeeks"
+    def calculate_area(self):
+        return self.width * self.height
 
-# Creating a derived class
-class Derived(Base):
-    def __init__(self):
+class Circle(Shape):
+    def __init__(self, radius):
+        self.radius = radius
 
-        # Calling constructor of
-        # Base class
-        Base.__init__(self)
-        print("Calling private member of base class: ")
-        print(self.__c)
+    def calculate_area(self):
+        return 3.14 * self.radius ** 2
 
+rectangle = Rectangle(5, 3)
+circle = Circle(4)
 
-# Driver code
-obj1 = Base()
-print(obj1.a)
+print(rectangle.calculate_area())  # Output: 15
+print(circle.calculate_area())     # Output: 50.24
 
-# Uncommenting print(obj1.c) will
-# raise an AttributeError
-
-# Uncommenting obj2 = Derived() will
-# also raise an AttributeError as
-# private member of base class
-# is called inside derived class
-```
-
-```
-GeeksforGeeks
-```
-
-```
-Traceback (most recent call last):
-  File "/home/f4905b43bfcf29567e360c709d3c52bd.py", line 25, in <module>
-    print(obj1.c)
-AttributeError: 'Base' object has no attribute 'c'
-
-Traceback (most recent call last):
-  File "/home/4d97a4efe3ea68e55f48f1e7c7ed39cf.py", line 27, in <module>
-    obj2 = Derived()
-  File "/home/4d97a4efe3ea68e55f48f1e7c7ed39cf.py", line 20, in __init__
-    print(self.__c)
-AttributeError: 'Derived' object has no attribute '_Derived__c'
-```
-
-## DATA ABSTRACTION:
-
-- It hides unnecessary code details from the user. Also, when we do not want to give out sensitive parts of our code implementation and this is where data abstraction came.
-- Data Abstraction in Python can be achieved by creating abstract classes
-- Data abstraction and encapsulation both are often used as synonyms. Both are nearly synonyms because data abstraction is achieved through encapsulation.
-- Abstraction is used to hide internal details and show only functionalities. Abstracting something means to give names to things so that the name captures the core of what a function or a whole program does.
-
-## Data Hiding and Object Printing:
-
-> Data hiding:
-
-- In Python, we use double underscore (Or \_\_) before the attributes name and those attributes will not be directly visible outside.
-
-```py
-class MyClass:
-
-    # Hidden member of MyClass
-    __hiddenVariable = 0
-
-    # A member method that changes
-    # __hiddenVariable
-    def add(self, increment):
-        self.__hiddenVariable += increment
-        print (self.__hiddenVariable)
-
-# Driver code
-myObject = MyClass()
-myObject.add(2)
-myObject.add(5)
-
-# This line causes error
-print (myObject.__hiddenVariable)
-```
-
-```
-2
-7
-Traceback (most recent call last):
-  File "filename.py", line 13, in
-    print (myObject.__hiddenVariable)
-AttributeError: MyClass instance has
-no attribute '__hiddenVariable'
-```
-
-- In the above program, we tried to access a hidden variable outside the class using an object and it threw an exception.
-- We can access the value of a hidden attribute by a tricky syntax:
-
-```py
-# A Python program to demonstrate that hidden
-# members can be accessed outside a class
-class MyClass:
-
-    # Hidden member of MyClass
-    __hiddenVariable = 10
-
-# Driver code
-myObject = MyClass()
-print(myObject._MyClass__hiddenVariable)
-```
-
-```
-10
-```
-
-- Private methods are accessible outside their class, just not easily accessible. Nothing in Python is truly private; internally, the names of private methods and attributes are mangled and unmangled on the fly to make them seem inaccessible by their given names
-
-> Printing Objects:
-
-- Printing objects give us information about objects we are working with. In C++, we can do this by adding a friend ostream& operator << (ostream&, const Foobar&) method for the class. In Java, we use toString() method.
-  In python, this can be achieved by using **repr** or **str** methods.
-
-```py
-class Test:
-    def __init__(self, a, b):
-        self.a = a
-        self.b = b
-
-    def __repr__(self):
-        return "Test a:%s b:%s" % (self.a, self.b)
-
-    def __str__(self):
-        return "From str method of Test: a is %s," \
-              "b is %s" % (self.a, self.b)
-
-# Driver Code
-t = Test(1234, 5678)
-print(t) # This calls __str__()
-print([t]) # This calls __repr__()
-```
-
-```
-From str method of Test: a is 1234,b is 5678
-[Test a:1234 b:5678]
-```
-
-> Important Points about Printing:
-
-- If no **str** method is defined, print t (or print str(t)) uses **repr**.
-
-```py
-class Test:
-    def __init__(self, a, b):
-        self.a = a
-        self.b = b
-
-    def __repr__(self):
-        return "Test a:%s b:%s" % (self.a, self.b)
-
-# Driver Code
-t = Test(1234, 5678)
-print(t)
-```
-
-```
-Test a:1234 b:5678
-```
-
-> If no **repr** method is defined then the default is used:
-
-```py
-class Test:
-    def __init__(self, a, b):
-        self.a = a
-        self.b = b
-
-# Driver Code
-t = Test(1234, 5678)
-print(t)
-```
-
-```
-<__main__.Test instance at 0x7fa079da6710>
 ```
