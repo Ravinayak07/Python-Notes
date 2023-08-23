@@ -1,3 +1,271 @@
+## Basic Calculator:
+
+```
+Define a class Calculator with methods for addition, subtraction, multiplication, and division. Use the __init__ method to initialize a starting value. Create an object and perform basic arithmetic operations.
+```
+
+```py
+class Calculator:
+    def __init__(self, value):
+        self.result = value
+
+    def add(self, num):
+        self.result += num
+
+    def subtract(self, num):
+        self.result -= num
+
+    def multiply(self, num):
+        self.result *= num
+
+    def divide(self, num):
+        if num != 0:
+            self.result /= num
+        else:
+            print("Cannot divide by zero")
+
+calculator = Calculator(10)
+calculator.add(5)
+calculator.subtract(3)
+calculator.multiply(2)
+calculator.divide(4)
+print("Result:", calculator.result)
+
+```
+
+## Program to Create a Class which all Basic Calculator Operations according to user's wish:
+
+```py
+class cal():
+    def __init__(self,a,b):
+        self.a=a
+        self.b=b
+    def add(self):
+        return self.a+self.b
+    def mul(self):
+        return self.a*self.b
+    def div(self):
+        return self.a/self.b
+    def sub(self):
+        return self.a-self.b
+a=int(input("Enter first number: "))
+b=int(input("Enter second number: "))
+obj=cal(a,b)
+choice=1
+while choice!=0:
+    print("0. Exit")
+    print("1. Add")
+    print("2. Subtraction")
+    print("3. Multiplication")
+    print("4. Division")
+    choice=int(input("Enter choice: "))
+    if choice==1:
+        print("Result: ",obj.add())
+    elif choice==2:
+        print("Result: ",obj.sub())
+    elif choice==3:
+        print("Result: ",obj.mul())
+    elif choice==4:
+        print("Result: ",round(obj.div(),2))
+    elif choice==0:
+        print("Exiting!")
+    else:
+        print("Invalid choice!!")
+
+print()
+```
+
+## Python program to calculate Compund Interest using classes and objects:
+
+```
+- Formula : (P * (1 + r/100)^t) - P
+```
+
+```py
+class CompoundInterestCalculator:
+    def __init__(self, principal, rate, time):
+        self.principal = principal
+        self.rate = rate
+        self.time = time
+
+    def calculate(self):
+        compound_interest = self.principal * (1 + self.rate / 100) ** self.time - self.principal
+        return compound_interest
+
+# Taking user input
+principal = float(input("Enter the principal amount: "))
+rate = float(input("Enter the annual interest rate (%): "))
+time = float(input("Enter the time period (years): "))
+
+# Creating an instance of the CompoundInterestCalculator class
+calculator = CompoundInterestCalculator(principal, rate, time)
+
+# Calculating and displaying the compound interest
+compound_interest = calculator.calculate()
+print(f"Compound Interest: {compound_interest:.2f}")
+
+```
+
+## Program to print all prime numbers between an interval using classes and objects:
+
+```py
+class PrimeNumberFinder:
+    def __init__(self, start, end):
+        self.start = start
+        self.end = end
+
+    def is_prime(self, num):
+        if num <= 1:
+            return False
+        for i in range(2, int(num ** 0.5) + 1):
+            if num % i == 0:
+                return False
+        return True
+
+    def find_primes(self):
+        prime_numbers = []
+        for num in range(self.start, self.end + 1):
+            if self.is_prime(num):
+                prime_numbers.append(num)
+        return prime_numbers
+
+# Taking user input for the interval
+start = int(input("Enter the starting number: "))
+end = int(input("Enter the ending number: "))
+
+# Creating an instance of the PrimeNumberFinder class
+prime_finder = PrimeNumberFinder(start, end)
+
+# Finding and printing prime numbers within the interval
+prime_numbers = prime_finder.find_primes()
+print("Prime numbers between", start, "and", end, "are:", prime_numbers)
+
+```
+
+## Program to Append, Delete and Display Elements of a List using Classes:
+
+```py
+class check():
+    def __init__(self):
+        self.n=[]
+    def add(self,a):
+        return self.n.append(a)
+    def remove(self,b):
+        self.n.remove(b)
+    def dis(self):
+        return (self.n)
+
+obj=check()
+
+choice=1
+while choice!=0:
+    print("0. Exit")
+    print("1. Add")
+    print("2. Delete")
+    print("3. Display")
+    choice=int(input("Enter choice: "))
+    if choice==1:
+        n=int(input("Enter number to append: "))
+        obj.add(n)
+        print("List: ",obj.dis())
+
+    elif choice==2:
+        n=int(input("Enter number to remove: "))
+        obj.remove(n)
+        print("List: ",obj.dis())
+
+    elif choice==3:
+        print("List: ",obj.dis())
+    elif choice==0:
+        print("Exiting!")
+    else:
+        print("Invalid choice!!")
+
+print()
+```
+
+# PROPERTIES OF SELF:
+
+> 1 . Self: Pointer to Current Object
+
+- The self is always pointing to the Current Object. When you create an instance of a class, you’re essentially creating an object with its own set of attributes and methods.
+
+```py
+# built-in id() function to print the memory address
+class check:
+    def __init__(self):
+        print("Address of self = ",id(self))
+
+obj = check()
+print("Address of class object = ",id(obj))
+```
+
+```
+Address of self =  140273244381008
+Address of class object =  140273244381008
+```
+
+## Doc strings:
+
+- In Python, classes can indeed have documentation strings, also known as docstrings.
+- A docstring is a string literal that is the first statement in a class, function, module, or method definition. It's used to provide documentation and information about the purpose, usage, and behavior of the class or function.
+- The docstring for a class can be accessed using the **doc** attribute of the class object i.e which can be accessed by using class-name.**doc**
+
+```py
+class MyClass:
+    """
+    This is a docstring for the MyClass class.
+    It provides information about the class.
+    """
+
+    def __init__(self, value):
+        self.value = value
+
+# Accessing the class docstring
+print(MyClass.__doc__)
+```
+
+## Class and Instance Variables
+
+> Class Variables:
+
+- Class variable function independently of any class methods and can be accessed through the use of the class name. Here's an illustration:
+
+```py
+class Person:
+    count = 0   # This is a class variable
+
+    def __init__(self):
+        Person.count += 1   # Accessing the class variable using the name of the class
+        print(Person.count)
+
+
+print(Person.count)
+obj = Person()
+print(obj.count)
+```
+
+> Instance Variables:
+
+- Whereas, instance variables are specific to each instance of a class. They are specified using the self-argument in the **init** method. Here's an illustration:
+
+```py
+class Person:
+    def __init__(self, name):
+        self.name = name    # This is an instance variable
+
+person1 = Person("Ayan")
+print(person1.name)
+
+```
+
+```
+Ayan
+```
+
+- Instance variables are for data, unique to each instance and class variables are for attributes and methods shared by all instances of the class.
+  Instance variables are variables whose value is assigned inside a constructor or method with self whereas class variables are variables whose value is assigned in the class.
+
 # Two ways of declaring classes:
 
 ```py
@@ -178,10 +446,10 @@ True
 Rahul
 ```
 
-> 4 . Subclassing (Calling constructor of parent class)
+> 4 . How to call Constructor of Parent class from child class.
 
 - A child class needs to identify which class is its parent class. This can be done by mentioning the parent class name in the definition of the child class.
-- Example: class subclass_name (superclass_name)
+- Example: class childclass_name (Parentclass_name)
 - In this example, ‘obj’ is the instance created for the class Employee. It invokes the **init**() of the referred class.
 - You can see ‘object’ written in the declaration of the class Person. In Python, every class inherits from a built-in basic class called ‘object’. The constructor i.e. the ‘**init**’ function of a class is invoked when we create an object variable or an instance of the class.
 - The variables defined within **init**() are called instance variables or objects. Hence, ‘name’ and ‘idnumber’ are the objects of the class Person. Similarly, ‘salary’ and ‘post’ are the objects of the class Employee. Since the class Employee inherits from class Person, ‘name’ and ‘idnumber’ are also the objects of class Employee.
@@ -198,9 +466,9 @@ class Person(object):
         self.name = name
         self.idnumber = idnumber
 
-    def display(self):
-        print(self.name)
-        print(self.idnumber)
+    def display1(self):
+        print("Name : ",self.name)
+        print("id number:",self.idnumber)
 
 # child class
 class Employee(Person):
@@ -211,22 +479,103 @@ class Employee(Person):
         # invoking the __init__ of the parent class
         Person.__init__(self, name, idnumber)
 
+    def display2(self):
+        print("Salary : ",self.salary)
+        print("id number:",self.post)
+
 # creation of an object variable or an instance
-obj = Employee('Rahul', 886012, 200000, "Intern")
+obj = Employee('Rahul', 1234, 50000, "Developer")
 
 # calling a function of the class Person using its instance
-obj.display()
+obj.display1()
+obj.display2()
+
 ```
 
 ```
-Rahul
-886012
+Name :  Rahul
+id number: 1234
+Salary :  50000
+id number: Developer
 ```
 
-> 5. Demonstrate error if we forget to invoke **init**() of the parent
+> 5 . Error if we try to access the attributes of a parent class without invoking its **init**().
 
 - If you forget to invoke the **init**() of the parent class then its instance variables would not be available to the child class.
 - The following code produces an error for the same reason.
+
+```py
+
+class Person(object):
+
+    salary=20000
+    # __init__ is known as the constructor
+    def __init__(self, salary=50000):
+        self.salary= Salary
+
+
+    def display1(self):
+        print("Salary : ",self.salary)  #Person.Salary also
+
+
+# child class
+class Employee(Person):
+    def __init__(self, name, idnumber):
+        self.name = name
+        self.idnumber = idnumber
+
+
+    def display2(self):
+        print("Name : ",self.name)
+        print("id number:",self.idnumber)
+
+obj = Employee('Rahul', 1234)
+
+
+obj.display2()
+```
+
+```
+Name :  Rahul
+id number: 1234
+Salary :  20000
+```
+
+- When we call the init method:
+
+```py
+
+class Person(object):
+
+    def __init__(self, salary=50000):
+        self.salary= salary
+
+    def display1(self):
+        print("Salary : ",self.salary)  #Person.Salary also
+
+class Employee(Person):
+    def __init__(self, name, idnumber):
+        self.name = name
+        self.idnumber = idnumber
+
+        # invoking the __init__ of the parent class
+        Person.__init__(self)
+
+    def display2(self):
+        print("Name : ",self.name)
+        print("id number:",self.idnumber)
+
+obj = Employee('Rahul', 1234)
+
+obj.display2()
+obj.display1()
+```
+
+```
+Name :  Rahul
+id number: 1234
+Salary :  50000
+```
 
 ```py
 class A:
@@ -255,17 +604,21 @@ AttributeError: 'B' object has no attribute 'name'
 
 ```py
 class A:
-    def __init__(self, n='Rahul'):
+    def __init__(self, n):
         self.name = n
 
 class B(A):
-    def __init__(self, roll, n='Rahul'):
-        super().__init__(n)  # Call parent class's __init__ method
+    def __init__(self, roll, name):
+        super().__init__(name)  # Call parent class's __init__ method
         self.roll = roll
 
-obj = B(23)
+obj = B(23,"Rahul")
 print(obj.name)
 
+```
+
+```
+Rahul
 ```
 
 - In this corrected code, when you create an instance of class B, the **init** method of class B calls the **init** method of class A using super().**init**(n), which initializes the name attribute. This way, you won't encounter the "AttributeError" when trying to access obj.name
@@ -280,350 +633,31 @@ print(obj.name)
 ```py
 # parent class
 class Person():
-  def __init__(self, name, age):
-    self.name = name
-    self.age = age
+  def __init__(self, name):
+    self.PersonName = name
 
-  def display(self):
-    print(self.name, self.age)
-
-# child class
-class Student(Person):
-  def __init__(self, name, age):
-    self.sName = name
-    self.sAge = age
-    # inheriting the properties of parent class
-    super().__init__("Rahul", age)
-
-  def displayInfo(self):
-    print(self.sName, self.sAge)
-
-obj = Student("Mayank", 23)
-obj.display()
-obj.displayInfo()
-```
-
-```
-Rahul 23
-Mayank 23
-```
-
-> 7 . Adding Properties:
-
-- One of the features that inheritance provides is inheriting the properties of the parent class as well as adding new properties of our own to the child class. Let us see this with an example:
-
-```py
-# parent class
-class Person():
-  def __init__(self, name, age):
-    self.name = name
-    self.age = age
-
-  def display(self):
-    print(self.name, self.age)
+  def displayPerson(self):
+    print("Person Name: ",self.PersonName)
 
 # child class
 class Student(Person):
-  def __init__(self, name, age, dob):
-    self.sName = name
-    self.sAge = age
-    self.dob = dob
+  def __init__(self, name):
+    self.StudentName = name
+
     # inheriting the properties of parent class
-    super().__init__("Rahul", age)
+    super().__init__("Rahul")
 
-  def displayInfo(self):
-    print(self.sName, self.sAge, self.dob)
+  def displayStudent(self):
+    print("Student Name: ", self.StudentName)
 
-obj = Student("Mayank", 23, "16-03-2000")
-obj.display()
-obj.displayInfo()
-```
-
-- Here we can see that we added a new property to the child class, i.e., date of birth (dob)
-
-```
-Rahul 23
-Mayank 23 16-03-2000
-```
-
-## Example:
-
-- we have created two classes i.e. Person (parent class) and Employee (Child Class).
-- The Employee class inherits from the Person class
-- We can use the methods of the person class through the employee class as seen in the display function in the below code
-- A child class can also modify the behavior of the parent class as seen through the details() method.
-
-```py
-# Python code to demonstrate how parent constructors
-# are called.
-
-# parent class
-class Person(object):
-
-	# __init__ is known as the constructor
-	def __init__(self, name, idnumber):
-		self.name = name
-		self.idnumber = idnumber
-
-	def display(self):
-		print(self.name)
-		print(self.idnumber)
-
-	def details(self):
-		print("My name is {}".format(self.name))
-		print("IdNumber: {}".format(self.idnumber))
-
-# child class
-class Employee(Person):
-	def __init__(self, name, idnumber, salary, post):
-		self.salary = salary
-		self.post = post
-
-		# invoking the __init__ of the parent class
-		Person.__init__(self, name, idnumber)
-
-	def details(self):
-		print("My name is {}".format(self.name))
-		print("IdNumber: {}".format(self.idnumber))
-		print("Post: {}".format(self.post))
-
-
-# creation of an object variable or an instance
-a = Employee('Ravi', 886012, 200000, "Intern")
-
-# calling a function of the class Person using
-# its instance
-a.display()
-a.details()
-
+obj = Student("Ravi")
+obj.displayPerson()
+obj.displayStudent()
 ```
 
 ```
-Ravi
-886012
-My name is Ravi
-IdNumber: 886012
-Post: Interns
-```
-
-## Types of Inheritance:
-
-- There are 5 different types of inheritance in Python.
-
-> 1 . Single Inheritance:
-
-- When a child class inherits from only one parent class
-
-> 2 . Multilevel Inheritance:
-
-- Multi-level inheritance enables a derived class to inherit properties from an immediate parent class which in turn inherits properties from his parent class.
-- Multilevel inheritance: When we have a child and grandchild relationship. This means that a child class will inherit from its parent class, which in turn is inheriting from its parent class.
-
-```py
-# A Python program to demonstrate inheritance
-
-# Base or Super class. Note object in bracket.
-# (Generally, object is made ancestor of all classes)
-# In Python 3.x "class Person" is
-# equivalent to "class Person(object)"
-
-class Base(object):
-
-    # Constructor
-    def __init__(self, name):
-        self.name = name
-
-    # To get name
-    def getName(self):
-        return self.name
-
-
-# Inherited or Sub class (Note Person in bracket)
-class Child(Base):
-
-    # Constructor
-    def __init__(self, name, age):
-        Base.__init__(self, name)
-        self.age = age
-
-    # To get name
-    def getAge(self):
-        return self.age
-
-# Inherited or Sub class (Note Person in bracket)
-
-
-class GrandChild(Child):
-
-    # Constructor
-    def __init__(self, name, age, address):
-        Child.__init__(self, name, age)
-        self.address = address
-
-    # To get address
-    def getAddress(self):
-        return self.address
-
-
-# Driver code
-g = GrandChild("Geek1", 23, "Noida")
-print(g.getName(), g.getAge(), g.getAddress())
-```
-
-```
-Geek1 23 Noida
-```
-
-> 3 . Hierarchical Inheritance:
-
-- Hierarchical-level inheritance enables more than one derived class to inherit properties from a parent class.
-- More than one derived class can be created from a single base.
-
-> 4 . Multiple Inheritance:
-
-- When a child class inherits from multiple parent classes.
-- Unlike Java, python shows multiple inheritances.:
-
-```py
-# Python example to show the working of multiple
-# inheritance
-
-class Base1(object):
-    def __init__(self):
-        self.str1 = "Geek1"
-        print("Base1")
-
-
-class Base2(object):
-    def __init__(self):
-        self.str2 = "Geek2"
-        print("Base2")
-
-
-class Derived(Base1, Base2):
-    def __init__(self):
-
-        # Calling constructors of Base1
-        # and Base2 classes
-        Base1.__init__(self)
-        Base2.__init__(self)
-        print("Derived")
-
-    def printStrs(self):
-        print(self.str1, self.str2)
-
-
-ob = Derived()
-ob.printStrs()
-```
-
-```
-Base1
-Base2
-Derived
-Geek1 Geek2
-```
-
-> 5 . Hybrid inheritance:
-
-- This form combines more than one form of inheritance. Basically, it is a blend of more than one type of inheritance
-
-## Private members of the parent class :
-
-- We don’t always want the instance variables of the parent class to be inherited by the child class i.e. we can make some of the instance variables of the parent class private, which won’t be available to the child class.
-- In Python inheritance, we can make an instance variable private by adding double underscores before its name. For example:
-
-```py
-# Python program to demonstrate private members of the parent class
-
-class C(object):
-    def __init__(self):
-        self.c = 21
-
-        # d is private instance variable
-        self.__d = 42
-
-
-class D(C):
-    def __init__(self):
-        self.e = 84
-        C.__init__(self)
-
-object1 = D()
-
-# produces an error as d is private instance variable
-print(object1.c)
-print(object1.__d)
-```
-
-- Here we can see that when we tried to print the variable ‘c’, its value 21 is printed on the console. Whereas when we tried to print ‘d’, it generated the error. This is because the variable ‘d’ is made private by using the underscores. It is not available to the child class ‘D’ and hence the error.
-
-```
-21
-  File "/home/993bb61c3e76cda5bb67bd9ea05956a1.py", line 16, in
-    print (object1.d)
-AttributeError: type object 'D' has no attribute 'd'
-```
-
-## **init** with inheritance
-
-- Let’s consider the below example to see how **init** works in inheritance. :
-
-```py
-# Python program to
-# demonstrate init with
-# inheritance
-
-class A(object):
-    def __init__(self, something):
-        print("A init called", something)
-        self.something = something
-
-
-class B(A):
-    def __init__(self, something):
-
-        # Calling init of parent class
-        A.__init__(self, something)
-        print("B init called". something)
-        self.something = something
-
-
-obj = B("Ravi")
-```
-
-```
-A init called
-B init called
-```
-
-- So, the parent class constructor is called first. But in Python, it is not compulsory that the parent class constructor will always be called first. The order in which the **init** method is called for a parent or a child class can be modified. This can simply be done by calling the parent class constructor after the body of the child class constructor.
-
-```py
-# Python program to
-# demonstrate init with
-# inheritance
-
-class A(object):
-    def __init__(self, something):
-        print("A init called")
-        self.something = something
-
-
-class B(A):
-    def __init__(self, something):
-        print("B init called")
-        self.something = something
-        # Calling init of parent class
-        A.__init__(self, something)
-
-
-obj = B("Something")
-```
-
-```
-B init called
-A init called
+Person Name:  Rahul
+Student Name:  Ravi
 ```
 
 # POLYMORPHISIM:
@@ -894,4 +928,262 @@ circle = Circle(4)
 print(rectangle.calculate_area())  # Output: 15
 print(circle.calculate_area())     # Output: 50.24
 
+```
+
+## Types of Inheritance:
+
+- There are 5 different types of inheritance in Python.
+
+> 1 . Single Inheritance:
+
+- When a child class inherits from only one parent class
+
+> 2 . Multilevel Inheritance:
+
+- Multi-level inheritance enables a derived class to inherit properties from an parent class which in turn inherits properties from his parent class.
+- Its like child and grandchild relationship. This means that a child class will inherit from its parent class, which in turn is inheriting from its parent class.
+
+```py
+class Parent(object):
+
+    def __init__(self, name):
+        self.name = name
+
+    def displayName(self):
+        return self.name
+
+
+class Child(Parent):
+
+    def __init__(self, name, age):
+
+        self.age = age
+
+        Parent.__init__(self, name)
+
+
+    def displayAge(self):
+        return self.age
+
+
+class GrandChild(Child):
+
+    def __init__(self, name, age, city):
+
+        self.city = city
+
+        Child.__init__(self, name, age)
+
+
+    def displayCity(self):
+        return self.city
+
+
+obj = GrandChild("Ravi", 21, "BBSR")
+print(obj.displayName())
+print(obj.displayAge())
+print(obj.displayCity())
+
+```
+
+```
+Ravi
+21
+BBSR
+```
+
+- uisng superfun:
+
+```py
+class Parent(object):
+
+    def __init__(self, name):
+        self.name = name
+
+    def displayName(self):
+        return self.name
+
+
+class Child(Parent):
+
+    def __init__(self, name, age):
+
+        self.age = age
+
+        super().__init__(name)
+
+
+    def displayAge(self):
+        return self.age
+
+
+class GrandChild(Child):
+
+    def __init__(self, name, age, city):
+
+        self.city = city
+
+        super().__init__(name, age)
+
+
+    def displayCity(self):
+        return self.city
+
+
+obj = GrandChild("Ravi", 21, "BBSR")
+print(obj.displayName())
+print(obj.displayAge())
+print(obj.displayCity())
+
+```
+
+> 3 . Hierarchical Inheritance:
+
+- More than one derived class can be created from a single base.
+
+> 4 . Multiple Inheritance:
+
+- When a child class inherits from multiple parent classes.
+- Unlike Java, python shows multiple inheritances.:
+
+```py
+# Python example to show the working of multiple
+# inheritance
+
+class Base1(object):
+    def __init__(self):
+        self.str1 = "Geek1"
+        print("Base1")
+
+
+class Base2(object):
+    def __init__(self):
+        self.str2 = "Geek2"
+        print("Base2")
+
+
+class Derived(Base1, Base2):
+    def __init__(self):
+
+        # Calling constructors of Base1
+        # and Base2 classes
+        Base1.__init__(self)
+        Base2.__init__(self)
+        print("Derived")
+
+    def printStrs(self):
+        print(self.str1, self.str2)
+
+
+ob = Derived()
+ob.printStrs()
+```
+
+```
+Base1
+Base2
+Derived
+Geek1 Geek2
+```
+
+> 5 . Hybrid inheritance:
+
+- This form combines more than one form of inheritance. Basically, it is a blend of more than one type of inheritance
+
+## Private members of the parent class :
+
+- We don’t always want the instance variables of the parent class to be inherited by the child class i.e. we can make some of the instance variables of the parent class private, which won’t be available to the child class.
+- In Python inheritance, we can make an instance variable private by adding double underscores before its name. For example:
+
+```py
+# Python program to demonstrate private members of the parent class
+
+class C(object):
+    def __init__(self):
+        self.c = 21
+
+        # d is private instance variable
+        self.__d = 42
+
+
+class D(C):
+    def __init__(self):
+        self.e = 84
+        C.__init__(self)
+
+object1 = D()
+
+# produces an error as d is private instance variable
+print(object1.c)
+print(object1.__d)
+```
+
+- Here we can see that when we tried to print the variable ‘c’, its value 21 is printed on the console. Whereas when we tried to print ‘d’, it generated the error. This is because the variable ‘d’ is made private by using the underscores. It is not available to the child class ‘D’ and hence the error.
+
+```
+21
+  File "/home/993bb61c3e76cda5bb67bd9ea05956a1.py", line 16, in
+    print (object1.d)
+AttributeError: type object 'D' has no attribute 'd'
+```
+
+## **init** with inheritance
+
+- Let’s consider the below example to see how **init** works in inheritance. :
+
+```py
+# Python program to
+# demonstrate init with
+# inheritance
+
+class A(object):
+    def __init__(self, something):
+        print("A init called", something)
+        self.something = something
+
+
+class B(A):
+    def __init__(self, something):
+
+        # Calling init of parent class
+        A.__init__(self, something)
+        print("B init called". something)
+        self.something = something
+
+
+obj = B("Ravi")
+```
+
+```
+A init called
+B init called
+```
+
+- So, the parent class constructor is called first. But in Python, it is not compulsory that the parent class constructor will always be called first. The order in which the **init** method is called for a parent or a child class can be modified. This can simply be done by calling the parent class constructor after the body of the child class constructor.
+
+```py
+# Python program to
+# demonstrate init with
+# inheritance
+
+class A(object):
+    def __init__(self, something):
+        print("A init called")
+        self.something = something
+
+
+class B(A):
+    def __init__(self, something):
+        print("B init called")
+        self.something = something
+        # Calling init of parent class
+        A.__init__(self, something)
+
+
+obj = B("Something")
+```
+
+```
+B init called
+A init called
 ```
