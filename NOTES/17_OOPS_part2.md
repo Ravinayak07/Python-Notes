@@ -1,8 +1,7 @@
 ## Basic Calculator:
 
-```
-Define a class Calculator with methods for addition, subtraction, multiplication, and division. Use the __init__ method to initialize a starting value. Create an object and perform basic arithmetic operations.
-```
+- Define a class Calculator with methods for addition, subtraction, multiplication, and division. Use the __init__ method to initialize a starting value. Create an object and perform basic arithmetic operations.
+
 
 ```py
 class Calculator:
