@@ -1529,6 +1529,352 @@ Laptop
 Earbuds
 ```
 
+## Basic Calculator:
+
+```
+Define a class Calculator with methods for addition, subtraction, multiplication, and division. Use the __init__ method to initialize a starting value. Create an object and perform basic arithmetic operations.
+```
+
+```py
+class Calculator:
+    def __init__(self, value):
+        self.result = value
+
+    def add(self, num):
+        self.result += num
+
+    def subtract(self, num):
+        self.result -= num
+
+    def multiply(self, num):
+        self.result *= num
+
+    def divide(self, num):
+        if num != 0:
+            self.result /= num
+        else:
+            print("Cannot divide by zero")
+
+calculator = Calculator(10)
+calculator.add(5)
+calculator.subtract(3)
+calculator.multiply(2)
+calculator.divide(4)
+print("Result:", calculator.result)
+
+```
+
+## Program to Create a Class which all Basic Calculator Operations according to user's wish:
+
+```py
+class cal():
+    def __init__(self,a,b):
+        self.a=a
+        self.b=b
+    def add(self):
+        return self.a+self.b
+    def mul(self):
+        return self.a*self.b
+    def div(self):
+        return self.a/self.b
+    def sub(self):
+        return self.a-self.b
+a=int(input("Enter first number: "))
+b=int(input("Enter second number: "))
+obj=cal(a,b)
+choice=1
+while choice!=0:
+    print("0. Exit")
+    print("1. Add")
+    print("2. Subtraction")
+    print("3. Multiplication")
+    print("4. Division")
+    choice=int(input("Enter choice: "))
+    if choice==1:
+        print("Result: ",obj.add())
+    elif choice==2:
+        print("Result: ",obj.sub())
+    elif choice==3:
+        print("Result: ",obj.mul())
+    elif choice==4:
+        print("Result: ",round(obj.div(),2))
+    elif choice==0:
+        print("Exiting!")
+    else:
+        print("Invalid choice!!")
+
+print()
+```
+
+## Python program to calculate Compund Interest using classes and objects:
+
+```
+- Formula : (P * (1 + r/100)^t) - P
+```
+
+```py
+class CompoundInterestCalculator:
+    def __init__(self, principal, rate, time):
+        self.principal = principal
+        self.rate = rate
+        self.time = time
+
+    def calculate(self):
+        compound_interest = self.principal * (1 + self.rate / 100) ** self.time - self.principal
+        return compound_interest
+
+# Taking user input
+principal = float(input("Enter the principal amount: "))
+rate = float(input("Enter the annual interest rate (%): "))
+time = float(input("Enter the time period (years): "))
+
+# Creating an instance of the CompoundInterestCalculator class
+calculator = CompoundInterestCalculator(principal, rate, time)
+
+# Calculating and displaying the compound interest
+compound_interest = calculator.calculate()
+print(f"Compound Interest: {compound_interest:.2f}")
+
+```
+
+## Program to print all prime numbers between an interval using classes and objects:
+
+```py
+class PrimeNumberFinder:
+    def __init__(self, start, end):
+        self.start = start
+        self.end = end
+
+    def is_prime(self, num):
+        if num <= 1:
+            return False
+        for i in range(2, int(num ** 0.5) + 1):
+            if num % i == 0:
+                return False
+        return True
+
+    def find_primes(self):
+        prime_numbers = []
+        for num in range(self.start, self.end + 1):
+            if self.is_prime(num):
+                prime_numbers.append(num)
+        return prime_numbers
+
+# Taking user input for the interval
+start = int(input("Enter the starting number: "))
+end = int(input("Enter the ending number: "))
+
+# Creating an instance of the PrimeNumberFinder class
+prime_finder = PrimeNumberFinder(start, end)
+
+# Finding and printing prime numbers within the interval
+prime_numbers = prime_finder.find_primes()
+print("Prime numbers between", start, "and", end, "are:", prime_numbers)
+
+```
+
+## Program to Append, Delete and Display Elements of a List using Classes:
+
+```py
+class check():
+    def __init__(self):
+        self.n=[]
+    def add(self,a):
+        return self.n.append(a)
+    def remove(self,b):
+        self.n.remove(b)
+    def dis(self):
+        return (self.n)
+
+obj=check()
+
+choice=1
+while choice!=0:
+    print("0. Exit")
+    print("1. Add")
+    print("2. Delete")
+    print("3. Display")
+    choice=int(input("Enter choice: "))
+    if choice==1:
+        n=int(input("Enter number to append: "))
+        obj.add(n)
+        print("List: ",obj.dis())
+
+    elif choice==2:
+        n=int(input("Enter number to remove: "))
+        obj.remove(n)
+        print("List: ",obj.dis())
+
+    elif choice==3:
+        print("List: ",obj.dis())
+    elif choice==0:
+        print("Exiting!")
+    else:
+        print("Invalid choice!!")
+
+print()
+```
+
+# PROPERTIES OF SELF:
+
+> 1 . Self: Pointer to Current Object
+
+- The self is always pointing to the Current Object. When you create an instance of a class, you’re essentially creating an object with its own set of attributes and methods.
+
+```py
+# built-in id() function to print the memory address
+class check:
+    def __init__(self):
+        print("Address of self = ",id(self))
+
+obj = check()
+print("Address of class object = ",id(obj))
+```
+
+```
+Address of self =  140273244381008
+Address of class object =  140273244381008
+```
+
+## Doc strings:
+
+- In Python, classes can indeed have documentation strings, also known as docstrings.
+- A docstring is a string literal that is the first statement in a class, function, module, or method definition. It's used to provide documentation and information about the purpose, usage, and behavior of the class or function.
+- The docstring for a class can be accessed using the **doc** attribute of the class object i.e which can be accessed by using class-name.**doc**
+
+```py
+class MyClass:
+    """
+    This is a docstring for the MyClass class.
+    It provides information about the class.
+    """
+
+    def __init__(self, value):
+        self.value = value
+
+# Accessing the class docstring
+print(MyClass.__doc__)
+```
+
+## Class and Instance Variables
+
+> Class Variables:
+
+- Class variable function independently of any class methods and can be accessed through the use of the class name. Here's an illustration:
+
+```py
+class Person:
+    count = 0   # This is a class variable
+
+    def __init__(self):
+        Person.count += 1   # Accessing the class variable using the name of the class
+        print(Person.count)
+
+
+print(Person.count)
+obj = Person()
+print(obj.count)
+```
+
+> Instance Variables:
+
+- Whereas, instance variables are specific to each instance of a class. They are specified using the self-argument in the **init** method. Here's an illustration:
+
+```py
+class Person:
+    def __init__(self, name):
+        self.name = name    # This is an instance variable
+
+person1 = Person("Ayan")
+print(person1.name)
+
+```
+
+```
+Ayan
+```
+
+- Instance variables are for data, unique to each instance and class variables are for attributes and methods shared by all instances of the class.
+  Instance variables are variables whose value is assigned inside a constructor or method with self whereas class variables are variables whose value is assigned in the class.
+
+# Two ways of declaring classes:
+
+```py
+#  new and modern way, most preferred and widely used
+# recommend for python 3
+class Car:
+    pass
+```
+
+```py
+# Also correct but old way
+# used in python 2
+class Car():
+    pass
+```
+
+# OUTPUT:
+
+```py
+# Accessing class attribute using classname
+class Car():
+
+    name = "Mercedes"    # class attribute
+    def drive(self):
+        print("I am driving " + Car.name)
+
+obj = Car()
+obj.drive() # I am driving Mercedes
+```
+
+```py
+# using the self parameter to access the class attribute through the instance.
+class Car():
+
+    name = "Mercedes"    # class attribute
+    def drive(self):
+        print("I am driving " + self.name)
+
+obj = Car()
+obj.drive() # I am driving Mercedes
+
+obj2 = Car()
+obj2.name = "BMW"
+obj2.drive() # I am driving BMW
+```
+
+- The self parameter in a method refers to the instance of the class that the method is being called on. When you create an instance of a class, like obj = Car(), that instance is passed as the self parameter to any method you call on that instance.
+
+- In your example, the name variable is defined as a class attribute outside of the drive method, using the Car class itself as its scope. This means that name is shared among all instances of the class, and it can be accessed using either the class name or an instance.
+
+- When the drive method is called on the obj instance, the self parameter in the method receives the instance itself (obj in this case). So, when you use self.name inside the drive method, it refers to the class attribute name of the instance.
+
+- If you were to modify the name attribute for a specific instance, it would not affect the name attribute for other instances or the default name attribute of the class.
+
+- self.name refers to the name attribute of the instance car, which is inherited from the class attribute name. This way, you're using the instance's attribute through the self parameter to access the class attribute, achieving the same result as the original code but with a more object-oriented approach.
+
+# Methods inisde init method:
+
+```py
+class MyClass:
+    def __init__(self, value):
+        self.value = value
+
+        def inner_method():
+            return self.value * 2
+
+        self.result = inner_method()
+
+# Create an instance of the class
+my_object = MyClass(5)
+
+# Access the result calculated within the inner method
+print(my_object.result)  # Output: 10
+```
+
+- It is not a recommended practice and might lead to confusion and code complexity.
+- In object-oriented programming, methods are typically defined outside the constructor (**init**) to promote better organization, readability, and separation of concerns.
+
 # Notes:
 
 - OOPs helps to implement real-world entities like inheritance, polymorphisms, encapsulation, etc. in the programming.

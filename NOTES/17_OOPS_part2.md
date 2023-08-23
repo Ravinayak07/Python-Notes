@@ -1,349 +1,3 @@
-## Basic Calculator:
-
-```
-Define a class Calculator with methods for addition, subtraction, multiplication, and division. Use the __init__ method to initialize a starting value. Create an object and perform basic arithmetic operations.
-```
-
-```py
-class Calculator:
-    def __init__(self, value):
-        self.result = value
-
-    def add(self, num):
-        self.result += num
-
-    def subtract(self, num):
-        self.result -= num
-
-    def multiply(self, num):
-        self.result *= num
-
-    def divide(self, num):
-        if num != 0:
-            self.result /= num
-        else:
-            print("Cannot divide by zero")
-
-calculator = Calculator(10)
-calculator.add(5)
-calculator.subtract(3)
-calculator.multiply(2)
-calculator.divide(4)
-print("Result:", calculator.result)
-
-```
-
-## Program to Create a Class which all Basic Calculator Operations according to user's wish:
-
-```py
-class cal():
-    def __init__(self,a,b):
-        self.a=a
-        self.b=b
-    def add(self):
-        return self.a+self.b
-    def mul(self):
-        return self.a*self.b
-    def div(self):
-        return self.a/self.b
-    def sub(self):
-        return self.a-self.b
-a=int(input("Enter first number: "))
-b=int(input("Enter second number: "))
-obj=cal(a,b)
-choice=1
-while choice!=0:
-    print("0. Exit")
-    print("1. Add")
-    print("2. Subtraction")
-    print("3. Multiplication")
-    print("4. Division")
-    choice=int(input("Enter choice: "))
-    if choice==1:
-        print("Result: ",obj.add())
-    elif choice==2:
-        print("Result: ",obj.sub())
-    elif choice==3:
-        print("Result: ",obj.mul())
-    elif choice==4:
-        print("Result: ",round(obj.div(),2))
-    elif choice==0:
-        print("Exiting!")
-    else:
-        print("Invalid choice!!")
-
-print()
-```
-
-## Python program to calculate Compund Interest using classes and objects:
-
-```
-- Formula : (P * (1 + r/100)^t) - P
-```
-
-```py
-class CompoundInterestCalculator:
-    def __init__(self, principal, rate, time):
-        self.principal = principal
-        self.rate = rate
-        self.time = time
-
-    def calculate(self):
-        compound_interest = self.principal * (1 + self.rate / 100) ** self.time - self.principal
-        return compound_interest
-
-# Taking user input
-principal = float(input("Enter the principal amount: "))
-rate = float(input("Enter the annual interest rate (%): "))
-time = float(input("Enter the time period (years): "))
-
-# Creating an instance of the CompoundInterestCalculator class
-calculator = CompoundInterestCalculator(principal, rate, time)
-
-# Calculating and displaying the compound interest
-compound_interest = calculator.calculate()
-print(f"Compound Interest: {compound_interest:.2f}")
-
-```
-
-## Program to print all prime numbers between an interval using classes and objects:
-
-```py
-class PrimeNumberFinder:
-    def __init__(self, start, end):
-        self.start = start
-        self.end = end
-
-    def is_prime(self, num):
-        if num <= 1:
-            return False
-        for i in range(2, int(num ** 0.5) + 1):
-            if num % i == 0:
-                return False
-        return True
-
-    def find_primes(self):
-        prime_numbers = []
-        for num in range(self.start, self.end + 1):
-            if self.is_prime(num):
-                prime_numbers.append(num)
-        return prime_numbers
-
-# Taking user input for the interval
-start = int(input("Enter the starting number: "))
-end = int(input("Enter the ending number: "))
-
-# Creating an instance of the PrimeNumberFinder class
-prime_finder = PrimeNumberFinder(start, end)
-
-# Finding and printing prime numbers within the interval
-prime_numbers = prime_finder.find_primes()
-print("Prime numbers between", start, "and", end, "are:", prime_numbers)
-
-```
-
-## Program to Append, Delete and Display Elements of a List using Classes:
-
-```py
-class check():
-    def __init__(self):
-        self.n=[]
-    def add(self,a):
-        return self.n.append(a)
-    def remove(self,b):
-        self.n.remove(b)
-    def dis(self):
-        return (self.n)
-
-obj=check()
-
-choice=1
-while choice!=0:
-    print("0. Exit")
-    print("1. Add")
-    print("2. Delete")
-    print("3. Display")
-    choice=int(input("Enter choice: "))
-    if choice==1:
-        n=int(input("Enter number to append: "))
-        obj.add(n)
-        print("List: ",obj.dis())
-
-    elif choice==2:
-        n=int(input("Enter number to remove: "))
-        obj.remove(n)
-        print("List: ",obj.dis())
-
-    elif choice==3:
-        print("List: ",obj.dis())
-    elif choice==0:
-        print("Exiting!")
-    else:
-        print("Invalid choice!!")
-
-print()
-```
-
-# PROPERTIES OF SELF:
-
-> 1 . Self: Pointer to Current Object
-
-- The self is always pointing to the Current Object. When you create an instance of a class, you’re essentially creating an object with its own set of attributes and methods.
-
-```py
-# built-in id() function to print the memory address
-class check:
-    def __init__(self):
-        print("Address of self = ",id(self))
-
-obj = check()
-print("Address of class object = ",id(obj))
-```
-
-```
-Address of self =  140273244381008
-Address of class object =  140273244381008
-```
-
-## Doc strings:
-
-- In Python, classes can indeed have documentation strings, also known as docstrings.
-- A docstring is a string literal that is the first statement in a class, function, module, or method definition. It's used to provide documentation and information about the purpose, usage, and behavior of the class or function.
-- The docstring for a class can be accessed using the **doc** attribute of the class object i.e which can be accessed by using class-name.**doc**
-
-```py
-class MyClass:
-    """
-    This is a docstring for the MyClass class.
-    It provides information about the class.
-    """
-
-    def __init__(self, value):
-        self.value = value
-
-# Accessing the class docstring
-print(MyClass.__doc__)
-```
-
-## Class and Instance Variables
-
-> Class Variables:
-
-- Class variable function independently of any class methods and can be accessed through the use of the class name. Here's an illustration:
-
-```py
-class Person:
-    count = 0   # This is a class variable
-
-    def __init__(self):
-        Person.count += 1   # Accessing the class variable using the name of the class
-        print(Person.count)
-
-
-print(Person.count)
-obj = Person()
-print(obj.count)
-```
-
-> Instance Variables:
-
-- Whereas, instance variables are specific to each instance of a class. They are specified using the self-argument in the **init** method. Here's an illustration:
-
-```py
-class Person:
-    def __init__(self, name):
-        self.name = name    # This is an instance variable
-
-person1 = Person("Ayan")
-print(person1.name)
-
-```
-
-```
-Ayan
-```
-
-- Instance variables are for data, unique to each instance and class variables are for attributes and methods shared by all instances of the class.
-  Instance variables are variables whose value is assigned inside a constructor or method with self whereas class variables are variables whose value is assigned in the class.
-
-# Two ways of declaring classes:
-
-```py
-#  new and modern way, most preferred and widely used
-# recommend for python 3
-class Car:
-    pass
-```
-
-```py
-# Also correct but old way
-# used in python 2
-class Car():
-    pass
-```
-
-# OUTPUT:
-
-```py
-# Accessing class attribute using classname
-class Car():
-
-    name = "Mercedes"    # class attribute
-    def drive(self):
-        print("I am driving " + Car.name)
-
-obj = Car()
-obj.drive() # I am driving Mercedes
-```
-
-```py
-# using the self parameter to access the class attribute through the instance.
-class Car():
-
-    name = "Mercedes"    # class attribute
-    def drive(self):
-        print("I am driving " + self.name)
-
-obj = Car()
-obj.drive() # I am driving Mercedes
-
-obj2 = Car()
-obj2.name = "BMW"
-obj2.drive() # I am driving BMW
-```
-
-- The self parameter in a method refers to the instance of the class that the method is being called on. When you create an instance of a class, like obj = Car(), that instance is passed as the self parameter to any method you call on that instance.
-
-- In your example, the name variable is defined as a class attribute outside of the drive method, using the Car class itself as its scope. This means that name is shared among all instances of the class, and it can be accessed using either the class name or an instance.
-
-- When the drive method is called on the obj instance, the self parameter in the method receives the instance itself (obj in this case). So, when you use self.name inside the drive method, it refers to the class attribute name of the instance.
-
-- If you were to modify the name attribute for a specific instance, it would not affect the name attribute for other instances or the default name attribute of the class.
-
-- self.name refers to the name attribute of the instance car, which is inherited from the class attribute name. This way, you're using the instance's attribute through the self parameter to access the class attribute, achieving the same result as the original code but with a more object-oriented approach.
-
-# Methods inisde init method:
-
-```py
-class MyClass:
-    def __init__(self, value):
-        self.value = value
-
-        def inner_method():
-            return self.value * 2
-
-        self.result = inner_method()
-
-# Create an instance of the class
-my_object = MyClass(5)
-
-# Access the result calculated within the inner method
-print(my_object.result)  # Output: 10
-```
-
-- It is not a recommended practice and might lead to confusion and code complexity.
-- In object-oriented programming, methods are typically defined outside the constructor (**init**) to promote better organization, readability, and separation of concerns.
-
 # INHERITANCE:
 
 - Inheritance is the capability of one class to derive or inherit the properties from another class.
@@ -366,10 +20,14 @@ Class DerivedClass(BaseClass):
     {Body}
 ```
 
-- Example:
+> composition rather than inheritance:
+
+- In the below example, the Car class is not explicitly inheriting from the Vehicle class, but it's using a property (name) of the Vehicle class. This is a form of composition, where one class is composed of or uses another class as a component.
+- This code doesn't involve explicit inheritance, but it shows how one class (Car) can use attributes from another class (Vehicle) through composition.
 
 ```py
 class Vehicle:
+    # class attribute
     name = "Mercedes"
 
 class Car(Vehicle):
@@ -378,97 +36,204 @@ class Car(Vehicle):
 
 car = Car()
 
+print(car.drive()) # I am driving Vehicle
+```
+
+> Modifying the above code to involve inheritance between the Car class and the Vehicle
+
+```py
+class Vehicle:
+    name = "Mercedes"
+
+class Car(Vehicle):
+    def drive(self):
+        return "I am driving " + self.name
+
+car = Car()
+
 print(car.drive())
 ```
 
-> 1 . First Create a Parent or Base Class:
-
-- A parent class is a class whose properties are inherited by the child class.
-- Let’s create a parent class called Person which has a Display method to display the person’s information.
+- The Vehicle class has a class attribute name set to "Mercedes".
+- The Car class inherits from the Vehicle class and directly uses the name attribute within its drive() method.
+- The drive() method of the Car class is called on the instance, and it uses the inherited name attribute from the Vehicle class to generate the output.
+- This approach involves inheritance without using an **init** method and directly accesses the attributes from the parent class within the child class methods.
+- The above code is simmilar to this in a way:
 
 ```py
-class Person(object):
+class Vehicle:
+    name = "Mercedes"
 
+class Car(Vehicle):
+    name = "Mercedes"
+    def drive(self):
+        return "I am driving " + self.name
+
+car = Car()
+
+print(car.drive())
+```
+
+- The local attribute takes precedence over the inherited attribute and overrides it:
+
+```py
+class Vehicle:
+    name = "Mercedes"
+
+class Car(Vehicle):
+    name = "BMW"
+    def drive(self):
+        return "I am driving " + self.name
+
+car = Car()
+
+print(car.drive())
+```
+
+> Using init method:
+
+```py
+class Vehicle:
     def __init__(self, name):
         self.name = name
 
-    def display(self):
-        print(self.name)
+class Car(Vehicle):
+    def drive(self):
+        return "I am driving "+self.name
 
-# An Object of Parent class (Person)
-
-obj1 = Person("Ravi")
-obj1.display()     # Ravi
+car = Car("Mercedes")
+print(car.drive())
 ```
 
-```
-Ravi
-```
+- In the above code, The Vehicle class now has an **init** constructor that takes a name parameter and assigns it to the instance's name attribute.
+- The Car class inherits from the Vehicle class, meaning it inherits the name attribute and constructor from the parent class.
+- When you call the drive() method on the car instance, it uses the name attribute from the inherited Vehicle class to create the output "I am driving Mercedes".
+- This way, you're using inheritance to share properties and methods between the parent Vehicle class and the child Car class.
 
-> 2 . Now create a child or derived Class:
-
-- A child class is a class that drives the properties from its parent class.
-- Here Employee is another class that is going to inherit the properties of the Person class(base class).
+> Proper Example of Inheritance
 
 ```py
-class Employee(Person):
-
-    # Here we return true
-    def isEmployee(self):
-        return True
-
-emp = Employee("Rahul")  # An Object of Employee
-
-# Calling child class function
-print(emp.isEmployee()) # True
-
-# calling parent class function
-emp.display() # Rahul
-```
-
-> 3 . Inheriting properties of parent class in child class:
-
-- In this example, ‘Person’ is the parent class, and ‘Employee’ is its child class.
-
-```py
-class Person(object):
-
+class Parent:
     def __init__(self, name):
         self.name = name
 
-    # To get name
-    def display(self):
-        print(self.name)
+    def greet(self):
+        print(f"Hello, I am {self.name}.")
 
-# An Object of Parent class (Person)
+class Child(Parent):
+    def introduce(self):
+        print(f"My name is {self.name} and I'm the child.")
 
-obj1 = Person("Ravi")
-obj1.display()     # Ravi
+obj = Child()
 
-# Inherited or Child class
-class Employee(Person):
+obj.greet()       # Inherited from Parent class
+obj.introduce()   # Defined in Child class
+```
 
-    # Here we return true
-    def isEmployee(self):
-        return True
+```
+TypeError: Parent.__init__() missing 1 required positional argument: 'name'
+```
 
-emp = Employee("Rahul")  # An Object of Employee
+- The Error is because when you create an instance of the Child class, it inherits the **init**() constructor from the Parent class. The **init**() constructor of the parent class requires a name argument, but you didn't provide it when creating the instance of the Child class.
+- So the corrected code is:
 
-# Calling child class function
-print(emp.isEmployee()) # True
+```py
+class Parent:
+    def __init__(self, name):
+        self.name = name
 
-# calling parent class function
-emp.display() # Rahul
+    def greet(self):
+        print(f"Hello, I am {self.name}.")
+
+class Child(Parent):
+    def introduce(self):
+        print(f"My name is {self.name} and I'm the child.")
+
+obj = Child("Ravi")
+
+obj.greet()       # Inherited from Parent class
+obj.introduce()   # Defined in Child class
+```
+
+```
+Hello, I am Ravi.
+My name is Ravi and I'm the child.
+```
+
+## How to call Constructor of Parent class from child class.
+
+> 1 . Why we need to explicitly call Constructor of Parent class from child class
+
+- IWhen a child class inherits from a parent class, it also inherits the parent's **init** method.
+- In many cases, you might not need to explicitly call the parent's constructor using super(). The parent class's constructor will be automatically called when you create an instance of the child class. This is known as constructor chaining.
+- However, there are situations where you might want to customize the initialization process in the child class while still retaining the behavior of the parent class's constructor. Using super() allows you to achieve this by calling the parent's constructor explicitly while adding any additional initialization specific to the child class.
+- Here are some scenarios where calling the parent class's constructor from the child class using super() can be useful:
+
+- 1. Additional Parameters: If the child class requires additional parameters in its constructor, you can use super() to call the parent's constructor with the necessary arguments.
+
+```py
+class Parent:
+    def __init__(self, name):
+        self.name = name
+
+class Child(Parent):
+    def __init__(self, name, age):
+        super().__init__(name)
+        self.age = age
+
+child_instance = Child("Alice", 25)
+print(child_instance.name)
+print(child_instance.age)
 
 ```
 
 ```
-Ravi
-True
-Rahul
+In this example, the Child class requires an additional parameter (age) in its constructor. By using super().__init__(name), the parent's constructor is called with the name parameter, and the child's constructor adds the age attribute.
 ```
 
-> 4 . How to call Constructor of Parent class from child class.
+- 2. Initialization Order: If you need specific attributes to be set in a particular order, calling the parent's constructor ensures that the parent's attributes are initialized before the child's attributes.
+
+```py
+class Parent:
+    def __init__(self):
+        self.attribute = "Parent attribute"
+
+class Child(Parent):
+    def __init__(self):
+        super().__init__()
+        self.child_attribute = "Child attribute"
+
+child_instance = Child()
+print(child_instance.attribute)       # Accessing parent's attribute
+print(child_instance.child_attribute) # Accessing child's attribute
+
+```
+
+```
+In this example, both the parent and child classes have attributes to be initialized. Using super().__init__() ensures that the parent's attribute is initialized before the child's attribute
+```
+
+- 3. Custom Logic: You might want to perform some custom logic before or after the parent's constructor is called. This can be achieved by using super() to call the parent's constructor at the appropriate point in the child's constructor.
+
+```py
+class Parent:
+    def __init__(self):
+        print("Parent's constructor")
+        self.parent_attribute = "Parent attribute"
+
+class Child(Parent):
+    def __init__(self):
+        print("Child's constructor")
+        self.child_attribute = "Child attribute"
+        super().__init__()
+
+child_instance = Child()
+print(child_instance.parent_attribute)
+print(child_instance.child_attribute)
+
+```
+
+> Using parentclass.**init**:
 
 - A child class needs to identify which class is its parent class. This can be done by mentioning the parent class name in the definition of the child class.
 - Example: class childclass_name (Parentclass_name)
@@ -649,6 +414,15 @@ Rahul
 
 - The super() function is a built-in function that returns the objects that represent the parent class.
 - It allows to access the parent class’s methods and attributes in the child class.
+- The super() function allows you to access methods and attributes of the parent class from the child class.
+
+- You can call the constructor of the parent class from the child class using the super() function
+- When you use super().**init**(), you are essentially calling the constructor of the parent class
+
+```py
+
+```
+
 - Example: super() function with simple Python inheritance:
 - In below example, we created the object ‘obj’ of the child class. When we called the constructor of the child class ‘Student’, it initialized the data members to the values passed during the object creation. Then using the super() function, we invoked the constructor of the parent class.
 
@@ -1208,4 +982,302 @@ obj = B("Something")
 ```
 B init called
 A init called
+```
+
+## Python Encapsulation:
+
+- It describes the idea of wrapping data and the methods that work on data within one unit.
+- This puts restrictions on accessing variables and methods directly and can prevent the accidental modification of data.
+- To prevent accidental change, an object’s variable can only be changed by an object’s method. Those types of variables are known as private variables.
+
+- A class is an example of encapsulation as it encapsulates all the data that is member functions, variables, etc.
+  <img src="./encapsulation.png"/>
+- The goal of information hiding is to ensure that an object’s state is always valid by controlling access to attributes that are hidden from the outside world.
+
+- Consider a real-life example of encapsulation, in a company, there are different sections like the accounts section, finance section, sales section etc. The finance section handles all the financial transactions and keeps records of all the data related to finance. Similarly, the sales section handles all the sales-related activities and keeps records of all the sales. Now there may arise a situation when due to some reason an official from the finance section needs all the data about sales in a particular month. In this case, he is not allowed to directly access the data of the sales section. He will first have to contact some other officer in the sales section and then request him to give the particular data. This is what encapsulation is. Here the data of the sales section and the employees that can manipulate them are wrapped under a single name “sales section”. Using encapsulation also hides the data. In this example, the data of the sections like sales, finance, or accounts are hidden from any other section
+- In the above example, we have created the c variable as the private attribute. We cannot even access this attribute directly and can’t even change its value.
+
+```py
+# Python program to
+# demonstrate private members
+
+# Creating a Base class
+class Base:
+	def __init__(self):
+		self.a = "GeeksforGeeks"
+		self.__c = "GeeksforGeeks"
+
+# Creating a derived class
+class Derived(Base):
+	def __init__(self):
+
+		# Calling constructor of
+		# Base class
+		Base.__init__(self)
+		print("Calling private member of base class: ")
+		print(self.__c)
+
+
+# Driver code
+obj1 = Base()
+print(obj1.a)
+
+# Uncommenting print(obj1.c) will
+# raise an AttributeError
+
+# Uncommenting obj2 = Derived() will
+# also raise an AtrributeError as
+# private member of base class
+# is called inside derived class
+
+```
+
+```
+GeeksforGeeks
+```
+
+> Protected members
+
+- Protected members (in C++ and JAVA) are those members of the class that cannot be accessed outside the class but can be accessed from within the class and its subclasses. To accomplish this in Python, just follow the convention by prefixing the name of the member by a single underscore “\_”.
+- Although the protected variable can be accessed out of the class as well as in the derived class (modified too in derived class), it is customary(convention not a rule) to not access the protected out the class body.
+- Note: The **init** method is a constructor and runs as soon as an object of a class is instantiated.
+
+```py
+# Python program to
+# demonstrate protected members
+
+# Creating a base class
+class Base:
+    def __init__(self):
+
+        # Protected member
+        self._a = 2
+
+# Creating a derived class
+class Derived(Base):
+    def __init__(self):
+
+        # Calling constructor of
+        # Base class
+        Base.__init__(self)
+        print("Calling protected member of base class: ",
+              self._a)
+
+        # Modify the protected variable:
+        self._a = 3
+        print("Calling modified protected member outside class: ",
+              self._a)
+
+
+obj1 = Derived()
+
+obj2 = Base()
+
+# Calling protected member
+# Can be accessed but should not be done due to convention
+print("Accessing protected member of obj1: ", obj1._a)
+
+# Accessing the protected variable outside
+print("Accessing protected member of obj2: ", obj2._a)
+```
+
+```
+Calling protected member of base class:  2
+Calling modified protected member outside class:  3
+Accessing protected member of obj1:  3
+Accessing protected member of obj2:  2
+```
+
+> Private members:
+
+- Private members are similar to protected members, the difference is that the class members declared private should neither be accessed outside the class nor by any base class. In Python, there is no existence of Private instance variables that cannot be accessed except inside a class.
+- However, to define a private member prefix the member name with double underscore “\_\_”.
+- Note: Python’s private and protected members can be accessed outside the class through python name mangling.
+
+```py
+# Python program to
+# demonstrate private members
+
+# Creating a Base class
+
+
+class Base:
+    def __init__(self):
+        self.a = "GeeksforGeeks"
+        self.__c = "GeeksforGeeks"
+
+# Creating a derived class
+class Derived(Base):
+    def __init__(self):
+
+        # Calling constructor of
+        # Base class
+        Base.__init__(self)
+        print("Calling private member of base class: ")
+        print(self.__c)
+
+
+# Driver code
+obj1 = Base()
+print(obj1.a)
+
+# Uncommenting print(obj1.c) will
+# raise an AttributeError
+
+# Uncommenting obj2 = Derived() will
+# also raise an AttributeError as
+# private member of base class
+# is called inside derived class
+```
+
+```
+GeeksforGeeks
+```
+
+```
+Traceback (most recent call last):
+  File "/home/f4905b43bfcf29567e360c709d3c52bd.py", line 25, in <module>
+    print(obj1.c)
+AttributeError: 'Base' object has no attribute 'c'
+
+Traceback (most recent call last):
+  File "/home/4d97a4efe3ea68e55f48f1e7c7ed39cf.py", line 27, in <module>
+    obj2 = Derived()
+  File "/home/4d97a4efe3ea68e55f48f1e7c7ed39cf.py", line 20, in __init__
+    print(self.__c)
+AttributeError: 'Derived' object has no attribute '_Derived__c'
+```
+
+## DATA ABSTRACTION:
+
+- It hides unnecessary code details from the user. Also, when we do not want to give out sensitive parts of our code implementation and this is where data abstraction came.
+- Data Abstraction in Python can be achieved by creating abstract classes
+- Data abstraction and encapsulation both are often used as synonyms. Both are nearly synonyms because data abstraction is achieved through encapsulation.
+- Abstraction is used to hide internal details and show only functionalities. Abstracting something means to give names to things so that the name captures the core of what a function or a whole program does.
+
+## Data Hiding and Object Printing:
+
+> Data hiding:
+
+- In Python, we use double underscore (Or \_\_) before the attributes name and those attributes will not be directly visible outside.
+
+```py
+class MyClass:
+
+    # Hidden member of MyClass
+    __hiddenVariable = 0
+
+    # A member method that changes
+    # __hiddenVariable
+    def add(self, increment):
+        self.__hiddenVariable += increment
+        print (self.__hiddenVariable)
+
+# Driver code
+myObject = MyClass()
+myObject.add(2)
+myObject.add(5)
+
+# This line causes error
+print (myObject.__hiddenVariable)
+```
+
+```
+2
+7
+Traceback (most recent call last):
+  File "filename.py", line 13, in
+    print (myObject.__hiddenVariable)
+AttributeError: MyClass instance has
+no attribute '__hiddenVariable'
+```
+
+- In the above program, we tried to access a hidden variable outside the class using an object and it threw an exception.
+- We can access the value of a hidden attribute by a tricky syntax:
+
+```py
+# A Python program to demonstrate that hidden
+# members can be accessed outside a class
+class MyClass:
+
+    # Hidden member of MyClass
+    __hiddenVariable = 10
+
+# Driver code
+myObject = MyClass()
+print(myObject._MyClass__hiddenVariable)
+```
+
+```
+10
+```
+
+- Private methods are accessible outside their class, just not easily accessible. Nothing in Python is truly private; internally, the names of private methods and attributes are mangled and unmangled on the fly to make them seem inaccessible by their given names
+
+> Printing Objects:
+
+- Printing objects give us information about objects we are working with. In C++, we can do this by adding a friend ostream& operator << (ostream&, const Foobar&) method for the class. In Java, we use toString() method.
+  In python, this can be achieved by using **repr** or **str** methods.
+
+```py
+class Test:
+    def __init__(self, a, b):
+        self.a = a
+        self.b = b
+
+    def __repr__(self):
+        return "Test a:%s b:%s" % (self.a, self.b)
+
+    def __str__(self):
+        return "From str method of Test: a is %s," \
+              "b is %s" % (self.a, self.b)
+
+# Driver Code
+t = Test(1234, 5678)
+print(t) # This calls __str__()
+print([t]) # This calls __repr__()
+```
+
+```
+From str method of Test: a is 1234,b is 5678
+[Test a:1234 b:5678]
+```
+
+> Important Points about Printing:
+
+- If no **str** method is defined, print t (or print str(t)) uses **repr**.
+
+```py
+class Test:
+    def __init__(self, a, b):
+        self.a = a
+        self.b = b
+
+    def __repr__(self):
+        return "Test a:%s b:%s" % (self.a, self.b)
+
+# Driver Code
+t = Test(1234, 5678)
+print(t)
+```
+
+```
+Test a:1234 b:5678
+```
+
+> If no **repr** method is defined then the default is used:
+
+```py
+class Test:
+    def __init__(self, a, b):
+        self.a = a
+        self.b = b
+
+# Driver Code
+t = Test(1234, 5678)
+print(t)
+```
+
+```
+<__main__.Test instance at 0x7fa079da6710>
 ```
