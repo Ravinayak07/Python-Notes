@@ -322,6 +322,28 @@ obj2.drive() # I am driving BMW
 
 - self.name refers to the name attribute of the instance car, which is inherited from the class attribute name. This way, you're using the instance's attribute through the self parameter to access the class attribute, achieving the same result as the original code but with a more object-oriented approach.
 
+# Methods inisde init method:
+
+```py
+class MyClass:
+    def __init__(self, value):
+        self.value = value
+
+        def inner_method():
+            return self.value * 2
+
+        self.result = inner_method()
+
+# Create an instance of the class
+my_object = MyClass(5)
+
+# Access the result calculated within the inner method
+print(my_object.result)  # Output: 10
+```
+
+- It is not a recommended practice and might lead to confusion and code complexity.
+- In object-oriented programming, methods are typically defined outside the constructor (**init**) to promote better organization, readability, and separation of concerns.
+
 # INHERITANCE:
 
 - Inheritance is the capability of one class to derive or inherit the properties from another class.
