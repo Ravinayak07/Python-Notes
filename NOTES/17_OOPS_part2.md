@@ -598,3 +598,261 @@ object.func2()
 - Single Inheritance: The base class School is inherited by the subclasses Student1 and Student2. This is a form of single inheritance where each subclass inherits from a single parent class.
 - Multiple Inheritance: The class Student3 inherits from both Student1 and School classes. This is an example of multiple inheritance where a class inherits from more than one parent class.
 - Multilevel Inheritance: The class Student3 is derived from the class Student1, which in turn is derived from the class School. This forms a chain of inheritance, resulting in multilevel inheritance.
+
+## Types of Inheritance:
+
+- There are 5 different types of inheritance in Python.
+
+> 1 . Single Inheritance:
+
+- When a child class inherits from only one parent class
+
+> 2 . Multilevel Inheritance:
+
+- Multi-level inheritance enables a derived class to inherit properties from an parent class which in turn inherits properties from his parent class.
+- Its like child and grandchild relationship. This means that a child class will inherit from its parent class, which in turn is inheriting from its parent class.
+
+```py
+class Parent(object):
+
+    def __init__(self, name):
+        self.name = name
+
+    def displayName(self):
+        return self.name
+
+
+class Child(Parent):
+
+    def __init__(self, name, age):
+
+        self.age = age
+
+        Parent.__init__(self, name)
+
+
+    def displayAge(self):
+        return self.age
+
+
+class GrandChild(Child):
+
+    def __init__(self, name, age, city):
+
+        self.city = city
+
+        Child.__init__(self, name, age)
+
+
+    def displayCity(self):
+        return self.city
+
+
+obj = GrandChild("Ravi", 21, "BBSR")
+print(obj.displayName())
+print(obj.displayAge())
+print(obj.displayCity())
+
+```
+
+```
+Ravi
+21
+BBSR
+```
+
+- uisng superfun:
+
+```py
+class Parent(object):
+
+    def __init__(self, name):
+        self.name = name
+
+    def displayName(self):
+        return self.name
+
+
+class Child(Parent):
+
+    def __init__(self, name, age):
+
+        self.age = age
+
+        super().__init__(name)
+
+
+    def displayAge(self):
+        return self.age
+
+
+class GrandChild(Child):
+
+    def __init__(self, name, age, city):
+
+        self.city = city
+
+        super().__init__(name, age)
+
+
+    def displayCity(self):
+        return self.city
+
+
+obj = GrandChild("Ravi", 21, "BBSR")
+print(obj.displayName())
+print(obj.displayAge())
+print(obj.displayCity())
+
+```
+
+> 3 . Hierarchical Inheritance:
+
+- More than one derived class can be created from a single base.
+
+> 4 . Multiple Inheritance:
+
+- When a child class inherits from multiple parent classes.
+- Unlike Java, python shows multiple inheritances.:
+
+```py
+# Python example to show the working of multiple
+# inheritance
+
+class Base1(object):
+    def __init__(self):
+        self.str1 = "Geek1"
+        print("Base1")
+
+
+class Base2(object):
+    def __init__(self):
+        self.str2 = "Geek2"
+        print("Base2")
+
+
+class Derived(Base1, Base2):
+    def __init__(self):
+
+        # Calling constructors of Base1
+        # and Base2 classes
+        Base1.__init__(self)
+        Base2.__init__(self)
+        print("Derived")
+
+    def printStrs(self):
+        print(self.str1, self.str2)
+
+
+ob = Derived()
+ob.printStrs()
+```
+
+```
+Base1
+Base2
+Derived
+Geek1 Geek2
+```
+
+> 5 . Hybrid inheritance:
+
+- This form combines more than one form of inheritance. Basically, it is a blend of more than one type of inheritance
+
+## Private members of the parent class :
+
+- We don’t always want the instance variables of the parent class to be inherited by the child class i.e. we can make some of the instance variables of the parent class private, which won’t be available to the child class.
+- In Python inheritance, we can make an instance variable private by adding double underscores before its name. For example:
+
+```py
+# Python program to demonstrate private members of the parent class
+
+class C(object):
+    def __init__(self):
+        self.c = 21
+
+        # d is private instance variable
+        self.__d = 42
+
+
+class D(C):
+    def __init__(self):
+        self.e = 84
+        C.__init__(self)
+
+object1 = D()
+
+# produces an error as d is private instance variable
+print(object1.c)
+print(object1.__d)
+```
+
+- Here we can see that when we tried to print the variable ‘c’, its value 21 is printed on the console. Whereas when we tried to print ‘d’, it generated the error. This is because the variable ‘d’ is made private by using the underscores. It is not available to the child class ‘D’ and hence the error.
+
+```
+21
+  File "/home/993bb61c3e76cda5bb67bd9ea05956a1.py", line 16, in
+    print (object1.d)
+AttributeError: type object 'D' has no attribute 'd'
+```
+
+## **init** with inheritance
+
+- Let’s consider the below example to see how **init** works in inheritance. :
+
+```py
+# Python program to
+# demonstrate init with
+# inheritance
+
+class A(object):
+    def __init__(self, something):
+        print("A init called", something)
+        self.something = something
+
+
+class B(A):
+    def __init__(self, something):
+
+        # Calling init of parent class
+        A.__init__(self, something)
+        print("B init called". something)
+        self.something = something
+
+
+obj = B("Ravi")
+```
+
+```
+A init called
+B init called
+```
+
+- So, the parent class constructor is called first. But in Python, it is not compulsory that the parent class constructor will always be called first. The order in which the **init** method is called for a parent or a child class can be modified. This can simply be done by calling the parent class constructor after the body of the child class constructor.
+
+```py
+# Python program to
+# demonstrate init with
+# inheritance
+
+class A(object):
+    def __init__(self, something):
+        print("A init called")
+        self.something = something
+
+
+class B(A):
+    def __init__(self, something):
+        print("B init called")
+        self.something = something
+        # Calling init of parent class
+        A.__init__(self, something)
+
+
+obj = B("Something")
+```
+
+```
+B init called
+A init called
+```
