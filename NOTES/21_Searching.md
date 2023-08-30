@@ -371,4 +371,257 @@ mid = (low + high)/2.
 int mid = low + ((high – low) / 2);
 ```
 
+# LINKED LIST:
+
+- Data Structure in which elements are not stored in contigous location
+- Rather they are linked using pointers
+- Linked list forms a series of connected nodes where each node stores the data and address of next node
+
+> Node:
+
+- A node has two components
+- Data : holds the value
+- Next pointer : stores the memory address of next node
+
+> Head:
+
+- First Node in the list
+-
+
 # Sorting
+
+- The process of arranging a collection of data elements in a specific order.
+
+# Bubble sort:
+
+- In this sorting algorithm, we repeatedly swapping the adjacent elements if they are in wrong order.
+
+> STEPS:
+
+- Traverse from left and compare adjacent elements and place the larger element on right side and smaller on left
+- In this way, the largest element is moved to the rightmost end at first.
+- Repeat the same process to find the second largest element.
+- Continue till the data is sorted.
+
+> WORKING:
+
+```
+Input list = [6, 3, 0, 5]
+```
+
+- First Pass: (Placing largest element)
+
+```
+i=0, [6,0,3,5]  # swap 6 and 0
+i=1, [0,6,3,5]  # swap 6 and 3
+i=2, [0,3,6,5]  # swap 6 and 5
+     [0,3,5,6]  # 6 : sorted
+```
+
+- Second pass (Placing second largest element)
+
+```
+i=0, [0,3,5,6]  # 0 and 3 are in correct pos
+i=1, [0,3,5,6]  # 3 and 5 are in correct pos
+     [0,3,5,6]  # 5: sorted
+```
+
+- Third pass : (Placing thrid largest element)
+
+```
+i = 0, [0,3,5,6] # 3 at correct pos
+
+Thus list sorted
+```
+
+- Code
+
+```py
+mylist = [64, 34, 25, 12, 22, 11, 90]
+#    i =   0   1   2   3   4   5   6
+# mylist = [34, 25, 12, 22, 11, 64, 90]
+n = len(mylist) # n = 5
+
+for i in range(n):
+    swapped = False
+
+    # Last i elements are already in place
+    for j in range(0, n-i-1):                 # i=1, j = 0 to n-i-1 => j = 0 to 4
+
+        # Traverse the array from 0 to n-i-1
+        if mylist[j] > mylist[j+1]:
+            mylist[j], mylist[j+1] = mylist[j+1], mylist[j]
+
+            swapped = True
+
+        # if not swapped, that means left element is at correct place . Now move to next element
+        if swapped == False:
+            break
+
+print(mylist)
+```
+
+- Time Complexity : O(N^2)
+- Auxiliary Space: O(1)
+
+> Advantages of Bubble sort:
+
+- No extra space
+
+> Disadvantage of bubble sort:
+
+- has a time complexity of O(N2) which makes it very slow
+
+# SELECTION SORT:
+
+- The algorithm repeatedly selects the smallest (or largest) element from the unsorted portion of the list and swaps it with the first element of the unsorted part. This process is repeated for the remaining unsorted portion until the entire list is sorted.
+
+## Example:
+
+```
+mylist = [64, 25, 12, 22, 11]
+```
+
+- First pass:
+
+```
+- Start from index 0
+- Traverse the whole list
+- Found 11 as the smallest element
+- swap 11 with first element (64)
+
+mylist = [11, 25, 12, 22, 64]
+```
+
+- Second pass
+
+```
+- Start from index 1 (i.e 25)
+- Traverse the whole list
+- Found 12 as the smallest element
+- Swap 12 with second element(25)
+
+mylist = [11, 12, 25, 22, 64]
+```
+
+- Third Pass
+
+```
+- start from index 2 (i.e 25)
+- Traverse the whole list
+- Found 22 as the smallest
+- swap 22 with 3rd element (i.e 25)
+
+mylist = [11, 12, 22, 25, 64]
+```
+
+- similarliy after fourth pass:
+- sorted list = [11, 12, 22, 25, 64]
+
+> CODE:
+
+```py
+mylist = [64, 25, 12, 22, 11]
+
+n = len(mylist)
+
+# Traverse through all array elements
+for i in range(n):
+
+    # Find the minimum element in remaining unsorted array
+    idx = i
+
+    for j in range(i+1, n):
+        if mylist[idx] > mylist[j]:
+            idx = j     # findng the index of small element
+
+    # Swap the found minimum element with the first element
+    mylist[i], mylist[idx] = mylist[idx], mylist[i]
+
+print(mylist)
+```
+
+- Time Complexity = O(N^2)
+- Auxillary Space = O(1) as the only extra memory used is for temporary variables while swapping two values in Array.
+
+# Insertion Sort:
+
+- Its simmilar to sorting playing cards in our hands.
+- The list is virtually split into a sorted and an unsorted part
+- Values from unsorted part are picked and placed at the correct position in the sorted part.
+
+- Example:
+
+```
+mylist = [12, 11, 13, 5, 6]
+```
+
+> First Pass:
+
+```
+- First compare first two elements (i.e 12 and 11)
+- since 12 is greater than 11
+- swap 11 and 12
+```
+
+> Second Pass:
+
+```
+mylist = [11, 12, 13, 5, 6]
+- Compare 12 and 13
+- both in correct position
+```
+
+> Third pass:
+
+```
+mylist = [11, 12, 13, 5, 6]
+- Compare 13 and 5
+- swap 13 and 5
+
+mylist = [11, 12, 5, 13, 6]
+- swap 12 and 5
+
+mylist = [11, 5, 12,  13, 6]
+- swap 11 and 5
+
+mylist = [5, 11, 12,  13, 6]
+```
+
+> Fourth Pass:
+
+```
+mylist = [5, 11, 12,  13, 6]
+- swap 13 and 6
+- swap 12 and 6
+- swap 11 and 6
+```
+
+- List is sorted
+
+```
+mylist = [5,  6, 11, 12,  13]
+```
+
+> CODE:
+
+```py
+mylist = [11, 12, 13, 5, 6]
+n = len(mylist)
+for i in range(1, n):
+    key = mylist[i]
+
+    # Move elements of arr[0..i-1], that are
+    # greater than key, to one position ahead
+    # of their current position
+    j = i-1
+    while j >= 0 and key < mylist[j] :
+        mylist[j + 1] = mylist[j]
+        j -= 1
+        mylist[j + 1] = key
+
+print(mylist)
+```
+
+- Time Complexity: O(N^2)
+- Auxiliary Space: O(1)
