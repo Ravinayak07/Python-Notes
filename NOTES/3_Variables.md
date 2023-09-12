@@ -128,26 +128,20 @@ print(c)
 
 # Global Variables:
 
-- created outside of a function (i.e in the main body of python code)
+- created outside of a function
 - belongs to global scope
 - can be used by both inside and outside of a function
 - so global variables can be accessed within any scope i.e both local and global
 
-```
-#Question
-Create a function named greet that:
-1) Displays: Hello myName
-2) Where myName should be a global variable
-```
+  ```py
+  myName = "Ravi" #Global Variable
 
-```py
-myName = "Ravi" #Global Variable
-def greet():
+  def greet():
     print("Hello " +myName)
 
-greet()
-print(myName)
-```
+  greet()
+  print(myName)  # Hello Ravi
+  ```
 
 # Local Variable:
 
@@ -156,113 +150,21 @@ print(myName)
 - can only be accessible inside the fun, not outside.
 - Ex:
 
-```py
-def greet():
+  ```py
+  def greet():
     myName = "Ravi"  #Local Variable
     print("Hello "+myName)
-
-greet()
-```
+  greet()
+  ```
 
 - Function inside function:
 
-```py
-def greet():
+  ```py
+  def greet():
     myName = "Ravi"
     def greetWithName():
       print("Hello "+myName)
-
     greetWithName()
 
-greet()
-```
-
-# Both Global and Local variable having same name
-
-- Can both global and local variable have same name> yes
-- But Python will treat them as two separate variables
-
-```py
-myName = "Ravi" #Global
-
-def greet():
-  myName = "Darshan" #Local
-  print("Hello " + myName)
-
-greet()
-
-print("Hello " + myName)
-```
-
-```
-Python is Darshan
-Python is Ravi
-```
-
-## Problem:
-
-- I want to create a global variable inside the fun (i.e in local scope). Is it possible??
-
-```py
-# Error
-def greet():
-    myName = "Ravi" #Local Vraibale
-greet()
-
-print("Hello "+myName)
-```
-
-- Here comes the global keyword. It is used to create a global variable in local scope.
-
-```py
-#Error
-def greet():
-    global myName = "Ravi";
-
-greet()
-
-print("Hello "+myName)
-```
-
-- The above is error because In Python, you need to declare it as global within the function before you can assign a new value to it
-
-```py
-def greet():
-    global myName
-    myName = "Ravi"
-
-greet()
-
-print("Hello "+myName)
-```
-
-- Also, use the global keyword if you want to change a global variable inside a function.
-
-```py
-x = "awesome"
-
-def myfunc():
-  x = "fantastic"
-
-myfunc()
-
-print("Python is " + x)
-```
-
-```
-Python is awesome
-```
-
-- But i want output: "Python is fantastic"
-
-```py
-x = "awesome"
-
-def myfunc():
-  global x
-  x = "fantastic"
-
-myfunc()
-
-print("Python is " + x)
-```
+  greet()
+  ```
