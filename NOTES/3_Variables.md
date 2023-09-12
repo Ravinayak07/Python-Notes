@@ -4,159 +4,127 @@
 
 > Creating variable:
 
-- Python has no command for declaring variable
-- variable is created when we assign value to it.
+- There is no command for declaring variable in Python.
+- Variables are created when we assign values to them.
 
-```py
-x = 7
-y = "Ravi"
-print(7)
-print(Ravi)
-```
+  ```py
+  x = 7
+  y = "Ravi"
+  print(7)
+  print(Ravi)
+  ```
 
-> Casting:
-
-- to specify the data type of variable:
-
-```py
-x = str(7)
-y = int(7)
-z = float(7)
-
-print(x)
-print(y)
-print(z)
-
-```
-
-> Get the type:
-
-- by type() function
-
-```py
-x = 7
-y = "Ravi"
-print(type(x))
-print(type(y))
-```
-
-```
-<class 'int'>
-<class 'str'>
-```
-
-## VARIABLE NAMES:
+> Variable Naming Rules:
 
 - Must start with a letter or Underscore
 - Cannot start with a number
-- case-sensitive
-- cannot be any python keywords
+- Keywords can't be used
+- variables are case-sensitive
 - Ex:
 
-```py
-# Valid variable names
+  ```py
+  # Valid variable names
+  myname = "Ravi"
+  myName = "Ravi"
+  my_name = "Ravi"
+  _myName = "Ravi"
+  myName2 = "Nayak"
+  MYNAME ="Nayak"
+  ```
 
-myname = "Ravi"
-myName = "Ravi"
-my_name = "Ravi"
-_myName = "Ravi"
-myName2 = "Nayak"
-MYNAME ="Nayak"
-```
+  ```py
+  # Invalid variable name
+  5myName = "ravi"
+  my-name = "ravi"
+  my name="ravi"
+  ```
 
-```py
-# In valid variable name
-5myName = "ravi"
-my-name = "ravi"
-my name="ravi"
-```
+# MultiWord Variable Names:
 
-# MultiWord Variable Name:
+Four Cases:
 
-> Camel case
+> 1 . Camel case
 
 ```py
 myCollegeName = "LPU"
 ```
 
-> Pascal case
+> 2 . Pascal case
 
 ```py
 MyCollegeName = "LPU"
 ```
 
-> Snake Case
+> 3 . Snake Case
 
 ```py
-my_variable_name = "LPU"
+my_college_name = "LPU"
 ```
 
-## ASSIGNING MULTIPLE VALUES:
+## Assigning Multiple Values:
 
-> Many values to many variables
+> 1 . Many values to many variables
 
 ```py
-x, y, z = "Orange", "Banana", "Cherry"
+a, b, c = "CPP", "Python", "Java"
 
-print(x)
-print(y)
-print(z)
-
+print(a)
+print(b)
+print(c)
 ```
 
 - Here no.of variables should match no. of values, otherwise error.
 
-> One value to Multiple Variables:
+> 2 . One value to Multiple Variables:
 
 ```py
-x = y = z = "Orange"
+a = b = c = "Python"
 
-print(x)
-print(y)
-print(z)
-
+print(a)
+print(b)
+print(c)
 ```
 
-## Output Variables
+## Print Variables
 
 - print() function is used.
 
-```py
-myName = "Ravi"
-print(myName)
-```
+  ```py
+  myName = "Ravi"
+  print(myName)
+  ```
 
-- multiple variables are separated by comma
+- comma is used to separate multiple variables
 
-```py
-x = "My College"
-y = "Name"
-z = "is LPU."
-print(x, y, z);
-```
+  ```py
+  x = "My College"
+  y = "Name"
+  z = "is LPU."
+  print(x, y, z);
+  ```
 
 - Using + operator:
 
-```py
-x = "My College"
-y = " Name "
-z = "is LPU."
-print(x+y+z);
-```
+  ```py
+  x = "My College"
+  y = " Name "
+  z = "is LPU."
+  print(x+y+z);
+  ```
 
-```py
-# Error: cannot concatenate int and string
-x = 7
-y = "Ravi"
-print(x + y)
-```
+  ```py
+  # Error: cannot concatenate int and string
+  x = 7
+  y = "Ravi"
+  print(x + y)
+  ```
 
-```py
-#correct:
-x = 7
-y = "Ravi"
-print(x, y)
-```
+  ```py
+  # correct:
+  x = 7
+  y = "Ravi"
+  print(x, y)
+  ```
 
 # Global Variables:
 

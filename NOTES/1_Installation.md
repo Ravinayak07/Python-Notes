@@ -1,72 +1,23 @@
-# HOW TO CHECK:
-
-- Open Command prompt or Windows powershell
-
-```
-python --version
-```
-
-```
-py --version
-```
-
-- For mac, open terminal(for linux open command line)
-
-```
-python --version
-```
-
 # Install Python in Windows:
 
-- Go to this website: python.org
-- Select any stable version
-- download windows 64-bit (check in settings-> system-> about)
-- Path : C:\Users\ASUS\AppData\Local\Programs\Python\Python310
+- Visit [python.org](https://www.python.org/downloads/)
+- Download windows 64-bit (check in settings-> system-> about)
+- After Downloading, add path to environment variables
 
-```
-- pip: used to manage all python packages
-- IDLE: IDE to run python programs easily
-```
+# Check Whether installed or not:
 
-# Python QuickStart:
+- Open Command prompt or Windows powershell
+- Run the below command
+  ```
+  python --version
+  ```
+- Or
 
-- Python is an interpreted language
-- Means we can write python(.py) files in atext editor and then put the files into the python interpreter to execute:
-- Ex: file name is helloworld.py
-- Open cmd and run:
+  ```
+  py --version
+  ```
 
-```
-C:\Users\ASUS>python hellowworld.py
-```
-
-- Always navigate to the directory where you have saved the file.
-
-# Python Command Line:
-
-- Quickest way to test short amount of python code:
-- Open cmd and run this command:
-
-```
-C:\Users\ASUS>python
-
-or
-
-C:\Users\ASUS>py
-```
-
-- Now you can write any python code
-
-```
-C:\Users\ASUS>python
-Python 3.10.9 (tags/v3.10.9:1dd9be6, Dec  6 2022, 20:01:21) [MSC v.1934 64 bit (AMD64)] on win32
-Type "help", "copyright", "credits" or "license" for more information.
->>> print("Hello World!")
-Hello World!
->>>
-```
-
-- To quit python command line interface:
-
-```
-exit()
-```
+- For mac, open terminal(for linux open command line)
+  ```
+  python --version
+  ```
