@@ -168,3 +168,73 @@ print(c)
 
   greet()
   ```
+
+- Both Global and Local variable having same name but Python will treat them as two separate variables:
+
+  ```py
+  myName = "Ravi" #Global
+
+  def greet():
+    myName = "Darshan" #Local
+
+  print("Hello " + myName)
+
+  greet()
+  print("Hello " + myName)
+
+  ```
+
+  ```
+  Hello Darshan
+  Hello Ravi
+  ```
+
+# Using Global Variable inside Local Scope:
+
+- Creating a global variable inside the fun (i.e in local scope):
+
+  ```py
+  def greet():
+    myName = "Ravi" #Local Vraibale
+
+  greet()
+  print("Hello "+myName)
+
+  # NameError: name 'myName' is not defined
+  ```
+
+- Here comes the global keyword. It is used to create a global variable in local scope.
+
+  ```py
+  def greet():
+    global myName = "Ravi" #Global Vraibale
+
+  greet()
+  print("Hello "+myName)
+
+  # SyntaxError: invalid syntax
+  ```
+
+- The above error is because global variable within a function must be declared before assigning it
+
+  ```py
+  def greet():
+    global myName
+    myName = "Ravi" #Global Vraibale
+
+  greet()
+  print("Hello "+myName) # Hello Ravi
+  ```
+
+- Global keyword can also be used to update a global variable inside a function.
+
+  ```py
+  clg = "SILICON"
+
+  def display():
+    global clg
+    clg = "LPU" #Global Vraibale
+
+  display()
+  print("My clg name is "+cld) # My clg name is LPU
+  ```
